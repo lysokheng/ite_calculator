@@ -1,33 +1,41 @@
 package Views.Widgets.Components;
 
+import Views.Widgets.Utils.AppColors;
+
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 public class OutputArea extends JPanel {
 
-    JTextArea display;
+    JTextArea textArea;
+    AppColors appColors = new AppColors();
 
     public JTextArea outputArea() {
 
-        display = new JTextArea(1,10);
-        display.setEditable(false);
+        textArea = new JTextArea(1,10);
+        textArea.setEditable(false);
         Font fieldFont = new Font("Helvetica", Font.BOLD, 20);
-        display.setFont(fieldFont);
-        display.setBackground(Color.lightGray);
-        display.setForeground(Color.DARK_GRAY);
-        display.setBorder(BorderFactory.createCompoundBorder(
+        textArea.setFont(fieldFont);
+        textArea.setBackground(Color.lightGray);
+        textArea.setForeground(Color.DARK_GRAY);
+        textArea.setBorder(BorderFactory.createCompoundBorder(
                 new CustomBorder(),
                 new EmptyBorder(new Insets(25, 25, 25, 25))));
 
 
-        add(display, BorderLayout.CENTER);
+        add(textArea, BorderLayout.CENTER);
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        return display;
+        textArea.addMouseListener(new MouseHover());
+
+
+        return textArea;
     }
 
     static class CustomBorder extends AbstractBorder {
@@ -40,6 +48,36 @@ public class OutputArea extends JPanel {
             g2d.setStroke(new BasicStroke(12));
             g2d.setColor(Color.WHITE);
             g2d.drawRoundRect(x, y, width - 1, height - 1, 25, 25);
+        }
+    }
+
+    class MouseHover implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            textArea.setBackground(Color.WHITE);
+            textArea.setForeground(appColors.getGREEN_COLOR());
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            textArea.setBackground(Color.LIGHT_GRAY);
+            textArea.setForeground(Color.DARK_GRAY);
         }
     }
 }

@@ -18,12 +18,12 @@ public class InputFieldHexadecimal extends JPanel {
         textField.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 int keyChar = e.getKeyChar();
-                if(keyChar >= java.awt.event.KeyEvent.VK_0 && keyChar <= java.awt.event.KeyEvent.VK_9){
-                }else if (keyChar >= java.awt.event.KeyEvent.VK_A && keyChar <= java.awt.event.KeyEvent.VK_F){
+                if(keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9){
+                }else if (keyChar >= KeyEvent.VK_A && keyChar <= KeyEvent.VK_F){
                 }else if(keyChar >= 0x61 && keyChar <= 0x66){//af
-                }else if( keyChar == java.awt.event.KeyEvent.VK_BACK_SPACE
-                        || keyChar == java.awt.event.KeyEvent.VK_LEFT
-                        || keyChar == java.awt.event.KeyEvent.VK_RIGHT){
+                }else if( keyChar == KeyEvent.VK_BACK_SPACE
+                        || keyChar == KeyEvent.VK_LEFT
+                        || keyChar == KeyEvent.VK_RIGHT){
                 }else{
                     e.consume() ;//Key, shield illegal input
                 }
@@ -43,18 +43,5 @@ public class InputFieldHexadecimal extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         return textField;
-    }
-
-    static class CustomBorder extends AbstractBorder {
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            // TODO Auto-generated method stubs
-            super.paintBorder(c, g, x, y, width, height);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setStroke(new BasicStroke(12));
-            g2d.setColor(Color.WHITE);
-            g2d.drawRoundRect(x, y, width - 1, height - 1, 25, 25);
-        }
     }
 }

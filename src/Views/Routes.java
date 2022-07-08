@@ -1,12 +1,12 @@
 package Views;
 
 import Views.DecorationLayout.*;
-import Views.DecorationLayout.BitwiseWindows.BitwiseBinaryWindows;
-import Views.DecorationLayout.BitwiseWindows.BitwiseDecimalWindows;
-import Views.DecorationLayout.NumberSystemConversionWindows.NumberSystemConversionBinaryWindows;
-import Views.DecorationLayout.NumberSystemConversionWindows.NumberSystemConversionDecimalWindows;
-import Views.DecorationLayout.NumberSystemConversionWindows.NumberSystemConversionHexadecimalWindows;
-import Views.DecorationLayout.NumberSystemConversionWindows.NumberSystemConversionOctalWindows;
+import Views.DecorationLayout.BitwiseBinaryLayout;
+import Views.DecorationLayout.BitwiseDecimalLayout;
+import Views.DecorationLayout.NumberSystemConversionBinaryLayout;
+import Views.DecorationLayout.NumberSystemConversionDecimalLayout;
+import Views.DecorationLayout.NumberSystemConversionHexadecimaLayout;
+import Views.DecorationLayout.NumberSystemConversionOctalLayout;
 import Views.Widgets.Utils.AppButtons;
 
 import javax.swing.*;
@@ -28,14 +28,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton arithmeticListener(JFrame frame, JPanel mainPanel) {
-        ArithmeticWindows arithmeticWindows = new ArithmeticWindows();
+        ArithmeticLayout arithmeticLayout = new ArithmeticLayout();
 
         //route to arithmetic windows
         JButton arithmeticListener;
         arithmeticListener = appButtons.arithmeticButton();
         arithmeticListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(arithmeticWindows.arithmeticPanel(frame));
+            frame.setContentPane(arithmeticLayout.arithmeticPanel(frame));
             frame.validate();
             frame.repaint();
 
@@ -45,14 +45,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton trigonometryListener(JFrame frame, JPanel mainPanel) {
-        TrigonometryWindows trigonometryWindows = new TrigonometryWindows();
+        TrigonometryLayout trigonometryLayout = new TrigonometryLayout();
 
         //route to trigonometryListener
         JButton trigonometryListener;
         trigonometryListener = appButtons.trigonometryButton();
         trigonometryListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(trigonometryWindows.trigonometryPanel(frame));
+            frame.setContentPane(trigonometryLayout.trigonometryPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -61,14 +61,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton bitwiseDecimalWindowsListener(JFrame frame, JPanel mainPanel) {
-        BitwiseDecimalWindows bitwiseDecimalWindows = new BitwiseDecimalWindows();
+        BitwiseDecimalLayout bitwiseDecimalLayout = new BitwiseDecimalLayout();
 
         //route to bitwiseListener
         JButton bitwiseListener;
         bitwiseListener = appButtons.bitwiseButton();
         bitwiseListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(bitwiseDecimalWindows.bitwisePanel(frame));
+            frame.setContentPane(bitwiseDecimalLayout.bitwisePanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -77,14 +77,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton bitwiseDecimalListener(JFrame frame, JPanel mainPanel) {
-        BitwiseDecimalWindows bitwiseDecimalWindows = new BitwiseDecimalWindows();
+        BitwiseDecimalLayout bitwiseDecimalLayout = new BitwiseDecimalLayout();
 
         //route to bitwiseListener
         JButton bitwiseListener;
         bitwiseListener = appButtons.changeToDecimalButton();
         bitwiseListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(bitwiseDecimalWindows.bitwisePanel(frame));
+            frame.setContentPane(bitwiseDecimalLayout.bitwisePanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -94,14 +94,14 @@ public class Routes implements ActionListener {
 
 
     public JButton bitwiseBinaryListener(JFrame frame, JPanel mainPanel) {
-        BitwiseBinaryWindows bitwiseBinaryWindows = new BitwiseBinaryWindows();
+        BitwiseBinaryLayout bitwiseBinaryLayout = new BitwiseBinaryLayout();
 
         //route to bitwiseListener
         JButton bitwiseListener;
         bitwiseListener = appButtons.changeToBinaryButton();
         bitwiseListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(bitwiseBinaryWindows.bitwisePanel(frame));
+            frame.setContentPane(bitwiseBinaryLayout.bitwisePanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -111,14 +111,14 @@ public class Routes implements ActionListener {
 
 
     public JButton moneyExchangeListener(JFrame frame, JPanel mainPanel) {
-        MoneyExchangeWindows moneyExchangeWindows = new MoneyExchangeWindows();
+        MoneyExchangeLayout moneyExchangeLayout = new MoneyExchangeLayout();
 
         //route moneyExchangeListener
         JButton moneyExchangeListener;
         moneyExchangeListener = appButtons.moneyExchangeButton();
         moneyExchangeListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(moneyExchangeWindows.moneyExchangePanel(frame));
+            frame.setContentPane(moneyExchangeLayout.moneyExchangePanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -127,14 +127,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton storageConverterListener(JFrame frame, JPanel mainPanel) {
-        StorageConverterWindows storageConverterWindows = new StorageConverterWindows();
+        StorageConverterLayout storageConverterLayout = new StorageConverterLayout();
 
         //route storageConverterListener
         JButton storageConverterListener;
         storageConverterListener = appButtons.storageConverterButton();
         storageConverterListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(storageConverterWindows.storageConverterPanel(frame));
+            frame.setContentPane(storageConverterLayout.storageConverterPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -143,7 +143,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton numberSystemConversionListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionDecimalWindows numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalWindows();
+        NumberSystemConversionDecimalLayout numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalLayout();
 
         //route numberSystemConversionListener
         JButton numberSystemConversionListener;
@@ -159,14 +159,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton binaryArithmeticListener(JFrame frame, JPanel mainPanel) {
-        BinaryArithmeticWindows binaryArithmeticWindows = new BinaryArithmeticWindows();
+        BinaryArithmeticLayout binaryArithmeticLayout = new BinaryArithmeticLayout();
 
         //route to binaryArithmeticListener
         JButton binaryArithmeticListener;
         binaryArithmeticListener = appButtons.binaryArithmeticButton();
         binaryArithmeticListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(binaryArithmeticWindows.binaryArithmeticPanel(frame));
+            frame.setContentPane(binaryArithmeticLayout.binaryArithmeticPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -175,14 +175,14 @@ public class Routes implements ActionListener {
     }
 
     public JButton setTheoryListener(JFrame frame, JPanel mainPanel) {
-        SetTheoryWindows setTheoryWindows = new SetTheoryWindows();
+        SetTheoryLayout setTheoryLayout = new SetTheoryLayout();
 
         //route to setTheoryListener
         JButton setTheoryListener;
         setTheoryListener = appButtons.setTheoryButton();
         setTheoryListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(setTheoryWindows.setTheoryPanel(frame));
+            frame.setContentPane(setTheoryLayout.setTheoryPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -191,13 +191,13 @@ public class Routes implements ActionListener {
     }
 
     public JButton menuWindowsListener(JFrame frame, JPanel mainPanel) {
-        MenuWindows menuWindows = new MenuWindows();
+        MenuLayout menuLayout = new MenuLayout();
         //route to menuWindowsListener
         JButton mainWindowsListener;
         mainWindowsListener = appButtons.backButton();
         mainWindowsListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(menuWindows.menuPanel(frame));
+            frame.setContentPane(menuLayout.menuPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -206,7 +206,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToBinaryListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionBinaryWindows numberSystemConversionBinaryWidgets = new NumberSystemConversionBinaryWindows();
+        NumberSystemConversionBinaryLayout numberSystemConversionBinaryWidgets = new NumberSystemConversionBinaryLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionBinaryListener;
         numberSystemConversionBinaryListener = appButtons.binaryButton();
@@ -221,7 +221,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToDecimalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionDecimalWindows numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalWindows();
+        NumberSystemConversionDecimalLayout numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionDecimalListener;
         numberSystemConversionDecimalListener = appButtons.decimalButton();
@@ -236,13 +236,13 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToHexadecimalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionHexadecimalWindows numberSystemConversionHexadecimalWindows = new NumberSystemConversionHexadecimalWindows();
+        NumberSystemConversionHexadecimaLayout numberSystemConversionHexadecimaLayout = new NumberSystemConversionHexadecimaLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionHexadecimalListener;
         numberSystemConversionHexadecimalListener = appButtons.hexaDecimalButton();
         numberSystemConversionHexadecimalListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(numberSystemConversionHexadecimalWindows.numberSystemConversionHexadecimalPanel(frame));
+            frame.setContentPane(numberSystemConversionHexadecimaLayout.numberSystemConversionHexadecimalPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -251,13 +251,13 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToOctalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionOctalWindows numberSystemConversionOctalWindows = new NumberSystemConversionOctalWindows();
+        NumberSystemConversionOctalLayout numberSystemConversionOctalLayout = new NumberSystemConversionOctalLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionOctalListener;
         numberSystemConversionOctalListener = appButtons.octalButton();
         numberSystemConversionOctalListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(numberSystemConversionOctalWindows.numberSystemConversionOctalPanel(frame));
+            frame.setContentPane(numberSystemConversionOctalLayout.numberSystemConversionOctalPanel(frame));
             frame.validate();
             frame.repaint();
         });

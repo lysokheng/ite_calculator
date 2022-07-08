@@ -3,9 +3,8 @@ package Model;
 
 import javax.swing.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
-public class ArithmeticModel {
+public class BinaryArithmeticModel {
     //... Constants
     private static final String INITIAL_VALUE = "0";
 
@@ -15,7 +14,7 @@ public class ArithmeticModel {
 
     //============================================================== constructor
     /** Constructor */
-    public ArithmeticModel() {
+    public BinaryArithmeticModel() {
         reset();
     }
 

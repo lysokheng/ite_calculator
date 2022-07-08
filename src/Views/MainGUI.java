@@ -1,6 +1,6 @@
 package Views;
 
-import Views.DecorationLayout.MenuWindows;
+import Views.DecorationLayout.MenuLayout;
 import Views.Widgets.Utils.AppIcons;
 
 import javax.swing.*;
@@ -13,8 +13,8 @@ public class MainGUI {
         JFrame frame = new JFrame("ITECalculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        MenuWindows menuWindows = new MenuWindows();
-        menuWindows.menuPanel(frame);
+        MenuLayout menuLayout = new MenuLayout();
+        menuLayout.menuPanel(frame);
         frame.setResizable(false);
         frame.setSize(1440, 900);
         frame.setLocationRelativeTo(null);

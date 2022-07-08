@@ -3,18 +3,9 @@ package Views.Widgets.Components;
 import Views.Widgets.Utils.AppColors;
 
 import javax.swing.border.AbstractBorder;
-
-import java.awt.Color;
-import java.awt.Insets;
-import java.awt.RenderingHints;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BasicStroke;
-import java.awt.geom.RoundRectangle2D;
-import java.awt.Polygon;
+import java.awt.*;
 import java.awt.geom.Area;
-import java.awt.Rectangle;
+import java.awt.geom.RoundRectangle2D;
 
 
 public class TextBubbleBorder extends AbstractBorder {

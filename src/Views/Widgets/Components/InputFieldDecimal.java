@@ -1,20 +1,11 @@
 package Views.Widgets.Components;
 
+import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.BorderFactory;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Insets;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BasicStroke;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class InputFieldDecimal extends JPanel {
@@ -47,18 +38,5 @@ public class InputFieldDecimal extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         return textField;
-    }
-
-    static class CustomBorder extends AbstractBorder {
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            // TODO Auto-generated method stubs
-            super.paintBorder(c, g, x, y, width, height);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setStroke(new BasicStroke(12));
-            g2d.setColor(Color.WHITE);
-            g2d.drawRoundRect(x, y, width - 1, height - 1, 25, 25);
-        }
     }
 }
