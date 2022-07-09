@@ -86,7 +86,7 @@ public class StorageConverterLayout {
         c.ipady = 340;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(storageConverterView.storageConverterOperator(), c);
+        mainPanel.add(storageConverterView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -97,7 +97,7 @@ public class StorageConverterLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(storageConverterView.storageConverterInput(), c);
+        mainPanel.add(storageConverterView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -108,7 +108,7 @@ public class StorageConverterLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(storageConverterView.storageConverterOutput(), c);
+        mainPanel.add(storageConverterView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -117,7 +117,7 @@ public class StorageConverterLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(storageConverterView.storageConverterHistory(), c);
+        mainPanel.add(storageConverterView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;

@@ -1,6 +1,5 @@
 package Views.Widgets;
 
-import Controller.StorageConverterController;
 import Views.Widgets.Components.HistoryArea;
 import Views.Widgets.Components.InputFieldDecimal;
 import Views.Widgets.Components.OutputArea;
@@ -13,54 +12,58 @@ import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class StorageConverterView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    AppColors appColors = new AppColors();
-    StorageConverterController storageConverterController = new StorageConverterController();
+public class StorageConverterView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField amount = inputFieldDecimal.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton byteToGigabyteButton = appButtons.byteToGigabyteButton();
-    JButton byteToKilobyteButton = appButtons.byteToKilobyteButton();
-    JButton byteToMegabyteButton = appButtons.byteToMegabyteButton();
-    JButton byteToPetabyteButton = appButtons.byteToPetabyteButton();
-    JButton byteToTerabyteButton = appButtons.byteToTerabyteButton();
-    JButton kilobyteToByteButton = appButtons.kilobyteToByteButton();
-    JButton kilobyteToMegabyteButton = appButtons.kilobyteToMegabyteButton();
-    JButton kilobyteToGigabyteButton = appButtons.kilobyteToGigabyteButton();
-    JButton kilobyteToPetabyteButton = appButtons.kilobyteToPetabyteButton();
-    JButton kilobyteToTerabyteButton = appButtons.kilobyteToTerabyteButton();
-    JButton megabyteToPetabyteButton = appButtons.megabyteToPetabyteButton();
-    JButton megabyteToKilobyteButton = appButtons.megabyteToKilobyteButton();
-    JButton megabyteToGigabyteButton = appButtons.megabyteToGigabyteButton();
-    JButton megabyteToTerabyteButton = appButtons.megabyteToTerabyteButton();
-    JButton megabyteToByteButton = appButtons.megabyteToByteButton();
-    JButton gigabyteToByteButton = appButtons.gigabyteToByteButton();
-    JButton gigabyteToKilobyteButton = appButtons.gigabyteToKilobyteButton();
-    JButton gigabyteToMegabyteButton = appButtons.gigabyteToMegabyteButton();
-    JButton gigabyteToPetabyteButton = appButtons.gigabyteToPetabyteButton();
-    JButton gigabyteToTerabyteButton = appButtons.gigabyteToTerabyteButton();
-    JButton petabyteToByteButton = appButtons.petabyteToByteButton();
-    JButton petabyteToKilobyteButton = appButtons.petabyteToKilobyteButton();
-    JButton petabyteToMegabyteButton = appButtons.petabyteToMegabyteButton();
-    JButton petabyteToGigabyteButton = appButtons.petabyteToGigabyteButton();
-    JButton petabyteToTerabyteButton = appButtons.petabyteToTerabyteButton();
-    JButton terabyteToByteButton = appButtons.terabyteToByteButton();
-    JButton terabyteToKilobyteButton = appButtons.terabyteToKilobyteButton();
-    JButton terabyteToMegabyteButton = appButtons.terabyteToMegabyteButton();
-    JButton terabyteToGigabyteButton = appButtons.terabyteToGigabyteButton();
-    JButton terabyteToPetabyteButton = appButtons.terabyteToPetabyteButton();
-    JButton resetButton = appButtons.clearButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
+    private final AppColors appColors = new AppColors();
 
-    public JPanel storageConverterInput() {
+    //... name of new object
+    private JTextField amount = inputFieldDecimal.inputField();
+    private final JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton byteToGigabyteButton = appButtons.byteToGigabyteButton();
+    private final JButton byteToKilobyteButton = appButtons.byteToKilobyteButton();
+    private final JButton byteToMegabyteButton = appButtons.byteToMegabyteButton();
+    private final JButton byteToPetabyteButton = appButtons.byteToPetabyteButton();
+    private final JButton byteToTerabyteButton = appButtons.byteToTerabyteButton();
+    private final JButton kilobyteToByteButton = appButtons.kilobyteToByteButton();
+    private final JButton kilobyteToMegabyteButton = appButtons.kilobyteToMegabyteButton();
+    private final JButton kilobyteToGigabyteButton = appButtons.kilobyteToGigabyteButton();
+    private final JButton kilobyteToPetabyteButton = appButtons.kilobyteToPetabyteButton();
+    private final JButton kilobyteToTerabyteButton = appButtons.kilobyteToTerabyteButton();
+    private final JButton megabyteToPetabyteButton = appButtons.megabyteToPetabyteButton();
+    private final JButton megabyteToKilobyteButton = appButtons.megabyteToKilobyteButton();
+    private final JButton megabyteToGigabyteButton = appButtons.megabyteToGigabyteButton();
+    private final JButton megabyteToTerabyteButton = appButtons.megabyteToTerabyteButton();
+    private final JButton megabyteToByteButton = appButtons.megabyteToByteButton();
+    private final JButton gigabyteToByteButton = appButtons.gigabyteToByteButton();
+    private final JButton gigabyteToKilobyteButton = appButtons.gigabyteToKilobyteButton();
+    private final JButton gigabyteToMegabyteButton = appButtons.gigabyteToMegabyteButton();
+    private final JButton gigabyteToPetabyteButton = appButtons.gigabyteToPetabyteButton();
+    private final JButton gigabyteToTerabyteButton = appButtons.gigabyteToTerabyteButton();
+    private final JButton petabyteToByteButton = appButtons.petabyteToByteButton();
+    private final JButton petabyteToKilobyteButton = appButtons.petabyteToKilobyteButton();
+    private final JButton petabyteToMegabyteButton = appButtons.petabyteToMegabyteButton();
+    private final JButton petabyteToGigabyteButton = appButtons.petabyteToGigabyteButton();
+    private final JButton petabyteToTerabyteButton = appButtons.petabyteToTerabyteButton();
+    private final JButton terabyteToByteButton = appButtons.terabyteToByteButton();
+    private final JButton terabyteToKilobyteButton = appButtons.terabyteToKilobyteButton();
+    private final JButton terabyteToMegabyteButton = appButtons.terabyteToMegabyteButton();
+    private final JButton terabyteToGigabyteButton = appButtons.terabyteToGigabyteButton();
+    private final JButton terabyteToPetabyteButton = appButtons.terabyteToPetabyteButton();
+    private JButton resetButton = appButtons.clearButton();
+
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -93,8 +96,7 @@ public class StorageConverterView {
 
         return generatorPanel;
     }
-
-    public JPanel storageConverterOperator() {
+    public JPanel operator() {
         //Create JPanel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
         operatorPanel.setBackground(Color.WHITE);
@@ -274,8 +276,7 @@ public class StorageConverterView {
 
         return mainPanel;
     }
-
-    public JPanel storageConverterOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -291,6 +292,10 @@ public class StorageConverterView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -300,12 +305,13 @@ public class StorageConverterView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel storageConverterHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -336,50 +342,210 @@ public class StorageConverterView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        storageConverterController.byte2KBResult(byteToKilobyteButton, amount, resultField, historyField);
-        storageConverterController.byte2MBResult(byteToMegabyteButton, amount, resultField, historyField);
-        storageConverterController.byte2GBResult(byteToGigabyteButton, amount, resultField, historyField);
-        storageConverterController.byte2TBResult(byteToTerabyteButton, amount, resultField, historyField);
-        storageConverterController.byte2PBResult(byteToPetabyteButton, amount, resultField, historyField);
-
-        storageConverterController.kb2ByteResult(kilobyteToByteButton, amount, resultField, historyField);
-        storageConverterController.kb2MBResult(kilobyteToMegabyteButton, amount, resultField, historyField);
-        storageConverterController.kb2GBResult(kilobyteToGigabyteButton, amount, resultField, historyField);
-        storageConverterController.kb2TBResult(kilobyteToTerabyteButton, amount, resultField, historyField);
-        storageConverterController.kb2PBResult(kilobyteToPetabyteButton, amount, resultField, historyField);
-
-        storageConverterController.mb2ByteResult(megabyteToByteButton, amount, resultField, historyField);
-        storageConverterController.mb2KilobyteResult(megabyteToKilobyteButton, amount, resultField, historyField);
-        storageConverterController.mb2GBResult(megabyteToGigabyteButton, amount, resultField, historyField);
-        storageConverterController.mb2TBResult(megabyteToTerabyteButton, amount, resultField, historyField);
-        storageConverterController.mb2PBResult(megabyteToPetabyteButton, amount, resultField, historyField);
-
-        storageConverterController.gb2ByteResult(gigabyteToByteButton, amount, resultField, historyField);
-        storageConverterController.gb2KBResult(gigabyteToKilobyteButton, amount, resultField, historyField);
-        storageConverterController.gb2MBResult(gigabyteToMegabyteButton, amount, resultField, historyField);
-        storageConverterController.gb2TBResult(gigabyteToTerabyteButton, amount, resultField, historyField);
-        storageConverterController.gb2PBResult(gigabyteToPetabyteButton, amount, resultField, historyField);
-
-        storageConverterController.tb2ByteResult(terabyteToByteButton, amount, resultField, historyField);
-        storageConverterController.tb2KBResult(terabyteToKilobyteButton, amount, resultField, historyField);
-        storageConverterController.tb2MBResult(terabyteToMegabyteButton, amount, resultField, historyField);
-        storageConverterController.tb2GBResult(terabyteToGigabyteButton, amount, resultField, historyField);
-        storageConverterController.tb2PBResult(terabyteToPetabyteButton, amount, resultField, historyField);
-
-        storageConverterController.pb2ByteResult(petabyteToByteButton, amount, resultField, historyField);
-        storageConverterController.pb2KBResult(petabyteToKilobyteButton, amount, resultField, historyField);
-        storageConverterController.pb2MBResult(petabyteToMegabyteButton, amount, resultField, historyField);
-        storageConverterController.pb2GBResult(petabyteToGigabyteButton, amount, resultField, historyField);
-        storageConverterController.pb2TBResult(petabyteToTerabyteButton, amount, resultField, historyField);
-
-
         return historyPanel;
     }
+    //======================================================= add button to controller
+    public void addStorageConverterListener(ActionListener button) {
+        byteToKilobyteButton.addActionListener(button);
+        byteToMegabyteButton.addActionListener(button);
+        byteToGigabyteButton.addActionListener(button);
+        byteToPetabyteButton.addActionListener(button);
+        byteToTerabyteButton.addActionListener(button);
 
-    public JButton storageConverterReset(){
-        storageConverterController.performReset(resetButton, amount, resultField, historyField);
+        kilobyteToByteButton.addActionListener(button);
+        kilobyteToGigabyteButton.addActionListener(button);
+        kilobyteToMegabyteButton.addActionListener(button);
+        kilobyteToPetabyteButton.addActionListener(button);
+        kilobyteToTerabyteButton.addActionListener(button);
+
+        megabyteToByteButton.addActionListener(button);
+        megabyteToGigabyteButton.addActionListener(button);
+        megabyteToKilobyteButton.addActionListener(button);
+        megabyteToPetabyteButton.addActionListener(button);
+        megabyteToTerabyteButton.addActionListener(button);
+
+        gigabyteToByteButton.addActionListener(button);
+        gigabyteToKilobyteButton.addActionListener(button);
+        gigabyteToMegabyteButton.addActionListener(button);
+        gigabyteToPetabyteButton.addActionListener(button);
+        gigabyteToTerabyteButton.addActionListener(button);
+
+        petabyteToByteButton.addActionListener(button);
+        petabyteToGigabyteButton.addActionListener(button);
+        petabyteToKilobyteButton.addActionListener(button);
+        petabyteToMegabyteButton.addActionListener(button);
+        petabyteToTerabyteButton.addActionListener(button);
+
+        terabyteToByteButton.addActionListener(button);
+        terabyteToGigabyteButton.addActionListener(button);
+        terabyteToKilobyteButton.addActionListener(button);
+        terabyteToMegabyteButton.addActionListener(button);
+        terabyteToPetabyteButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        amount.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getAmount() {
+        return amount.getText();
+    }
+
+    public void setAmount(JTextField amount) {
+        this.amount = amount;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getByteToGigabyteButton() {
+        return byteToGigabyteButton;
+    }
+
+    public JButton getByteToKilobyteButton() {
+        return byteToKilobyteButton;
+    }
+
+    public JButton getByteToMegabyteButton() {
+        return byteToMegabyteButton;
+    }
+
+    public JButton getByteToPetabyteButton() {
+        return byteToPetabyteButton;
+    }
+
+    public JButton getByteToTerabyteButton() {
+        return byteToTerabyteButton;
+    }
+
+    public JButton getKilobyteToByteButton() {
+        return kilobyteToByteButton;
+    }
+
+    public JButton getKilobyteToMegabyteButton() {
+        return kilobyteToMegabyteButton;
+    }
+
+    public JButton getKilobyteToGigabyteButton() {
+        return kilobyteToGigabyteButton;
+    }
+
+    public JButton getKilobyteToPetabyteButton() {
+        return kilobyteToPetabyteButton;
+    }
+
+    public JButton getKilobyteToTerabyteButton() {
+        return kilobyteToTerabyteButton;
+    }
+
+    public JButton getMegabyteToPetabyteButton() {
+        return megabyteToPetabyteButton;
+    }
+
+    public JButton getMegabyteToKilobyteButton() {
+        return megabyteToKilobyteButton;
+    }
+
+    public JButton getMegabyteToGigabyteButton() {
+        return megabyteToGigabyteButton;
+    }
+
+    public JButton getMegabyteToTerabyteButton() {
+        return megabyteToTerabyteButton;
+    }
+
+    public JButton getMegabyteToByteButton() {
+        return megabyteToByteButton;
+    }
+
+    public JButton getGigabyteToByteButton() {
+        return gigabyteToByteButton;
+    }
+
+    public JButton getGigabyteToKilobyteButton() {
+        return gigabyteToKilobyteButton;
+    }
+
+    public JButton getGigabyteToMegabyteButton() {
+        return gigabyteToMegabyteButton;
+    }
+
+    public JButton getGigabyteToPetabyteButton() {
+        return gigabyteToPetabyteButton;
+    }
+
+    public JButton getGigabyteToTerabyteButton() {
+        return gigabyteToTerabyteButton;
+    }
+
+    public JButton getPetabyteToByteButton() {
+        return petabyteToByteButton;
+    }
+
+    public JButton getPetabyteToKilobyteButton() {
+        return petabyteToKilobyteButton;
+    }
+
+    public JButton getPetabyteToMegabyteButton() {
+        return petabyteToMegabyteButton;
+    }
+
+    public JButton getPetabyteToGigabyteButton() {
+        return petabyteToGigabyteButton;
+    }
+
+    public JButton getPetabyteToTerabyteButton() {
+        return petabyteToTerabyteButton;
+    }
+
+    public JButton getTerabyteToByteButton() {
+        return terabyteToByteButton;
+    }
+
+    public JButton getTerabyteToKilobyteButton() {
+        return terabyteToKilobyteButton;
+    }
+
+    public JButton getTerabyteToMegabyteButton() {
+        return terabyteToMegabyteButton;
+    }
+
+    public JButton getTerabyteToGigabyteButton() {
+        return terabyteToGigabyteButton;
+    }
+
+    public JButton getTerabyteToPetabyteButton() {
+        return terabyteToPetabyteButton;
+    }
+
+    public JButton getResetButton() {
         return resetButton;
     }
 
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
+    }
 }

@@ -1,21 +1,25 @@
 package Views.DecorationLayout;
 
+import Controller.NSCHexadecimalController;
+import Model.NSCHexadecimalModel;
 import Views.Routes;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
-import Views.Widgets.NumberSystemConversionHexadecimaView;
+import Views.Widgets.NSCHexadecimalView;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class NumberSystemConversionHexadecimaLayout {
+public class NSCHexadecimaLayout {
 
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
-    NumberSystemConversionHexadecimaView numberSystemConversionHexadecimaView = new NumberSystemConversionHexadecimaView();
 
+    NSCHexadecimalView nscHexadecimalView = new NSCHexadecimalView();
+    NSCHexadecimalModel nscHexadecimalModel = new NSCHexadecimalModel();
+    NSCHexadecimalController nscHexadecimalController = new NSCHexadecimalController(nscHexadecimalModel, nscHexadecimalView);
     public JPanel numberSystemConversionHexadecimalPanel(JFrame frame) {
         //create main panel object
         JPanel mainPanel = new JPanel(new GridBagLayout());
@@ -82,7 +86,7 @@ public class NumberSystemConversionHexadecimaLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionHexadecimaView.numberSystemConversionOperator(), c);
+        mainPanel.add(nscHexadecimalView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -93,7 +97,7 @@ public class NumberSystemConversionHexadecimaLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionHexadecimaView.numberSystemConversionInput(), c);
+        mainPanel.add(nscHexadecimalView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -104,7 +108,7 @@ public class NumberSystemConversionHexadecimaLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 4;
-        mainPanel.add(numberSystemConversionHexadecimaView.numberSystemConversionOutput(), c);
+        mainPanel.add(nscHexadecimalView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -113,7 +117,7 @@ public class NumberSystemConversionHexadecimaLayout {
         c.gridheight = 2;
         c.gridx = 4;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionHexadecimaView.numberSystemConversionHistory(), c);
+        mainPanel.add(nscHexadecimalView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -128,7 +132,7 @@ public class NumberSystemConversionHexadecimaLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 3;
         c.gridy = 5;
-        mainPanel.add(numberSystemConversionHexadecimaView.numberSystemConversionReset(), c);
+        mainPanel.add(nscHexadecimalView.getResetButton(), c);
 
         AppButtons appButtons = new AppButtons();
 

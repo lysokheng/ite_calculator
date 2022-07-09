@@ -1,45 +1,36 @@
 package Views.Widgets;
 
-import Controller.NumberSystemConversionBinaryController;
 import Views.Widgets.Components.*;
 import Views.Widgets.Utils.AppButtons;
-import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class NumberSystemConversionBinaryView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldBinary inputFieldBinary = new InputFieldBinary();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    AppColors appColors = new AppColors();
-    NumberSystemConversionBinaryController numberSystemConversionBinaryController = new NumberSystemConversionBinaryController();
+public class NSCOctalView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField amount = inputFieldBinary.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton decimalToBinaryButton = appButtons.decimalToBinaryButton();
-    JButton decimalToHexadecimalButton = appButtons.decimalToHexadecimalButton();
-    JButton decimalToOctalButton = appButtons.decimalToOctalButton();
-    JButton binaryToDecimalButton = appButtons.binaryToDecimalButton();
-    JButton binaryToHexadecimalButton = appButtons.binaryToHexadecimalButton();
-    JButton binaryToOctalButton = appButtons.binaryToOctalButton();
-    JButton octalToDecimalButton = appButtons.octalToDecimalButton();
-    JButton octalToBinaryButton = appButtons.octalToBinaryButton();
-    JButton octalToHexadecimalButton = appButtons.octalToHexadecimalButton();
-    JButton hexadecimalToDecimalButton = appButtons.hexadecimalToDecimalButton();
-    JButton hexadecimalToBinaryButton = appButtons.hexadecimalToBinaryButton();
-    JButton hexadecimalToOctalButton = appButtons.hexadecimalToOctalButton();
-    JButton resetButton = appButtons.clearButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldOctal inputFieldOctal = new InputFieldOctal();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
 
+    //... name of new object
+    private JTextField amount = inputFieldOctal.inputField();
+    private final JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton octalToDecimalButton = appButtons.octalToDecimalButton();
+    private final JButton octalToBinaryButton = appButtons.octalToBinaryButton();
+    private final JButton octalToHexadecimalButton = appButtons.octalToHexadecimalButton();
+    private JButton resetButton = appButtons.clearButton();
 
-    public JPanel numberSystemConversionInput() {
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -71,8 +62,7 @@ public class NumberSystemConversionBinaryView {
 
         return generatorPanel;
     }
-
-    public JPanel numberSystemConversionOperator() {
+    public JPanel operator() {
         //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
@@ -92,22 +82,21 @@ public class NumberSystemConversionBinaryView {
         c.insets = new Insets(0, 0, 0, 0);
         c.gridx = 0;
         c.gridy = 0;
-        operatorPanel.add(binaryToDecimalButton, c);
+        operatorPanel.add(octalToDecimalButton, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;
-        operatorPanel.add(binaryToHexadecimalButton, c);
+        operatorPanel.add(octalToBinaryButton, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 1;
-        operatorPanel.add(binaryToOctalButton, c);
+        operatorPanel.add(octalToHexadecimalButton, c);
 
         return operatorPanel;
     }
-
-    public JPanel numberSystemConversionOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -123,6 +112,10 @@ public class NumberSystemConversionBinaryView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -132,12 +125,13 @@ public class NumberSystemConversionBinaryView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel numberSystemConversionHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -168,16 +162,71 @@ public class NumberSystemConversionBinaryView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        numberSystemConversionBinaryController.binary2DecimalResult(binaryToDecimalButton, amount, resultField, historyField);
-        numberSystemConversionBinaryController.binary2HexResult(binaryToHexadecimalButton, amount, resultField, historyField);
-        numberSystemConversionBinaryController.binary2OctalResult(binaryToOctalButton, amount, resultField, historyField);
-
         return historyPanel;
     }
 
-    public JButton numberSystemConversionReset(){
-        numberSystemConversionBinaryController.performReset(resetButton, amount, resultField, historyField);
+    //======================================================= add button to controller
+    public void addNSCOctalListener(ActionListener button) {
+        octalToBinaryButton.addActionListener(button);
+        octalToDecimalButton.addActionListener(button);
+        octalToHexadecimalButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        amount.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getAmount() {
+        return amount.getText();
+    }
+
+    public void setAmount(JTextField amount) {
+        this.amount = amount;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getOctalToDecimalButton() {
+        return octalToDecimalButton;
+    }
+
+    public JButton getOctalToBinaryButton() {
+        return octalToBinaryButton;
+    }
+
+    public JButton getOctalToHexadecimalButton() {
+        return octalToHexadecimalButton;
+    }
+
+    public JButton getResetButton() {
         return resetButton;
+    }
+
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
     }
 }

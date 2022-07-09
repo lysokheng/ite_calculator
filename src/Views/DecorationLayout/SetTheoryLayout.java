@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.SetTheoryController;
+import Model.SetTheoryModel;
 import Views.Routes;
 import Views.Widgets.SetTheoryView;
 import Views.Widgets.Utils.AppButtons;
@@ -18,9 +20,8 @@ public class SetTheoryLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     SetTheoryView setTheoryView = new SetTheoryView();
-    AppButtons appButtons = new AppButtons();
-
-    JButton resetButton = appButtons.clearButton();
+    SetTheoryModel setTheoryModel = new SetTheoryModel();
+    SetTheoryController setTheoryController = new SetTheoryController(setTheoryModel, setTheoryView);
 
 
     public JPanel setTheoryPanel(JFrame frame) {
@@ -85,7 +86,7 @@ public class SetTheoryLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(setTheoryView.setTheoryOperator(), c);
+        mainPanel.add(setTheoryView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -96,7 +97,7 @@ public class SetTheoryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(setTheoryView.setTheoryInput(), c);
+        mainPanel.add(setTheoryView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -107,7 +108,7 @@ public class SetTheoryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(setTheoryView.setTheoryOutput(), c);
+        mainPanel.add(setTheoryView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -116,7 +117,7 @@ public class SetTheoryLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(setTheoryView.setTheoryHistory(), c);
+        mainPanel.add(setTheoryView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -130,7 +131,7 @@ public class SetTheoryLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(setTheoryView.setTheoryReset(), c);
+        mainPanel.add(setTheoryView.getResetButton(), c);
 
         //Note
         c.insets = new Insets(0, 30, 30, 0);

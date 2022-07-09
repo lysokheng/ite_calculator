@@ -1,118 +1,76 @@
 package Controller;
 
+import Model.ArithmeticModel;
+import Model.SetTheoryModel;
+import Views.Widgets.ArithmeticView;
+import Views.Widgets.SetTheoryView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
 public class SetTheoryController {
-    public int a, b, result, count;
+    //... The Controller needs to interact with both the Model and View.
+    private final SetTheoryModel setTheoryModel;
+    private final SetTheoryView setTheoryView;
 
-    String[] listA;
-    String[] listB;
+    //========================================================== constructor
+    /** Constructor */
+    public SetTheoryController(SetTheoryModel model, SetTheoryView view) {
+        setTheoryModel = model;
+        setTheoryView = view;
 
-    public void performReset(JButton button, JTextField aField, JTextField bField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            aField.setText("");
-            bField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+        //... Add listeners to the view.
+        view.addSetTheoryListener(new SetTheoryListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void unionResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class SetTheoryListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String a = "", b = "";
+            JTextArea history;
+            try {
+                a = setTheoryView.getA();
+                b = setTheoryView.getB();
+                history = setTheoryView.getHistoryField();
 
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
+                if (e.getSource() == setTheoryView.getUnionButton()){
+                    setTheoryModel.union(a, b, history);
 
-            //detect use space to separate number
-            listA = a.split(" ");
-            listB = b.split(" ");
+                } else if (e.getSource() == setTheoryView.getIntersectionButton()) {
+                    setTheoryModel.intersection(a, b, history);
 
-            // Create set A
-            Set<String> setA = new HashSet<>(List.of(listA));
+                } else if (e.getSource() == setTheoryView.getDifferenceButton()) {
+                    setTheoryModel.difference(a, b, history);
 
-            // Create set B
-            Set<String> setB = new HashSet<>(List.of(listB));
+                }
 
-            //perform set A and set B
-            Set<String> union = new HashSet<>(setA);
-            union.addAll(setB);
+                setTheoryView.setResultField(setTheoryModel.getValue());
 
-            //Show the output
-            outputField.setText(String.valueOf(union));
+            } catch (NumberFormatException next) {
+                setTheoryView.showError("Bad input: '" + a + ", " + b +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Union" + "\n"
-                    + "Set A: " + Arrays.toString(listA) + ", Set B: " + Arrays.toString(listB) + "\nResult: " + union + " " +  "\n\n");
-        });
-    }
 
-    public void intersectionResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            //detect use space to separate number
-            listA = a.split(" ");
-            listB = b.split(" ");
-
-            // Create set A
-            Set<String> setA = new HashSet<>(List.of(listA));
-
-            // Create set B
-            Set<String> setB = new HashSet<>(List.of(listB));
-
-            //perform set A and set B
-            Set<String> intersection = new HashSet<>(setA);
-            intersection.retainAll(setB);
-
-            //Show the output
-            outputField.setText(String.valueOf(intersection));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Intersection" + "\n"
-                    + "Set A: " + Arrays.toString(listA) + ", Set B: " + Arrays.toString(listB) + "\nResult: " + intersection + " " +  "\n\n");
-        });
-    }
-
-    public void differenceResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            //detect use space to separate number
-            listA = a.split(" ");
-            listB = b.split(" ");
-
-            // Create set A
-            Set<String> setA = new HashSet<>(List.of(listA));
-
-            // Create set B
-            Set<String> setB = new HashSet<>(List.of(listB));
-
-            //perform set A and set B
-            Set<String> difference = new HashSet<>(setA);
-            difference.retainAll(setB);
-
-            //Show the output
-            outputField.setText(String.valueOf(difference));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Difference" + "\n"
-                    + "Set A: " + Arrays.toString(listA) + ", Set B: " + Arrays.toString(listB) + "\nResult: " + difference + " " +  "\n\n");
-        });
-    }
-
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            setTheoryModel.reset();
+            setTheoryView.reset();
+        }
+    }// end inner class ClearListener
 }

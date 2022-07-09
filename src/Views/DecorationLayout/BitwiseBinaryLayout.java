@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.BitwiseBinaryController;
+import Model.BitwiseBinaryModel;
 import Views.Routes;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
@@ -14,6 +16,10 @@ public class BitwiseBinaryLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     BitwiseBinaryView bitwiseBinaryView = new BitwiseBinaryView();
+    BitwiseBinaryModel bitwiseBinaryModel = new BitwiseBinaryModel();
+    BitwiseBinaryController bitwiseBinaryController = new BitwiseBinaryController(
+            bitwiseBinaryModel, bitwiseBinaryView
+    );
 
     public JPanel bitwisePanel(JFrame frame) {
         //create main panel object
@@ -79,7 +85,7 @@ public class BitwiseBinaryLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(bitwiseBinaryView.bitwiseOperator(), c);
+        mainPanel.add(bitwiseBinaryView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -90,7 +96,7 @@ public class BitwiseBinaryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(bitwiseBinaryView.bitwiseInput(), c);
+        mainPanel.add(bitwiseBinaryView.input(), c);
 
         //Output
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -101,7 +107,7 @@ public class BitwiseBinaryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(bitwiseBinaryView.bitwiseOutput(), c);
+        mainPanel.add(bitwiseBinaryView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -110,7 +116,7 @@ public class BitwiseBinaryLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(bitwiseBinaryView.bitwiseHistory(), c);
+        mainPanel.add(bitwiseBinaryView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -125,7 +131,7 @@ public class BitwiseBinaryLayout {
 
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(bitwiseBinaryView.bitwiseReset(), c);
+        mainPanel.add(bitwiseBinaryView.getResetButton(), c);
 
         //Note
         c.insets = new Insets(0, 30, 30, 0);

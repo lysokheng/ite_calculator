@@ -1,677 +1,160 @@
 package Controller;
 
+import Model.NSCBinaryModel;
+import Model.StorageConverterModel;
+import Views.Widgets.NSCBinaryView;
+import Views.Widgets.StorageConverterView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StorageConverterController {
-    public int a, b, result, count;
+    //... The Controller needs to interact with both the Model and View.
+    private final StorageConverterModel storageConverterModel;
+    private final StorageConverterView storageConverterView;
 
-    public void performReset(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            amountField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+    //========================================================== constructor
+    /** Constructor */
+    public StorageConverterController(StorageConverterModel model, StorageConverterView view) {
+        storageConverterModel = model;
+        storageConverterView = view;
+
+        //... Add listeners to the view.
+        view.addStorageConverterListener(new NSCStorageConverterListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void byte2KBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class NSCStorageConverterListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String amount = "";
+            JTextArea history;
+            try {
+                amount = storageConverterView.getAmount();
+                history = storageConverterView.getHistoryField();
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                if (e.getSource() == storageConverterView.getByteToKilobyteButton()){
+                    storageConverterModel.binary2Decimal(amount, history);
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 1);
+                } else if (e.getSource() == storageConverterView.getByteToMegabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            System.out.println(amount + " Byte = " + result + " Kilobyte");
+                } else if (e.getSource() == storageConverterView.getByteToGigabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getByteToPetabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Byte to Kilobyte" + "\n"
-                    + amount + " Byte = " + result + " Kilobyte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getByteToTerabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void byte2MBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == storageConverterView.getKilobyteToByteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 2);
+                } else if (e.getSource() == storageConverterView.getKilobyteToMegabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            System.out.println(amount + " Byte = " + result + " Megabyte");
+                } else if (e.getSource() == storageConverterView.getKilobyteToGigabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getKilobyteToPetabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Byte to Megabyte" + "\n"
-                    + amount + " Byte = " + result + " Megabyte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getKilobyteToTerabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void byte2GBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == storageConverterView.getMegabyteToByteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 3);
+                } else if (e.getSource() == storageConverterView.getMegabyteToKilobyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            System.out.println(amount + " Byte = " + result + " Gigabyte");
+                } else if (e.getSource() == storageConverterView.getMegabyteToGigabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getMegabyteToPetabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Byte to Gigabyte" + "\n"
-                    + amount + " Byte = " + result + " Gigabyte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getMegabyteToTerabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void byte2TBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == storageConverterView.getGigabyteToByteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 4);
+                } else if (e.getSource() == storageConverterView.getGigabyteToKilobyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            System.out.println(amount + " Byte = " + result + " Terabyte");
+                } else if (e.getSource() == storageConverterView.getGigabyteToMegabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getGigabyteToPetabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Byte to Terabyte" + "\n"
-                    + amount + " Byte = " + result + " Terabyte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getGigabyteToTerabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void byte2PBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == storageConverterView.getPetabyteToByteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 5);
+                } else if (e.getSource() == storageConverterView.getPetabyteToKilobyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            System.out.println(amount + " Byte = " + result + " Petabyte");
+                } else if (e.getSource() == storageConverterView.getPetabyteToMegabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getPetabyteToGigabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Byte to Petabyte" + "\n"
-                    + amount + " Byte = " + result + " Petabyte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getPetabyteToTerabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void kb2ByteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == storageConverterView.getTerabyteToByteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Calculate the output
-            double result = amount * Math.pow(1024, 1);
+                } else if (e.getSource() == storageConverterView.getTerabyteToKilobyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            System.out.println(amount + " Kilobyte = " + result + " Byte");
+                } else if (e.getSource() == storageConverterView.getTerabyteToMegabyteButton()) {
+                    storageConverterModel.binary2Hex(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == storageConverterView.getTerabyteToGigabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Kilobyte to Byte" + "\n"
-                    + amount + " Kilobyte = " + result + " Byte" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == storageConverterView.getTerabyteToPetabyteButton()) {
+                    storageConverterModel.binary2Octal(amount, history);
 
-    public void kb2MBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+                }
 
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
+                storageConverterView.setResultField(storageConverterModel.getValue());
 
-            //Calculate the output
-            double result = amount / Math.pow(1024, 1);
+            } catch (NumberFormatException next) {
+                storageConverterView.showError("Bad input: '" + amount +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-            System.out.println(amount + " Kilobyte = " + result + " Megabyte");
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Kilobyte to Megabyte" + "\n"
-                    + amount + " Kilobyte = " + result + " Megabyte" + "\n\n");
-        });
-    }
-
-    public void kb2GBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 2);
-
-            System.out.println(amount + " Kilobyte = " + result + " Gigabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Kilobyte to Gigabyte" + "\n"
-                    + amount + " Kilobyte = " + result + " Gigabyte" + "\n\n");
-        });
-    }
-
-    public void kb2TBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 3);
-
-            System.out.println(amount + " Kilobyte = " + result + " Terabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Kilobyte to Terabyte" + "\n"
-                    + amount + " Kilobyte = " + result + " Terabyte" + "\n\n");
-        });
-    }
-
-    public void kb2PBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 4);
-
-            System.out.println(amount + " Kilobyte = " + result + " Petabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Kilobyte to Petabyte" + "\n"
-                    + amount + " Kilobyte = " + result + " Petabyte" + "\n\n");
-        });
-    }
-
-    public void mb2ByteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 2);
-
-            System.out.println(amount + " Megabyte = " + result + " Byte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Megabyte to Byte" + "\n"
-                    + amount + " Megabyte = " + result + " Byte" + "\n\n");
-        });
-    }
-
-    public void mb2KilobyteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 1);
-
-            System.out.println(amount + " Megabyte = " + result + " Kilobyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Megabyte to Kilobyte" + "\n"
-                    + amount + " Megabyte = " + result + " Kilobyte" + "\n\n");
-        });
-    }
-
-    public void mb2GBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 1);
-
-            System.out.println(amount + " Megabyte = " + result + " Gigabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Megabyte to Gigabyte" + "\n"
-                    + amount + " Megabyte = " + result + " Gigabyte" + "\n\n");
-        });
-    }
-
-    public void mb2TBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 2);
-
-            System.out.println(amount + " Megabyte = " + result + " Terabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Megabyte to Terabyte" + "\n"
-                    + amount + " Megabyte = " + result + " Terabyte" + "\n\n");
-        });
-    }
-
-    public void mb2PBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 3);
-
-            System.out.println(amount + " Megabyte = " + result + " Petabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Megabyte to Petabyte" + "\n"
-                    + amount + " Megabyte = " + result + " Petabyte" + "\n\n");
-        });
-    }
-
-    public void gb2ByteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 3);
-
-            System.out.println(amount + " Gigabyte = " + result + " Byte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Gigabyte to Byte" + "\n"
-                    + amount + " Gigabyte = " + result + " Byte" + "\n\n");
-        });
-    }
-
-    public void gb2KBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 2);
-
-            System.out.println(amount + " Gigabyte = " + result + " Kilobyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Gigabyte to Kilobyte" + "\n"
-                    + amount + " Gigabyte = " + result + " Kilobyte" + "\n\n");
-        });
-    }
-
-    public void gb2MBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 1);
-
-            System.out.println(amount + " Gigabyte = " + result + " Megabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Gigabyte to Megabyte" + "\n"
-                    + amount + " Gigabyte = " + result + " Megabyte" + "\n\n");
-        });
-    }
-
-    public void gb2TBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 1);
-
-            System.out.println(amount + " Gigabyte = " + result + " Terabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Gigabyte to Terabyte" + "\n"
-                    + amount + " Gigabyte = " + result + " Terabyte" + "\n\n");
-        });
-    }
-
-    public void gb2PBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 2);
-
-            System.out.println(amount + " Gigabyte = " + result + " Petabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Gigabyte to Petabyte" + "\n"
-                    + amount + " Gigabyte = " + result + " Petabyte" + "\n\n");
-        });
-    }
-
-    public void tb2ByteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 4);
-
-            System.out.println(amount + " Terabyte = " + result + " Byte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Terabyte to Byte\"" + "\n"
-                    + amount + " Terabyte = " + result + " Byte\"" + "\n\n");
-        });
-    }
-
-    public void tb2KBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 3);
-
-            System.out.println(amount + " Terabyte = " + result + " Kilobyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Terabyte to Kilobyte\"" + "\n"
-                    + amount + " Terabyte = " + result + " Kilobyte\"" + "\n\n");
-        });
-    }
-
-    public void tb2MBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 2);
-
-            System.out.println(amount + " Terabyte = " + result + " Megabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Terabyte to Megabyte" + "\n"
-                    + amount + " Terabyte = " + result + " Megabyte" + "\n\n");
-        });
-    }
-
-    public void tb2GBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 1);
-
-            System.out.println(amount + " Terabyte = " + result + " Gigabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Terabyte to Gigabyte" + "\n"
-                    + amount + " Terabyte = " + result + " Gigabyte" + "\n\n");
-        });
-    }
-
-    public void tb2PBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount / Math.pow(1024, 1);
-
-            System.out.println(amount + " Terabyte = " + result + " Petabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Terabyte to Petabyte" + "\n"
-                    + amount + " Terabyte = " + result + " Petabyte" + "\n\n");
-        });
-    }
-
-    public void pb2ByteResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 5);
-
-            System.out.println(amount + " Petabyte = " + result + " Byte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Petabyte to Byte" + "\n"
-                    + amount + " Petabyte = " + result + " Byte" + "\n\n");
-        });
-    }
-
-    public void pb2KBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 4);
-
-            System.out.println(amount + " Petabyte = " + result + " Kilobyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Petabyte to Kilobyte" + "\n"
-                    + amount + " Petabyte = " + result + " Kilobyte" + "\n\n");
-        });
-    }
-
-    public void pb2MBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 3);
-
-            System.out.println(amount + " Petabyte = " + result + " Megabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Petabyte to Megabyte" + "\n"
-                    + amount + " Petabyte = " + result + " Megabyte" + "\n\n");
-        });
-    }
-
-    public void pb2GBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 2);
-
-            System.out.println(amount + " Petabyte = " + result + " Gigabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Petabyte to Gigabyte" + "\n"
-                    + amount + " Petabyte = " + result + " Gigabyte" + "\n\n");
-        });
-    }
-
-    public void pb2TBResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            double result = amount * Math.pow(1024, 1);
-
-            System.out.println(amount + " Petabyte = " + result + " Terabyte");
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Petabyte to Terabyte" + "\n"
-                    + amount + " Petabyte = " + result + " Terabyte" + "\n\n");
-        });
-    }
-
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            storageConverterModel.reset();
+            storageConverterView.reset();
+        }
+    }// end inner class ClearListener
 }

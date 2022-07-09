@@ -1,232 +1,96 @@
 package Controller;
 
+import Model.ArithmeticModel;
+import Model.MoneyExchangeModel;
+import Views.Widgets.ArithmeticView;
+import Views.Widgets.MoneyExchangeView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
 public class MoneyExchangeController {
-    public int a, b, count;
-    double result;
+    //... The Controller needs to interact with both the Model and View.
+    private final MoneyExchangeModel moneyExchangeModel;
+    private final MoneyExchangeView moneyExchangeView;
 
-    // Format number to 00.00
-    DecimalFormat f = new DecimalFormat("##.###");
+    //========================================================== constructor
+    /** Constructor */
+    public MoneyExchangeController(MoneyExchangeModel model, MoneyExchangeView view) {
+        moneyExchangeModel = model;
+        moneyExchangeView = view;
 
-    public void performReset(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            amountField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+        //... Add listeners to the view.
+        view.addMoneyExchangeListener(new MoneyExchangeListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void rielToDollarResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class MoneyExchangeListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String amount = "";
+            JTextArea history;
+            try {
+                amount = moneyExchangeView.getAmount();
+                history = moneyExchangeView.getHistoryField();
 
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
+                if (e.getSource() == moneyExchangeView.getRielToDollarButton()){
+                    moneyExchangeModel.rielToDollar(amount, history);
 
-            //Calculate the output
-            result = Amount / 4100;
-            System.out.println(Amount + " Riel = " + f.format(result) + " Dollar");
+                } else if (e.getSource() == moneyExchangeView.getRielToEuroButton()) {
+                    moneyExchangeModel.rielToEuro(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Dollar"));
+                } else if (e.getSource() == moneyExchangeView.getRielToPoundButton()) {
+                    moneyExchangeModel.rielToPound(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Riel To Dollar" + "\n"
-                    + Amount + " Riel = " + f.format(result) + " Dollar" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == moneyExchangeView.getRielToFranceButton()) {
+                    moneyExchangeModel.rielToFrance(amount, history);
 
-    public void rielToEuroResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+                } else if (e.getSource() == moneyExchangeView.getRielToBahtButton()) {
+                    moneyExchangeModel.rielToBaht(amount, history);
 
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
+                } else if (e.getSource() == moneyExchangeView.getDollarToRielButton()) {
+                    moneyExchangeModel.dollarToRiel(amount, history);
 
-            //Calculate the output
-            result = Amount / 4600;
-            System.out.println(Amount + " Riel = " + f.format(result) + " Euro");
+                } else if (e.getSource() == moneyExchangeView.getEuroToRielButton()) {
+                    moneyExchangeModel.euroToRiel(amount, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Euro"));
+                } else if (e.getSource() == moneyExchangeView.getFranceToRielButton()) {
+                    moneyExchangeModel.franceToRiel(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Riel To Euro" + "\n"
-                    + Amount + " Riel = " + f.format(result) + " Euro" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == moneyExchangeView.getPoundToRielButton()) {
+                    moneyExchangeModel.poundToRiel(amount, history);
 
-    public void rielToFranceResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+                } else if (e.getSource() == moneyExchangeView.getBahtToRielButton()) {
+                    moneyExchangeModel.bahtToRiel(amount, history);
 
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
+                }
 
-            //Calculate the output
-            result = Amount / 4400;
-            System.out.println(Amount + " Riel = " + f.format(result) + " France");
+                moneyExchangeView.setResultField(moneyExchangeModel.getValue());
 
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " France"));
+            } catch (NumberFormatException next) {
+                moneyExchangeView.showError("Bad input: '" + amount +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Riel To France" + "\n"
-                    + Amount + " Riel = " + f.format(result) + " France" + "\n\n");
-        });
-    }
 
-    public void rielToPoundResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount / 5600;
-            System.out.println(Amount + " Riel = " + f.format(result) + " Pound");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Pound"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Riel To Pound" + "\n"
-                    + Amount + " Riel = " + f.format(result) + " Pound" + "\n\n");
-        });
-    }
-
-    public void rielToBahtResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount / 122;
-            System.out.println(Amount + " Riel = " + f.format(result) + " Baht");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Baht"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Riel To Baht" + "\n"
-                    + Amount + " Riel = " + f.format(result) + " Baht" + "\n\n");
-        });
-    }
-
-    public void dollarToRielResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount * 4100;
-            System.out.println(Amount + " Dollar = " + f.format(result) + " Riel");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Riel"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Dollar To Riel" + "\n"
-                    + Amount + " Dollar = " + f.format(result) + " Riel" + "\n\n");
-        });
-    }
-
-    public void euroToRielResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount * 4600;
-            System.out.println(Amount + " Euro = " + f.format(result) + " Riel");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Riel"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Euro To Riel" + "\n"
-                    + Amount + " Euro = " + f.format(result) + " Riel" + "\n\n");
-        });
-    }
-
-    public void francToRielResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount * 4400;
-            System.out.println(Amount + " Franc = " + f.format(result) + " Riel");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Riel"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Franc To Riel" + "\n"
-                    + Amount + " Franc = " + f.format(result) + " Riel" + "\n\n");
-        });
-    }
-
-    public void poundToRielResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount * 5600;
-            System.out.println(Amount + " Pound = " + f.format(result) + " Riel");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Riel"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Pound To Riel" + "\n"
-                    + Amount + " Pound = " + f.format(result) + " Riel" + "\n\n");
-        });
-    }
-
-    public void bahtToRielResult(JButton button, JTextField amountField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            double Amount = Double.parseDouble(amountField.getText());
-
-            //Calculate the output
-            result = Amount * 122;
-            System.out.println(Amount + " Baht = " + f.format(result) + " Riel");
-
-            //Show the output
-            outputField.setText(String.valueOf(f.format(result) + " Riel"));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Baht To Riel" + "\n"
-                    + Amount + " Baht = " + f.format(result) + " Riel" + "\n\n");
-        });
-    }
-
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            moneyExchangeModel.reset();
+            moneyExchangeView.reset();
+        }
+    }// end inner class ClearListener
 }

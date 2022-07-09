@@ -1,147 +1,84 @@
 package Controller;
 
+import Model.BitwiseBinaryModel;
+import Model.BitwiseDecimalModel;
+import Views.Widgets.BitwiseBinaryView;
+import Views.Widgets.BitwiseDecimalView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BitwiseDecimalController {
-    public int a, b, result, count;
+    //... The Controller needs to interact with both the Model and View.
+    private final BitwiseDecimalModel bitwiseDecimalModel;
+    private final BitwiseDecimalView bitwiseDecimalView;
 
-    public void performReset(JButton button, JTextField aField, JTextField bField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            aField.setText("");
-            bField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+    //========================================================== constructor
+    /** Constructor */
+    public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalView view) {
+        bitwiseDecimalModel = model;
+        bitwiseDecimalView = view;
+
+        //... Add listeners to the view.
+        view.addBitwiseDecimalListener(new BitwiseDecimalListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void bitwiseANDResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class BitwiseDecimalListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String a = "", b = "";
+            JTextArea history;
+            try {
+                a = bitwiseDecimalView.getA();
+                b = bitwiseDecimalView.getB();
+                history = bitwiseDecimalView.getHistoryField();
 
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-            b = Integer.parseInt(bField.getText());
+                if (e.getSource() == bitwiseDecimalView.getBitwiseANDButton()){
+                    bitwiseDecimalModel.bitwiseAND(a, b, history);
 
-            //Calculate the output
-            result = a & b;
-            System.out.println(a + " & " + b + " = " + result);
+                } else if (e.getSource() == bitwiseDecimalView.getBitwiseORButton()) {
+                    bitwiseDecimalModel.bitwiseOR(a, b, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == bitwiseDecimalView.getBitwiseXORButton()) {
+                    bitwiseDecimalModel.bitwiseXOR(a, b, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise AND" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
+                } else if (e.getSource() == bitwiseDecimalView.getBitwiseLeftShiftButton()) {
+                    bitwiseDecimalModel.bitwiseLeftShift(a, b, history);
 
-    public void bitwiseORResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+                } else if (e.getSource() == bitwiseDecimalView.getBitwiseRightShiftButton()) {
+                    bitwiseDecimalModel.bitwiseRightShift(a, b, history);
 
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-            b = Integer.parseInt(bField.getText());
+                } else if (e.getSource() == bitwiseDecimalView.getBitwiseInversionButton()) {
+                    bitwiseDecimalModel.bitwiseInversion(a, b, history);
 
-            //Calculate the output
-            result = a | b;
-            System.out.println(a + " | " + b + " = " + result);
+                }
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                bitwiseDecimalView.setResultField(bitwiseDecimalModel.getValue());
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise OR" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");        });
-    }
+            } catch (NumberFormatException next) {
+                bitwiseDecimalView.showError("Bad input: '" + a + ", " + b +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-    public void bitwiseXORResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-            b = Integer.parseInt(bField.getText());
-
-            //Calculate the output
-            result = a ^ b;
-            System.out.println(a + " ^ " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise XOR" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");        });
-    }
-
-    public void bitwiseLeftShiftResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-            b = Integer.parseInt(bField.getText());
-
-            //Calculate the output
-            result = a << b;
-            System.out.println(a + " << " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Left Shift" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
-    public void bitwiseRightShiftResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-            b = Integer.parseInt(bField.getText());
-
-            //Calculate the output
-            result = a >> b;
-            System.out.println(a + " >> " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Right Shift" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
-    public void bitwiseInversionResult(JButton button, JTextField aField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            a = Integer.parseInt(aField.getText());
-
-            //Calculate the output
-            result = ~a;
-            System.out.println(a + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Inversion" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            bitwiseDecimalModel.reset();
+            bitwiseDecimalView.reset();
+        }
+    }// end inner class ClearListener
 }

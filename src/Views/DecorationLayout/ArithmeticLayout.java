@@ -84,7 +84,7 @@ public class ArithmeticLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(arithmeticView.arithmeticOperator(), c);
+        mainPanel.add(arithmeticView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -95,7 +95,7 @@ public class ArithmeticLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(arithmeticView.arithmeticInput(), c);
+        mainPanel.add(arithmeticView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -106,7 +106,7 @@ public class ArithmeticLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(arithmeticView.arithmeticOutput(), c);
+        mainPanel.add(arithmeticView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -115,7 +115,7 @@ public class ArithmeticLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(arithmeticView.arithmeticHistory(), c);
+        mainPanel.add(arithmeticView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;

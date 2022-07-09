@@ -1,20 +1,24 @@
 package Views.DecorationLayout;
 
+import Controller.NSCBinaryController;
+import Model.NSCBinaryModel;
 import Views.Routes;
+import Views.Widgets.NSCBinaryView;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
-import Views.Widgets.NumberSystemConversionBinaryView;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class NumberSystemConversionBinaryLayout {
+public class NSCBinaryLayout {
 
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
-    NumberSystemConversionBinaryView numberSystemConversionBinaryView = new NumberSystemConversionBinaryView();
+    NSCBinaryView nscBinaryView = new NSCBinaryView();
+    NSCBinaryModel nscBinaryModel = new NSCBinaryModel();
+    NSCBinaryController nscBinaryController = new NSCBinaryController(nscBinaryModel, nscBinaryView);
 
     public JPanel numberSystemConversionBinaryPanel(JFrame frame) {
         //create main panel object
@@ -82,7 +86,7 @@ public class NumberSystemConversionBinaryLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionBinaryView.numberSystemConversionOperator(), c);
+        mainPanel.add(nscBinaryView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -93,7 +97,7 @@ public class NumberSystemConversionBinaryLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionBinaryView.numberSystemConversionInput(), c);
+        mainPanel.add(nscBinaryView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -104,7 +108,7 @@ public class NumberSystemConversionBinaryLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 4;
-        mainPanel.add(numberSystemConversionBinaryView.numberSystemConversionOutput(), c);
+        mainPanel.add(nscBinaryView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -113,7 +117,7 @@ public class NumberSystemConversionBinaryLayout {
         c.gridheight = 2;
         c.gridx = 4;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionBinaryView.numberSystemConversionHistory(), c);
+        mainPanel.add(nscBinaryView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -128,7 +132,7 @@ public class NumberSystemConversionBinaryLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 3;
         c.gridy = 5;
-        mainPanel.add(numberSystemConversionBinaryView.numberSystemConversionReset(), c);
+        mainPanel.add(nscBinaryView.getResetButton(), c);
 
         AppButtons appButtons = new AppButtons();
 

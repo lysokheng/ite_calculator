@@ -1,6 +1,5 @@
 package Model;
 
-
 import javax.swing.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -23,6 +22,7 @@ public class ArithmeticModel {
     /** Reset to initial value. */
     public void reset() {
         result = new BigDecimal(INITIAL_VALUE);
+        count = 0;
     }
 
     //=============================================================== calculation

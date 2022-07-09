@@ -1,6 +1,5 @@
 package Views.Widgets;
 
-import Controller.BinaryArithmeticController;
 import Views.Widgets.Components.*;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppTexts;
@@ -13,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class BinaryArithmeticView extends Component {
     //... Constants
-    private static final String INITIAL_VALUE = "1";
+    private static final String INITIAL_VALUE = "";
 
     //... create object
     private final AppTexts appTexts = new AppTexts();
@@ -25,7 +24,7 @@ public class BinaryArithmeticView extends Component {
     //... name of new object
     private JTextField a = inputFieldBinary.inputField();
     private JTextField b = inputFieldBinary.inputField();
-    private JTextArea resultField = outputArea.outputArea();
+    private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
     private final JButton additionButton = appButtons.additionButton();
     private final JButton subtractionButton = appButtons.subtractionButton();
@@ -36,7 +35,7 @@ public class BinaryArithmeticView extends Component {
     private JButton resetButton = appButtons.clearButton();
 
     //======================================================= components
-    public JPanel BinaryArithmeticInput() {
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -83,7 +82,7 @@ public class BinaryArithmeticView extends Component {
 
         return generatorPanel;
     }
-    public JPanel BinaryArithmeticOperator() {
+    public JPanel operator() {
         //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
@@ -138,7 +137,7 @@ public class BinaryArithmeticView extends Component {
 
         return operatorPanel;
     }
-    public JPanel BinaryArithmeticOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -154,6 +153,10 @@ public class BinaryArithmeticView extends Component {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -163,11 +166,13 @@ public class BinaryArithmeticView extends Component {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-    public JPanel BinaryArithmeticHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -217,6 +222,9 @@ public class BinaryArithmeticView extends Component {
     //======================================================= additional method
     public void reset(){
         resultField.setText(INITIAL_VALUE);
+        a.setText("");
+        b.setText("");
+        historyField.setText("");
     }
     public void showError(String errMessage) {
         JOptionPane.showMessageDialog(this, errMessage);
@@ -255,7 +263,29 @@ public class BinaryArithmeticView extends Component {
         this.historyField = historyField;
     }
 
+    public JButton getAdditionButton() {
+        return additionButton;
+    }
 
+    public JButton getSubtractionButton() {
+        return subtractionButton;
+    }
+
+    public JButton getAdditionWith2NdComplementButton() {
+        return additionWith2NdComplementButton;
+    }
+
+    public JButton getSubtractionWith2NdComplementButton() {
+        return subtractionWith2NdComplementButton;
+    }
+
+    public JButton getMultiplyButton() {
+        return multiplyButton;
+    }
+
+    public JButton getDivideButton() {
+        return divideButton;
+    }
 
     public JButton getResetButton() {
         return resetButton;

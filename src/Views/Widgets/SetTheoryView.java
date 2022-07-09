@@ -9,27 +9,31 @@ import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class SetTheoryView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldDecimalWithSpace inputFieldDecimalWithSpace = new InputFieldDecimalWithSpace();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    SetTheoryController setTheoryController = new SetTheoryController();
+public class SetTheoryView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField a = inputFieldDecimalWithSpace.inputField();
-    JTextField b = inputFieldDecimalWithSpace.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton unionButton = appButtons.unionButton();
-    JButton intersectionButton = appButtons.intersectionButton();
-    JButton differenceButton = appButtons.differenceButton();
-    JButton resetButton = appButtons.clearButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldDecimalWithSpace inputFieldDecimalWithSpace = new InputFieldDecimalWithSpace();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
 
-    public JPanel setTheoryInput() {
+    //... name of new object
+    private JTextField a = inputFieldDecimalWithSpace.inputField();
+    private JTextField b = inputFieldDecimalWithSpace.inputField();
+    private final JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton unionButton = appButtons.unionButton();
+    private final JButton intersectionButton = appButtons.intersectionButton();
+    private final JButton differenceButton = appButtons.differenceButton();
+    private JButton resetButton = appButtons.clearButton();
+
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -76,8 +80,7 @@ public class SetTheoryView {
 
         return generatorPanel;
     }
-
-    public JPanel setTheoryOperator() {
+    public JPanel operator() {
         //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
@@ -114,8 +117,7 @@ public class SetTheoryView {
 
         return operatorPanel;
     }
-
-    public JPanel setTheoryOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -131,6 +133,10 @@ public class SetTheoryView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -140,12 +146,13 @@ public class SetTheoryView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel setTheoryHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -176,17 +183,80 @@ public class SetTheoryView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        setTheoryController.unionResult(unionButton, a, b, resultField, historyField);
-        setTheoryController.intersectionResult(intersectionButton, a, b, resultField, historyField);
-        setTheoryController.differenceResult(differenceButton, a, b, resultField, historyField);
-
         return historyPanel;
     }
 
-    public JButton setTheoryReset(){
-        setTheoryController.performReset(resetButton, a, b, resultField, historyField);
+    //======================================================= add button to controller
+    public void addSetTheoryListener(ActionListener button) {
+        unionButton.addActionListener(button);
+        intersectionButton.addActionListener(button);
+        differenceButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        a.setText("");
+        b.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getA() {
+        return a.getText();
+    }
+
+    public void setA(JTextField a) {
+        this.a = a;
+    }
+
+    public String getB() {
+        return b.getText();
+    }
+
+    public void setB(JTextField b) {
+        this.b = b;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getUnionButton() {
+        return unionButton;
+    }
+
+    public JButton getIntersectionButton() {
+        return intersectionButton;
+    }
+
+    public JButton getDifferenceButton() {
+        return differenceButton;
+    }
+
+    public JButton getResetButton() {
         return resetButton;
     }
 
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
+    }
 }

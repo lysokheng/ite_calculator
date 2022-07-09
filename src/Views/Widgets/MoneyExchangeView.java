@@ -1,6 +1,5 @@
 package Views.Widgets;
 
-import Controller.MoneyExchangeController;
 import Views.Widgets.Components.HistoryArea;
 import Views.Widgets.Components.InputFieldDecimal;
 import Views.Widgets.Components.OutputArea;
@@ -13,35 +12,38 @@ import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class MoneyExchangeView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    AppColors appColors = new AppColors();
-    MoneyExchangeController moneyExchangeController = new MoneyExchangeController();
+public class MoneyExchangeView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField amount = inputFieldDecimal.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton rielToDollarButton = appButtons.rielToDollarButton();
-    JButton rielToEuroButton = appButtons.rielToEuroButton();
-    JButton rielToFranceButton = appButtons.rielToFranceButton();
-    JButton rielToPoundButton = appButtons.rielToPoundButton();
-    JButton rielToBahtButton = appButtons.rielToBahtButton();
-    JButton dollarToRielButton = appButtons.dollarToRielButton();
-    JButton euroToRielButton = appButtons.euroToRielButton();
-    JButton franceToRielButton = appButtons.franceToRielButton();
-    JButton poundToRielButton = appButtons.poundToRielButton();
-    JButton bahtToRielButton = appButtons.bahtToRielButton();
-    JButton resetButton = appButtons.clearButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
+    private final AppColors appColors = new AppColors();
 
+    //... name of new object
+    private JTextField amount = inputFieldDecimal.inputField();
+    private final JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton rielToDollarButton = appButtons.rielToDollarButton();
+    private final JButton rielToEuroButton = appButtons.rielToEuroButton();
+    private final JButton rielToFranceButton = appButtons.rielToFranceButton();
+    private final JButton rielToPoundButton = appButtons.rielToPoundButton();
+    private final JButton rielToBahtButton = appButtons.rielToBahtButton();
+    private final JButton dollarToRielButton = appButtons.dollarToRielButton();
+    private final JButton euroToRielButton = appButtons.euroToRielButton();
+    private final JButton franceToRielButton = appButtons.franceToRielButton();
+    private final JButton poundToRielButton = appButtons.poundToRielButton();
+    private final JButton bahtToRielButton = appButtons.bahtToRielButton();
+    private JButton resetButton = appButtons.clearButton();
 
-    public JPanel moneyExchangeInput() {
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -74,8 +76,7 @@ public class MoneyExchangeView {
 
         return generatorPanel;
     }
-
-    public JPanel moneyExchangeOperator() {
+    public JPanel operator() {
         //Create JPanel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
         operatorPanel.setBackground(Color.WHITE);
@@ -171,8 +172,7 @@ public class MoneyExchangeView {
 
         return mainPanel;
     }
-
-    public JPanel moneyExchangeOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -188,6 +188,10 @@ public class MoneyExchangeView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -197,12 +201,13 @@ public class MoneyExchangeView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel moneyExchangeHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -233,24 +238,106 @@ public class MoneyExchangeView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        moneyExchangeController.rielToDollarResult(rielToDollarButton, amount, resultField, historyField);
-        moneyExchangeController.rielToEuroResult(rielToEuroButton, amount, resultField, historyField);
-        moneyExchangeController.rielToFranceResult(rielToFranceButton, amount, resultField, historyField);
-        moneyExchangeController.rielToPoundResult(rielToPoundButton, amount, resultField, historyField);
-        moneyExchangeController.rielToBahtResult(rielToBahtButton, amount, resultField, historyField);
-        moneyExchangeController.dollarToRielResult(dollarToRielButton, amount, resultField, historyField);
-        moneyExchangeController.euroToRielResult(euroToRielButton, amount, resultField, historyField);
-        moneyExchangeController.francToRielResult(franceToRielButton, amount, resultField, historyField);
-        moneyExchangeController.poundToRielResult(poundToRielButton, amount, resultField, historyField);
-        moneyExchangeController.bahtToRielResult(bahtToRielButton, amount, resultField, historyField);
-
         return historyPanel;
     }
 
-    public JButton moneyExchangeReset(){
-        moneyExchangeController.performReset(resetButton, amount, resultField, historyField);
+    //======================================================= add button to controller
+    public void addMoneyExchangeListener(ActionListener button) {
+        rielToDollarButton.addActionListener(button);
+        rielToEuroButton.addActionListener(button);
+        rielToFranceButton.addActionListener(button);
+        rielToPoundButton.addActionListener(button);
+        rielToBahtButton.addActionListener(button);
+        dollarToRielButton.addActionListener(button);
+        euroToRielButton.addActionListener(button);
+        franceToRielButton.addActionListener(button);
+        poundToRielButton.addActionListener(button);
+        bahtToRielButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        amount.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getAmount() {
+        return amount.getText();
+    }
+
+    public void setAmount(JTextField amount) {
+        this.amount = amount;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getRielToDollarButton() {
+        return rielToDollarButton;
+    }
+
+    public JButton getRielToEuroButton() {
+        return rielToEuroButton;
+    }
+
+    public JButton getRielToFranceButton() {
+        return rielToFranceButton;
+    }
+
+    public JButton getRielToPoundButton() {
+        return rielToPoundButton;
+    }
+
+    public JButton getRielToBahtButton() {
+        return rielToBahtButton;
+    }
+
+    public JButton getDollarToRielButton() {
+        return dollarToRielButton;
+    }
+
+    public JButton getEuroToRielButton() {
+        return euroToRielButton;
+    }
+
+    public JButton getFranceToRielButton() {
+        return franceToRielButton;
+    }
+
+    public JButton getPoundToRielButton() {
+        return poundToRielButton;
+    }
+
+    public JButton getBahtToRielButton() {
+        return bahtToRielButton;
+    }
+
+    public JButton getResetButton() {
         return resetButton;
     }
 
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
+    }
 }

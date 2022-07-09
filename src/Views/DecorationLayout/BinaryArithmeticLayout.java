@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.BinaryArithmeticController;
+import Model.BinaryArithmeticModel;
 import Views.Routes;
 import Views.Widgets.BinaryArithmeticView;
 import Views.Widgets.Utils.AppColors;
@@ -17,6 +19,10 @@ public class BinaryArithmeticLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     BinaryArithmeticView binaryArithmeticView = new BinaryArithmeticView();
+    BinaryArithmeticModel binaryArithmeticModel = new BinaryArithmeticModel();
+    BinaryArithmeticController binaryArithmeticController = new BinaryArithmeticController(
+            binaryArithmeticModel, binaryArithmeticView
+    );
 
     public JPanel binaryArithmeticPanel(JFrame frame) {
         //create main panel object
@@ -80,7 +86,7 @@ public class BinaryArithmeticLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(binaryArithmeticView.BinaryArithmeticOperator(), c);
+        mainPanel.add(binaryArithmeticView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -91,7 +97,7 @@ public class BinaryArithmeticLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(binaryArithmeticView.BinaryArithmeticInput(), c);
+        mainPanel.add(binaryArithmeticView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -102,7 +108,7 @@ public class BinaryArithmeticLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(binaryArithmeticView.BinaryArithmeticOutput(), c);
+        mainPanel.add(binaryArithmeticView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -111,7 +117,7 @@ public class BinaryArithmeticLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(binaryArithmeticView.BinaryArithmeticHistory(), c);
+        mainPanel.add(binaryArithmeticView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -125,7 +131,7 @@ public class BinaryArithmeticLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(binaryArithmeticView.BinaryArithmeticReset(), c);
+        mainPanel.add(binaryArithmeticView.getResetButton(), c);
 
         //Note
         c.insets = new Insets(0, 30, 30, 0);

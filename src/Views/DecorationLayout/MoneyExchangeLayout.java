@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.MoneyExchangeController;
+import Model.MoneyExchangeModel;
 import Views.Routes;
 import Views.Widgets.MoneyExchangeView;
 import Views.Widgets.Utils.AppButtons;
@@ -18,10 +20,10 @@ public class MoneyExchangeLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     MoneyExchangeView moneyExchangeView = new MoneyExchangeView();
-    AppButtons appButtons = new AppButtons();
-
-    JButton resetButton = appButtons.clearButton();
-
+    MoneyExchangeModel moneyExchangeModel = new MoneyExchangeModel();
+    MoneyExchangeController moneyExchangeController = new MoneyExchangeController(
+            moneyExchangeModel, moneyExchangeView
+    );
 
     public JPanel moneyExchangePanel(JFrame frame) {
         //create main panel object
@@ -87,7 +89,7 @@ public class MoneyExchangeLayout {
         c.ipady = 340;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(moneyExchangeView.moneyExchangeOperator(), c);
+        mainPanel.add(moneyExchangeView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -98,7 +100,7 @@ public class MoneyExchangeLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(moneyExchangeView.moneyExchangeInput(), c);
+        mainPanel.add(moneyExchangeView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -109,7 +111,7 @@ public class MoneyExchangeLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(moneyExchangeView.moneyExchangeOutput(), c);
+        mainPanel.add(moneyExchangeView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -118,7 +120,7 @@ public class MoneyExchangeLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(moneyExchangeView.moneyExchangeHistory(), c);
+        mainPanel.add(moneyExchangeView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -132,7 +134,7 @@ public class MoneyExchangeLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(moneyExchangeView.moneyExchangeReset(), c);
+        mainPanel.add(moneyExchangeView.getResetButton(), c);
 
         return mainPanel;
     }

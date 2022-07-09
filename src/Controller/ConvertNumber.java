@@ -60,7 +60,6 @@ public class ConvertNumber {
     }
     /**
      * function to convert Hexadecimal to octal Number
-     *
      */
     public StringBuilder hex2Octal(String hexa) {
 
@@ -196,43 +195,6 @@ public class ConvertNumber {
     }
 
     /**
-     * function to convert decimal to hexadecimal
-     */
-    public String dec2Hexa(long decimal) {
-        // char array to store hexadecimal number
-        char[] hexaDeciNum = new char[100];
-        ArrayList<String> save = new ArrayList<String>();
-
-        // counter for hexadecimal number array
-        int i = 0, j;
-        while (decimal != 0) {
-            // temporary variable to store remainder
-            long temp;
-
-            // storing remainder in temp variable.
-            temp = decimal % 16;
-
-            // check if temp < 10
-            if (temp < 10) {
-                hexaDeciNum[i] = (char) (temp + 48);
-            } else {
-                hexaDeciNum[i] = (char) (temp + 55);
-            }
-            i++;
-
-            decimal = decimal / 16;
-        }
-
-        // printing binary array in reverse order
-        for (j = i - 1; j >= 0; j--)
-            save.add(String.valueOf(hexaDeciNum[j]));
-
-        return save.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining("", "", ""));
-    }
-
-    /**
      * Function to convert decimal to octal
      */
     public String dec2Octal(long decimal) {
@@ -262,8 +224,9 @@ public class ConvertNumber {
      * Function to convert decimal to binary
      */
     public String dec2Binary(long decimal) {
+
         // array to store binary number
-        long[] binaryNum = new long[1000];
+        long[] binaryNum = new long[100];
         ArrayList<String> save = new ArrayList<>();
 
         // counter for binary array
@@ -317,48 +280,52 @@ public class ConvertNumber {
     /**
      * method to convert binary to hex
      */
-    public String binary2Hex(long binary) {
+    // method to convert binary to decimal
+    public int binary2Hex(long binary) {
 
-        // variable to store the output of
-        // binary2Decimal() method
-        int decimalNumber = binary2Decimal(String.valueOf(binary));
+        // variable to store the converted
+        // binary number
+        int decimalNumber = 0, i = 0;
 
-        // character array to represent double-digit remainders
-        char[] arr = {'A', 'B', 'C', 'D', 'E', 'F'};
+        // loop to extract the digits of the binary
+        while (binary > 0) {
 
-        // variable to store the remainder on
-        // division by 16
-        int remainder;
+            // extracting the digits by getting
+            // remainder on dividing by 10 and
+            // multiplying by increasing integral
+            // powers of 2
+            decimalNumber
+                    += Math.pow(2, i++) * (binary % 10);
 
-        // declaring the string that stores the
-        // final hex string
-        StringBuilder hexNumber = new StringBuilder();
-
-        // loop to convert decimal to hex
-        while (decimalNumber != 0) {
-
-            // calculating the remainder of decimal
-            // by dividing by 16
-            remainder = decimalNumber % 16;
-
-            // checking if the remainder is >= 10
-            if (remainder >= 10)
-
-                // replacing with the corresponding
-                // alphabet from the array
-                hexNumber.insert(0, arr[remainder - 10]);
-
-            else
-
-                hexNumber.insert(0, remainder);
-
-            // update condition of dividing the
-            // number by 16
-            decimalNumber /= 16;
+            // updating the binary by eliminating
+            // the last digit on division by 10
+            binary /= 10;
         }
 
-        // returning the hex string
-        return hexNumber.toString();
+        // returning the decimal number
+        return decimalNumber;
+    }
+
+    /**
+     * method to convert decimal to hexadecimal
+     */
+    public String dec2Hexa(long binary)
+    {
+        // variable to store the output of the
+        // binaryToDecimal() method
+        int decimalNumber = binary2Hex(binary);
+
+        // converting the integer to the desired
+        // hex string using toHexString() method
+        String hexNumber
+                = Integer.toHexString(decimalNumber);
+
+        // converting the string to uppercase
+        // for uniformity
+        hexNumber = hexNumber.toUpperCase();
+
+        // returning the final hex string
+        return hexNumber;
     }
 
     /**

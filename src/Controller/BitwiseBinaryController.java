@@ -1,184 +1,85 @@
 package Controller;
 
+import Model.ArithmeticModel;
+import Model.BitwiseBinaryModel;
+import Views.Widgets.ArithmeticView;
+import Views.Widgets.BitwiseBinaryView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.math.BigInteger;
 
 public class BitwiseBinaryController {
-    public int a;
-    public int b;
-    public String result;
-    public int count;
+    //... The Controller needs to interact with both the Model and View.
+    private final BitwiseBinaryModel bitwiseBinaryModel;
+    private final BitwiseBinaryView bitwiseBinaryView;
 
-    ConvertNumber convertNumber = new ConvertNumber();
+    //========================================================== constructor
+    /** Constructor */
+    public BitwiseBinaryController(BitwiseBinaryModel model, BitwiseBinaryView view) {
+        bitwiseBinaryModel = model;
+        bitwiseBinaryView = view;
 
-    public void performReset(JButton button, JTextField aField, JTextField bField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            aField.setText("");
-            bField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+        //... Add listeners to the view.
+        view.addBitwiseBinaryListener(new BitwiseBinaryListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void bitwiseANDResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class BitwiseBinaryListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String a = "", b = "";
+            JTextArea history;
+            try {
+                a = bitwiseBinaryView.getA();
+                b = bitwiseBinaryView.getB();
+                history = bitwiseBinaryView.getHistoryField();
 
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
+                if (e.getSource() == bitwiseBinaryView.getBitwiseANDButton()){
+                    bitwiseBinaryModel.bitwiseAND(a, b, history);
 
-            BigInteger b1 = new BigInteger(a, 2);
-            BigInteger b2 = new BigInteger(b, 2);
+                } else if (e.getSource() == bitwiseBinaryView.getBitwiseORButton()) {
+                    bitwiseBinaryModel.bitwiseOR(a, b, history);
 
-            System.out.println(b1.and(b2).toString(2));
+                } else if (e.getSource() == bitwiseBinaryView.getBitwiseXORButton()) {
+                    bitwiseBinaryModel.bitwiseXOR(a, b, history);
 
-            //Calculate the output
-            result = b1.and(b2).toString(2);
-            System.out.println(a + " & " + b + " = " + result);
+                } else if (e.getSource() == bitwiseBinaryView.getBitwiseLeftShiftButton()) {
+                    bitwiseBinaryModel.bitwiseLeftShift(a, b, history);
 
-            //Show the output
-            outputField.setText(String.valueOf(result));
+                } else if (e.getSource() == bitwiseBinaryView.getBitwiseRightShiftButton()) {
+                    bitwiseBinaryModel.bitwiseRightShift(a, b, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise AND" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
+                } else if (e.getSource() == bitwiseBinaryView.getBitwiseInversionButton()) {
+                    bitwiseBinaryModel.bitwiseInversion(a, b, history);
 
-    public void bitwiseORResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
+                }
 
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
+                bitwiseBinaryView.setResultField(bitwiseBinaryModel.getValue());
 
-            BigInteger b1 = new BigInteger(a, 2);
-            BigInteger b2 = new BigInteger(b, 2);
+            } catch (NumberFormatException next) {
+                bitwiseBinaryView.showError("Bad input: '" + a + ", " + b +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-            System.out.println(b1.or(b2).toString(2));
 
-            //Calculate the output
-            result = b1.or(b2).toString(2);
-            System.out.println(a + " | " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise OR" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");        });
-    }
-
-    public void bitwiseXORResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            BigInteger b1 = new BigInteger(a, 2);
-            BigInteger b2 = new BigInteger(b, 2);
-
-            System.out.println(b1.xor(b2).toString(2));
-
-            //Calculate the output
-            result = b1.xor(b2).toString(2);
-            System.out.println(a + " ^ " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise XOR" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");        });
-    }
-
-    public void bitwiseLeftShiftResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            BigInteger b1 = new BigInteger(a, 2);
-            int b2 = Integer.parseInt(b);
-
-            System.out.println(b1.shiftLeft(b2).toString(2));
-
-            //Calculate the output
-            result = b1.shiftLeft(b2).toString(2);
-            System.out.println(a + " << " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Left Shift" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
-    public void bitwiseRightShiftResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            BigInteger b1 = new BigInteger(a, 2);
-            int b2 = Integer.parseInt(b);
-
-            System.out.println(b1.shiftRight(b2).toString(2));
-
-            //Calculate the output
-            result = b1.shiftRight(b2).toString(2);
-            System.out.println(a + " >> " + b + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Right Shift" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
-    public void bitwiseInversionResult(JButton button, JTextField aField, JTextField bField, JTextArea outputField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //convert jTextField to string
-            String a = aField.getText();
-            String b = bField.getText();
-
-            BigInteger b1 = new BigInteger(a, 2);
-            BigInteger b2 = new BigInteger(b, 2);
-
-            System.out.println(b1.modInverse(b2).toString(2));
-
-            //Calculate the output
-            result = b1.modInverse(b2).toString(2);
-            System.out.println(a + " = " + result);
-
-            //Show the output
-            outputField.setText(String.valueOf(result));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Bitwise Inversion" + "\n"
-                    + "A: " + a + ", B: " + b + ", Result: " + result + "\n\n");
-        });
-    }
-
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            bitwiseBinaryModel.reset();
+            bitwiseBinaryView.reset();
+        }
+    }// end inner class ClearListener
 }

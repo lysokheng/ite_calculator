@@ -1,5 +1,8 @@
 package Views.DecorationLayout;
 
+import Controller.BitwiseBinaryController;
+import Controller.BitwiseDecimalController;
+import Model.BitwiseDecimalModel;
 import Views.Routes;
 import Views.Widgets.BitwiseDecimalView;
 import Views.Widgets.Utils.AppColors;
@@ -17,6 +20,10 @@ public class BitwiseDecimalLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     BitwiseDecimalView bitwiseDecimalView = new BitwiseDecimalView();
+    BitwiseDecimalModel bitwiseDecimalModel = new BitwiseDecimalModel();
+    BitwiseDecimalController bitwiseDecimalController = new BitwiseDecimalController(
+            bitwiseDecimalModel, bitwiseDecimalView
+    );
 
     public JPanel bitwisePanel(JFrame frame) {
         //create main panel object
@@ -80,7 +87,7 @@ public class BitwiseDecimalLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(bitwiseDecimalView.bitwiseOperator(), c);
+        mainPanel.add(bitwiseDecimalView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -91,7 +98,7 @@ public class BitwiseDecimalLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(bitwiseDecimalView.bitwiseInput(), c);
+        mainPanel.add(bitwiseDecimalView.input(), c);
 
         //BinaryArithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -102,7 +109,7 @@ public class BitwiseDecimalLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(bitwiseDecimalView.bitwiseOutput(), c);
+        mainPanel.add(bitwiseDecimalView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -111,7 +118,7 @@ public class BitwiseDecimalLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(bitwiseDecimalView.bitwiseHistory(), c);
+        mainPanel.add(bitwiseDecimalView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -125,7 +132,7 @@ public class BitwiseDecimalLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(bitwiseDecimalView.bitwiseReset(), c);
+        mainPanel.add(bitwiseDecimalView.getResetButton(), c);
 
         //Change to binary mode
         c.insets = new Insets(0, 30, 30, 0);

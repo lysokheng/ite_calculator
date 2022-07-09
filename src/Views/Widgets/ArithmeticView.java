@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 public class ArithmeticView extends Component {
     //... Constants
-    private static final String INITIAL_VALUE = "1";
+    private static final String INITIAL_VALUE = "";
 
     //... create object
     private final AppTexts appTexts = new AppTexts();
@@ -37,7 +37,7 @@ public class ArithmeticView extends Component {
     private JButton resetButton = appButtons.clearButton();
 
     //======================================================= components
-    public JPanel arithmeticInput() {
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -84,7 +84,7 @@ public class ArithmeticView extends Component {
 
         return generatorPanel;
     }
-    public JPanel arithmeticOperator() {
+    public JPanel operator() {
         //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
@@ -133,7 +133,7 @@ public class ArithmeticView extends Component {
 
         return operatorPanel;
     }
-    public JPanel arithmeticOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -149,6 +149,10 @@ public class ArithmeticView extends Component {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -158,11 +162,13 @@ public class ArithmeticView extends Component {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-    public JPanel arithmeticHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -211,6 +217,9 @@ public class ArithmeticView extends Component {
     //======================================================= additional method
     public void reset(){
         resultField.setText(INITIAL_VALUE);
+        a.setText("");
+        b.setText("");
+        historyField.setText("");
     }
     public void showError(String errMessage) {
         JOptionPane.showMessageDialog(this, errMessage);

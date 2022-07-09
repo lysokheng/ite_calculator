@@ -3,10 +3,10 @@ package Views;
 import Views.DecorationLayout.*;
 import Views.DecorationLayout.BitwiseBinaryLayout;
 import Views.DecorationLayout.BitwiseDecimalLayout;
-import Views.DecorationLayout.NumberSystemConversionBinaryLayout;
-import Views.DecorationLayout.NumberSystemConversionDecimalLayout;
-import Views.DecorationLayout.NumberSystemConversionHexadecimaLayout;
-import Views.DecorationLayout.NumberSystemConversionOctalLayout;
+import Views.DecorationLayout.NSCBinaryLayout;
+import Views.DecorationLayout.NSCDecimalLayout;
+import Views.DecorationLayout.NSCHexadecimaLayout;
+import Views.DecorationLayout.NSCOctalLayout;
 import Views.Widgets.Utils.AppButtons;
 
 import javax.swing.*;
@@ -143,7 +143,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton numberSystemConversionListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionDecimalLayout numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalLayout();
+        NSCDecimalLayout numberSystemConversionDecimalWindows = new NSCDecimalLayout();
 
         //route numberSystemConversionListener
         JButton numberSystemConversionListener;
@@ -206,7 +206,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToBinaryListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionBinaryLayout numberSystemConversionBinaryWidgets = new NumberSystemConversionBinaryLayout();
+        NSCBinaryLayout numberSystemConversionBinaryWidgets = new NSCBinaryLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionBinaryListener;
         numberSystemConversionBinaryListener = appButtons.binaryButton();
@@ -221,7 +221,7 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToDecimalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionDecimalLayout numberSystemConversionDecimalWindows = new NumberSystemConversionDecimalLayout();
+        NSCDecimalLayout numberSystemConversionDecimalWindows = new NSCDecimalLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionDecimalListener;
         numberSystemConversionDecimalListener = appButtons.decimalButton();
@@ -236,13 +236,13 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToHexadecimalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionHexadecimaLayout numberSystemConversionHexadecimaLayout = new NumberSystemConversionHexadecimaLayout();
+        NSCHexadecimaLayout NSCHexadecimaLayout = new NSCHexadecimaLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionHexadecimalListener;
         numberSystemConversionHexadecimalListener = appButtons.hexaDecimalButton();
         numberSystemConversionHexadecimalListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(numberSystemConversionHexadecimaLayout.numberSystemConversionHexadecimalPanel(frame));
+            frame.setContentPane(NSCHexadecimaLayout.numberSystemConversionHexadecimalPanel(frame));
             frame.validate();
             frame.repaint();
         });
@@ -251,13 +251,13 @@ public class Routes implements ActionListener {
     }
 
     public JButton changeToOctalListener(JFrame frame, JPanel mainPanel) {
-        NumberSystemConversionOctalLayout numberSystemConversionOctalLayout = new NumberSystemConversionOctalLayout();
+        NSCOctalLayout NSCOctalLayout = new NSCOctalLayout();
         //route to menuWindowsListener
         JButton numberSystemConversionOctalListener;
         numberSystemConversionOctalListener = appButtons.octalButton();
         numberSystemConversionOctalListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(numberSystemConversionOctalLayout.numberSystemConversionOctalPanel(frame));
+            frame.setContentPane(NSCOctalLayout.numberSystemConversionOctalPanel(frame));
             frame.validate();
             frame.repaint();
         });

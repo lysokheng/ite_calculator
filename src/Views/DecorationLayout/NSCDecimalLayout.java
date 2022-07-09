@@ -1,21 +1,29 @@
 package Views.DecorationLayout;
 
+import Controller.NSCDecimalController;
+import Model.NSCDecimalModel;
 import Views.Routes;
+import Views.Widgets.NSCDecimalView;
+import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
-import Views.Widgets.NumberSystemConversionOctalView;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class NumberSystemConversionOctalLayout {
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.GridBagLayout;
+
+public class NSCDecimalLayout {
 
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
-    NumberSystemConversionOctalView numberSystemConversionOctalView = new NumberSystemConversionOctalView();
+    NSCDecimalView nscDecimalView = new NSCDecimalView();
+    NSCDecimalModel nscDecimalModel = new NSCDecimalModel();
+    NSCDecimalController nscDecimalController = new NSCDecimalController(nscDecimalModel, nscDecimalView);
 
-    public JPanel numberSystemConversionOctalPanel(JFrame frame) {
+    public JPanel numberSystemConversionDecimalPanel(JFrame frame) {
         //create main panel object
         JPanel mainPanel = new JPanel(new GridBagLayout());
 
@@ -81,7 +89,7 @@ public class NumberSystemConversionOctalLayout {
         c.gridheight = 2;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionOctalView.numberSystemConversionOperator(), c);
+        mainPanel.add(nscDecimalView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -92,7 +100,7 @@ public class NumberSystemConversionOctalLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionOctalView.numberSystemConversionInput(), c);
+        mainPanel.add(nscDecimalView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -103,7 +111,7 @@ public class NumberSystemConversionOctalLayout {
         c.gridheight = 1;
         c.gridx = 3;
         c.gridy = 4;
-        mainPanel.add(numberSystemConversionOctalView.numberSystemConversionOutput(), c);
+        mainPanel.add(nscDecimalView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -112,7 +120,7 @@ public class NumberSystemConversionOctalLayout {
         c.gridheight = 2;
         c.gridx = 4;
         c.gridy = 3;
-        mainPanel.add(numberSystemConversionOctalView.numberSystemConversionHistory(), c);
+        mainPanel.add(nscDecimalView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -127,26 +135,26 @@ public class NumberSystemConversionOctalLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 3;
         c.gridy = 5;
-        mainPanel.add(numberSystemConversionOctalView.numberSystemConversionReset(), c);
+        mainPanel.add(nscDecimalView.getResetButton(), c);
 
         //change number system
         c.insets = new Insets(0, 30, 30, 0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 5;
-        mainPanel.add(routs.changeToDecimalListener(frame, mainPanel), c);
+        mainPanel.add(routs.changeToBinaryListener(frame, mainPanel), c);
 
         c.insets = new Insets(0, 15, 30, 0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(routs.changeToBinaryListener(frame, mainPanel), c);
+        mainPanel.add(routs.changeToHexadecimalListener(frame, mainPanel), c);
 
         c.insets = new Insets(0, 15, 30, 0);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 2;
         c.gridy = 5;
-        mainPanel.add(routs.changeToHexadecimalListener(frame, mainPanel), c);
+        mainPanel.add(routs.changeToOctalListener(frame, mainPanel), c);
 
         return mainPanel;
     }

@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.ArithmeticModel;
+import Model.BinaryArithmeticModel;
 import Views.Widgets.ArithmeticView;
+import Views.Widgets.BinaryArithmeticView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,18 +13,18 @@ import java.util.stream.IntStream;
 
 public class BinaryArithmeticController {
     //... The Controller needs to interact with both the Model and View.
-    private final BinaryArithmeticController arithmeticModel;
-    private final ArithmeticView arithmeticView;
+    private final BinaryArithmeticModel binaryArithmeticModel;
+    private final BinaryArithmeticView binaryArithmeticView;
 
     //========================================================== constructor
     /** Constructor */
-    public ArithmeticController(ArithmeticModel model, ArithmeticView view) {
-        arithmeticModel = model;
-        arithmeticView = view;
+    public BinaryArithmeticController(BinaryArithmeticModel model, BinaryArithmeticView view) {
+        binaryArithmeticModel = model;
+        binaryArithmeticView = view;
 
         //... Add listeners to the view.
-        view.addArithmeticListener(new ArithmeticController.ArithmeticListener());
-        view.addClearListener(new ArithmeticController.ClearListener());
+        view.addArithmeticListener(new BinaryArithmeticListener());
+        view.addClearListener(new ClearListener());
     }
 
     ////////////////////////////////////////// inner class MultiplyListener
@@ -33,36 +35,39 @@ public class BinaryArithmeticController {
      *  4. Tell the View to display the result.
      * If there was an error, tell the View to display it.
      */
-    class ArithmeticListener implements ActionListener {
+    class BinaryArithmeticListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String a = "", b = "";
             JTextArea history;
             try {
-                a = arithmeticView.getA();
-                b = arithmeticView.getB();
-                history = arithmeticView.getHistoryField();
+                a = binaryArithmeticView.getA();
+                b = binaryArithmeticView.getB();
+                history = binaryArithmeticView.getHistoryField();
 
-                if (e.getSource() == arithmeticView.getAdditionButton()){
-                    arithmeticModel.addition(a, b, history);
+                if (e.getSource() == binaryArithmeticView.getAdditionButton()){
+                    binaryArithmeticModel.addition(a, b, history);
 
-                } else if (e.getSource() == arithmeticView.getSubtractionButton()) {
-                    arithmeticModel.subtraction(a, b, history);
+                } else if (e.getSource() == binaryArithmeticView.getSubtractionButton()) {
+                    binaryArithmeticModel.subtraction(a, b, history);
 
-                } else if (e.getSource() == arithmeticView.getMultiplicationButton()) {
-                    arithmeticModel.multiply(a, b, history);
+                } else if (e.getSource() == binaryArithmeticView.getAdditionWith2NdComplementButton()) {
+                    binaryArithmeticModel.additionWith2ndComplement(a, b, history);
 
-                } else if (e.getSource() == arithmeticView.getDivisionButton()) {
-                    arithmeticModel.divide(a, b, history);
+                } else if (e.getSource() == binaryArithmeticView.getSubtractionWith2NdComplementButton()) {
+                    binaryArithmeticModel.subtractionWith2ndComplement(a, b, history);
 
-                } else if (e.getSource() == arithmeticView.getModuloButton()) {
-                    arithmeticModel.modulo(a, b, history);
+                } else if (e.getSource() == binaryArithmeticView.getMultiplyButton()) {
+                    binaryArithmeticModel.multiply(a, b, history);
+
+                } else if (e.getSource() == binaryArithmeticView.getDivideButton()) {
+                    binaryArithmeticModel.divide(a, b, history);
 
                 }
 
-                arithmeticView.setResultField(arithmeticModel.getValue());
+                binaryArithmeticView.setResultField(binaryArithmeticModel.getValue());
 
             } catch (NumberFormatException next) {
-                arithmeticView.showError("Bad input: '" + a + ", " + b +  "'");
+                binaryArithmeticView.showError("Bad input: '" + a + ", " + b +  "'");
             }
         }
     }//end inner class MultiplyListener
@@ -74,8 +79,8 @@ public class BinaryArithmeticController {
      */
     class ClearListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            arithmeticModel.reset();
-            arithmeticView.reset();
+            binaryArithmeticModel.reset();
+            binaryArithmeticView.reset();
         }
     }// end inner class ClearListener
 }

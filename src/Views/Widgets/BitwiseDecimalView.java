@@ -12,30 +12,34 @@ import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class BitwiseDecimalView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    BitwiseDecimalController bitwiseDecimalController = new BitwiseDecimalController();
+public class BitwiseDecimalView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField a = inputFieldDecimal.inputField();
-    JTextField b = inputFieldDecimal.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton bitwiseANDButton = appButtons.bitwiseANDButton();
-    JButton bitwiseORButton = appButtons.bitwiseORButton();
-    JButton bitwiseXORButton = appButtons.bitwiseXORButton();
-    JButton bitwiseLeftShiftButton = appButtons.bitwiseLeftShiftButton();
-    JButton bitwiseRightShiftButton = appButtons.bitwiseRightShiftButton();
-    JButton bitwiseInversionButton = appButtons.bitwiseInversionButton();
-    JButton resetButton = appButtons.clearButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
 
-    public JPanel bitwiseInput() {
+    //... name of new object
+    private JTextField a = inputFieldDecimal.inputField();
+    private JTextField b = inputFieldDecimal.inputField();
+    private JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton bitwiseANDButton = appButtons.bitwiseANDButton();
+    private final JButton bitwiseORButton = appButtons.bitwiseORButton();
+    private final JButton bitwiseXORButton = appButtons.bitwiseXORButton();
+    private final JButton bitwiseLeftShiftButton = appButtons.bitwiseLeftShiftButton();
+    private final JButton bitwiseRightShiftButton = appButtons.bitwiseRightShiftButton();
+    private final JButton bitwiseInversionButton = appButtons.bitwiseInversionButton();
+    private JButton resetButton = appButtons.clearButton();
+
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -82,8 +86,7 @@ public class BitwiseDecimalView {
 
         return generatorPanel;
     }
-
-    public JPanel bitwiseOperator() {
+    public JPanel operator() {
         //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
@@ -138,8 +141,7 @@ public class BitwiseDecimalView {
 
         return operatorPanel;
     }
-
-    public JPanel bitwiseOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -155,6 +157,10 @@ public class BitwiseDecimalView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -164,12 +170,13 @@ public class BitwiseDecimalView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel bitwiseHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -200,20 +207,97 @@ public class BitwiseDecimalView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        bitwiseDecimalController.bitwiseANDResult(bitwiseANDButton, a, b, resultField, historyField);
-        bitwiseDecimalController.bitwiseORResult(bitwiseORButton, a, b, resultField, historyField);
-        bitwiseDecimalController.bitwiseXORResult(bitwiseXORButton, a, b, resultField, historyField);
-        bitwiseDecimalController.bitwiseLeftShiftResult(bitwiseLeftShiftButton, a, b, resultField, historyField);
-        bitwiseDecimalController.bitwiseRightShiftResult(bitwiseRightShiftButton, a, b, resultField, historyField);
-        bitwiseDecimalController.bitwiseInversionResult(bitwiseInversionButton, a, resultField, historyField);
-
         return historyPanel;
     }
 
-    public JButton bitwiseReset(){
-        bitwiseDecimalController.performReset(resetButton, a, b, resultField, historyField);
+    //======================================================= add button to controller
+    public void addBitwiseDecimalListener(ActionListener button) {
+        bitwiseANDButton.addActionListener(button);
+        bitwiseORButton.addActionListener(button);
+        bitwiseXORButton.addActionListener(button);
+        bitwiseLeftShiftButton.addActionListener(button);
+        bitwiseRightShiftButton.addActionListener(button);
+        bitwiseInversionButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        a.setText("");
+        b.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getA() {
+        return a.getText();
+    }
+
+    public void setA(JTextField a) {
+        this.a = a;
+    }
+
+    public String getB() {
+        return b.getText();
+    }
+
+    public void setB(JTextField b) {
+        this.b = b;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getBitwiseANDButton() {
+        return bitwiseANDButton;
+    }
+
+    public JButton getBitwiseORButton() {
+        return bitwiseORButton;
+    }
+
+    public JButton getBitwiseXORButton() {
+        return bitwiseXORButton;
+    }
+
+    public JButton getBitwiseLeftShiftButton() {
+        return bitwiseLeftShiftButton;
+    }
+
+    public JButton getBitwiseRightShiftButton() {
+        return bitwiseRightShiftButton;
+    }
+
+    public JButton getBitwiseInversionButton() {
+        return bitwiseInversionButton;
+    }
+
+
+    public JButton getResetButton() {
         return resetButton;
+    }
+
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
     }
 
 }

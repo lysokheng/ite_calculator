@@ -17,11 +17,11 @@ public class OutputArea extends JPanel {
 
     public JTextArea outputArea() {
 
-        textArea = new JTextArea(1,10);
+        textArea = new JTextArea();
         textArea.setEditable(false);
         Font fieldFont = new Font("Helvetica", Font.BOLD, 20);
         textArea.setFont(fieldFont);
-        textArea.setBackground(Color.lightGray);
+        textArea.setBackground(Color.LIGHT_GRAY);
         textArea.setForeground(Color.DARK_GRAY);
         textArea.setBorder(BorderFactory.createCompoundBorder(
                 new CustomBorder(),
