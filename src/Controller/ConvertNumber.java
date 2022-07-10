@@ -132,54 +132,22 @@ public class ConvertNumber {
             while (hex[i] != '\u0000') {
 
                 switch (hex[i]) {
-                    case '0' -> {
-                        contain.add("0000");
-                    }
-                    case '1' -> {
-                        contain.add("0001");
-                    }
-                    case '2' -> {
-                        contain.add("0010");
-                    }
-                    case '3' -> {
-                        contain.add("0011");
-                    }
-                    case '4' -> {
-                        contain.add("0100");
-                    }
-                    case '5' -> {
-                        contain.add("0101");
-                    }
-                    case '6' -> {
-                        contain.add("0110");
-                    }
-                    case '7' -> {
-                        contain.add("0111");
-                    }
-                    case '8' -> {
-                        contain.add("1000");
-                    }
-                    case '9' -> {
-                        contain.add("1001");
-                    }
-                    case 'A', 'a' -> {
-                        contain.add("1010");
-                    }
-                    case 'B', 'b' -> {
-                        contain.add("1011");
-                    }
-                    case 'C', 'c' -> {
-                        contain.add("1100");
-                    }
-                    case 'D', 'd' -> {
-                        contain.add("1101");
-                    }
-                    case 'E', 'e' -> {
-                        contain.add("1110");
-                    }
-                    case 'F', 'f' -> {
-                        contain.add("1111");
-                    }
+                    case '0' -> contain.add("0000");
+                    case '1' -> contain.add("0001");
+                    case '2' -> contain.add("0010");
+                    case '3' -> contain.add("0011");
+                    case '4' -> contain.add("0100");
+                    case '5' -> contain.add("0101");
+                    case '6' -> contain.add("0110");
+                    case '7' -> contain.add("0111");
+                    case '8' -> contain.add("1000");
+                    case '9' -> contain.add("1001");
+                    case 'A', 'a' -> contain.add("1010");
+                    case 'B', 'b' -> contain.add("1011");
+                    case 'C', 'c' -> contain.add("1100");
+                    case 'D', 'd' -> contain.add("1101");
+                    case 'E', 'e' -> contain.add("1110");
+                    case 'F', 'f' -> contain.add("1111");
                     default -> System.out.print("\nInvalid hexadecimal digit " + hex[i]);
                 }
                 i++;
@@ -309,8 +277,7 @@ public class ConvertNumber {
     /**
      * method to convert decimal to hexadecimal
      */
-    public String dec2Hexa(long binary)
-    {
+    public String dec2Hexa(long binary) {
         // variable to store the output of the
         // binaryToDecimal() method
         int decimalNumber = binary2Hex(binary);
@@ -469,9 +436,9 @@ public class ConvertNumber {
                 twos = '1' + twos;
             }
 
-            System.out.println("1's complement: " + ones);
-
-            System.out.println("2's complement: " + twos);
+//            System.out.println("1's complement: " + ones);
+//
+//            System.out.println("2's complement: " + twos);
 
             return twos;
         }

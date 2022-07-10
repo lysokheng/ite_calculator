@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.TrigonometryController;
+import Model.TrigonometryModel;
 import Views.Routes;
 import Views.Widgets.TrigonometryView;
 import Views.Widgets.Utils.AppButtons;
@@ -18,9 +20,8 @@ public class TrigonometryLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     TrigonometryView trigonometryView = new TrigonometryView();
-    AppButtons appButtons = new AppButtons();
-
-    JButton resetButton = appButtons.clearButton();
+    TrigonometryModel trigonometryModel = new TrigonometryModel();
+    TrigonometryController trigonometryController = new TrigonometryController(trigonometryModel, trigonometryView);
 
 
     public JPanel trigonometryPanel(JFrame frame) {
@@ -87,7 +88,7 @@ public class TrigonometryLayout {
         c.ipady = 340;
         c.gridx = 0;
         c.gridy = 3;
-        mainPanel.add(trigonometryView.trigonometryOperator(), c);
+        mainPanel.add(trigonometryView.operator(), c);
 
         //input panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -98,7 +99,7 @@ public class TrigonometryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 3;
-        mainPanel.add(trigonometryView.trigonometryInput(), c);
+        mainPanel.add(trigonometryView.input(), c);
 
         //arithmeticOutput
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -109,7 +110,7 @@ public class TrigonometryLayout {
         c.gridheight = 1;
         c.gridx = 1;
         c.gridy = 4;
-        mainPanel.add(trigonometryView.trigonometryOutput(), c);
+        mainPanel.add(trigonometryView.output(), c);
 
         //history panel
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -118,7 +119,7 @@ public class TrigonometryLayout {
         c.gridheight = 2;
         c.gridx = 2;
         c.gridy = 3;
-        mainPanel.add(trigonometryView.trigonometryHistory(), c);
+        mainPanel.add(trigonometryView.history(), c);
 
         //Back Button
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -132,7 +133,7 @@ public class TrigonometryLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(trigonometryView.trigonometryReset(), c);
+        mainPanel.add(trigonometryView.getResetButton(), c);
 
         return mainPanel;
     }

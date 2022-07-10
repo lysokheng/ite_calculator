@@ -9,8 +9,10 @@ public class ArithmeticModel {
     private static final String INITIAL_VALUE = "0";
 
     //... Member variable defining state of calculator.
-    private BigDecimal result;
+    private String result;
     private int count;
+    private BigDecimal first;
+    private  BigDecimal second;
 
     //============================================================== constructor
     /** Constructor */
@@ -21,7 +23,7 @@ public class ArithmeticModel {
     //==================================================================== reset
     /** Reset to initial value. */
     public void reset() {
-        result = new BigDecimal(INITIAL_VALUE);
+        result = INITIAL_VALUE;
         count = 0;
     }
 
@@ -30,11 +32,11 @@ public class ArithmeticModel {
     public void addition(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-        BigDecimal first = BigDecimal.valueOf(Long.parseLong(a));
-        BigDecimal second = BigDecimal.valueOf(Long.parseLong(b));
+         first = BigDecimal.valueOf(Long.parseLong(a));
+         second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
-        result = first.add(second);
+        result = String.valueOf(first.add(second));
 
         count++;
         history.append(count + ". " + "Addition" + "\n"
@@ -44,11 +46,11 @@ public class ArithmeticModel {
     public void subtraction(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-        BigDecimal first = BigDecimal.valueOf(Long.parseLong(a));
-        BigDecimal second = BigDecimal.valueOf(Long.parseLong(b));
+         first = BigDecimal.valueOf(Long.parseLong(a));
+         second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
-        result = first.subtract(second);
+        result = String.valueOf(first.subtract(second));
 
         count++;
         history.append(count + ". " + "Subtraction" + "\n"
@@ -58,11 +60,11 @@ public class ArithmeticModel {
     public void multiply(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-        BigDecimal first = BigDecimal.valueOf(Long.parseLong(a));
-        BigDecimal second = BigDecimal.valueOf(Long.parseLong(b));
+         first = BigDecimal.valueOf(Long.parseLong(a));
+         second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
-        result = first.multiply(second);
+        result = String.valueOf(first.multiply(second));
 
         count++;
         history.append(count + ". " + "Multiply" + "\n"
@@ -72,11 +74,11 @@ public class ArithmeticModel {
     public void divide(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-        BigDecimal first = BigDecimal.valueOf(Long.parseLong(a));
-        BigDecimal second = BigDecimal.valueOf(Long.parseLong(b));
+         first = BigDecimal.valueOf(Long.parseLong(a));
+         second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
-        result = first.divideToIntegralValue(second);
+        result = String.valueOf(first.divideToIntegralValue(second));
 
         count++;
         history.append(count + ". " + "Divide" + "\n"
@@ -86,11 +88,11 @@ public class ArithmeticModel {
     public void modulo(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-        BigDecimal first = BigDecimal.valueOf(Long.parseLong(a));
-        BigDecimal second = BigDecimal.valueOf(Long.parseLong(b));
+         first = BigDecimal.valueOf(Long.parseLong(a));
+         second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
-        result = first.remainder(second);
+        result = String.valueOf(first.remainder(second));
 
         count++;
         history.append(count + ". " + "Modulo" + "\n"
@@ -100,6 +102,6 @@ public class ArithmeticModel {
     //================================================================= getValue
     /** Return current calculator total. */
     public String getValue() {
-        return result.toString();
+        return result;
     }
 }

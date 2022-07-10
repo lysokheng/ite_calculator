@@ -1,270 +1,98 @@
 package Controller;
 
+import Model.NSCBinaryModel;
+import Model.TrigonometryModel;
+import Views.Widgets.NSCBinaryView;
+import Views.Widgets.TrigonometryView;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TrigonometryController {
-    public int amount, result, count;
+    //... The Controller needs to interact with both the Model and View.
+    private final TrigonometryModel trigonometryModel;
+    private final TrigonometryView trigonometryView;
 
-    public void performReset(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-            amountField.setText("");
-            resultField.setText("");
-            historyField.setText("");
-            count = 0;
-        });
+    //========================================================== constructor
+    /** Constructor */
+    public TrigonometryController(TrigonometryModel model, TrigonometryView view) {
+        trigonometryModel = model;
+        trigonometryView = view;
+
+        //... Add listeners to the view.
+        view.addTrigonometryListener(new TrigonometryListener());
+        view.addClearListener(new ClearListener());
     }
 
-    public void sinToRadianResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
+    ////////////////////////////////////////// inner class MultiplyListener
+    /** When a calculation is requested.
+     *  1. Get the user input number from the View.
+     *  2. Call the model to calculate by this number.
+     *  3. Get the result from the Model.
+     *  4. Tell the View to display the result.
+     * If there was an error, tell the View to display it.
+     */
+    class TrigonometryListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String amount = "";
+            JTextArea history;
+            try {
+                amount = trigonometryView.getAmount();
+                history = trigonometryView.getHistoryField();
 
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
+                if (e.getSource() == trigonometryView.getSinToDegreeButton()){
+                    trigonometryModel.sinToDegree(amount, history);
 
-            // convert degrees to radians
-            double radians = Math.toRadians(amount);
-            // sin() method to get the sine value
-            double sinValue = Math.sin(radians);
-            // prints the sine value
-            System.out.println("sin(" + amount + " degrees) = " + sinValue + " radians");
+                } else if (e.getSource() == trigonometryView.getSinToRadianButton()) {
+                    trigonometryModel.sinToRadian(amount, history);
 
-            //Show the output
-            resultField.setText(String.valueOf(sinValue));
+                } else if (e.getSource() == trigonometryView.getCosToDegreeButton()) {
+                    trigonometryModel.cosToDegree(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Sin to Radian" + "\n"
-                    + "sin(" + amount + " degrees) = " + sinValue + " radians" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == trigonometryView.getCosToRadianButton()) {
+                    trigonometryModel.cosToRadian(amount, history);
 
-    public void sinToDegreeResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
+                } else if (e.getSource() == trigonometryView.getTanToDegreeButton()) {
+                    trigonometryModel.tanToDegree(amount, history);
 
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
+                } else if (e.getSource() == trigonometryView.getTanToRadianButton()) {
+                    trigonometryModel.tanToRadian(amount, history);
 
-            // convert radians to degrees
-            double radians = Math.toDegrees(amount);
-            // sin() method to get the sine value
-            double sinValue = Math.sin(radians);
-            // prints the sine value
-            System.out.println("sin(" + amount + " radians) = " + sinValue + " degrees");
+                } else if (e.getSource() == trigonometryView.getSquare2InFloatingPointButton()) {
+                    trigonometryModel.square2InFloating_point(amount, history);
 
-            //Show the output
-            resultField.setText(String.valueOf(sinValue));
+                } else if (e.getSource() == trigonometryView.getSquare2InIntegerButton()) {
+                    trigonometryModel.square2InInt(amount, history);
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Sin to Degree" + "\n"
-                    + "sin(" + amount + " radians) = " + sinValue + " degrees" + "\n\n");
-        });
-    }
+                } else if (e.getSource() == trigonometryView.getSquare3InIntegerButton()) {
+                    trigonometryModel.square3InInt(amount, history);
 
-    public void cosToRadianResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
+                } else if (e.getSource() == trigonometryView.getSquare3InFloatingPointButton()) {
+                    trigonometryModel.square3InFloating_point(amount, history);
 
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
+                } else if (e.getSource() == trigonometryView.getDegreeToRadianButton()) {
+                    trigonometryModel.degreeToRadian(amount, history);
 
-            // convert degrees to radians
-            double radians = Math.toRadians(amount);
-            // cos() method to get the cosine value
-            double cosValue = Math.cos(radians);
-            // prints the cosine value
-            System.out.println("cos(" + amount + " degrees) = " + cosValue + " radians");
+                }
 
-            //Show the output
-            resultField.setText(String.valueOf(cosValue));
+                trigonometryView.setResultField(trigonometryModel.getValue());
 
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Cos to Radians" + "\n"
-                    + "cos(" + amount + " degrees) = " + cosValue + " radians" + "\n\n");
-        });
-    }
+            } catch (NumberFormatException next) {
+                trigonometryView.showError("Bad input: '" + amount +  "'");
+            }
+        }
+    }//end inner class MultiplyListener
 
-    public void cosToDegreeResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
 
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // convert radians to degrees
-            double radians = Math.toDegrees(amount);
-            // cos() method to get the cosine value
-            double cosValue = Math.cos(radians);
-            // prints the cosine value
-            System.out.println("cos(" + amount + " radians) = " + cosValue + " degrees");
-
-            //Show the output
-            resultField.setText(String.valueOf(cosValue));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Cos to Degree" + "\n"
-                    + "cos(" + amount + " radians) = " + cosValue + " degrees" + "\n\n");
-        });
-    }
-
-    public void tanToRadianResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // convert degrees to radians
-            double radians = Math.toRadians(amount);
-            // tan() method to get the tangent value
-            double tanValue = Math.tan(radians);
-            // prints the tangent value
-            System.out.println("tan(" + amount + " degrees) = " + tanValue + " radians");
-
-            //Show the output
-            resultField.setText(String.valueOf(tanValue));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Tan to Radian" + "\n"
-                    + "tan(" + amount + " degrees) = " + tanValue + " radians" + "\n\n");
-        });
-    }
-
-    public void tanToDegreeResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // convert radians to degrees
-            double Degree = Math.toDegrees(amount);
-            // tan() method to get the sine value
-            double tanValue = Math.sin(Degree);
-            // prints the tangent value
-            System.out.println("tan(" + amount + " radians) = " + tanValue + " degrees");
-
-            //Show the output
-            resultField.setText(String.valueOf(tanValue));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Tan to Degree" + "\n"
-                    + "tan(" + amount + " radians) = " + tanValue + " degrees" + "\n\n");
-        });
-    }
-
-    public void square2InIntResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // Math.pow() method to get the square value
-            double square = Math.pow(amount, 2);
-            // prints the square value
-            System.out.println("square2 in integer: " + amount + " = " + (int) square);
-
-            //Show the output
-            resultField.setText(String.valueOf(square));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Square2 In Integer" + "\n"
-                    + "square2 in integer: " + amount + " = " + (int) square + "\n\n");
-        });
-    }
-
-    public void square2InFloating_pointResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // Math.pow() method to get the square value
-            double square = Math.pow(amount, 2);
-            // prints the square value
-            System.out.println("square2 in floating-point: " + amount + " = " + (float) square);
-
-            //Show the output
-            resultField.setText(String.valueOf(square));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Square2 in Floating Point" + "\n"
-                    + "square2 in floating-point: " + amount + " = " + (float) square + "\n\n");
-        });
-    }
-
-    public void square3InIntResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // Math.pow() method to get the square value
-            double square = Math.pow(amount, 3);
-            // prints the square value
-            System.out.println("square3 in integer: " + amount + " = " + (int) square);
-
-            //Show the output
-            resultField.setText(String.valueOf(square));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Square3 in Integer" + "\n"
-                    + "square3 in integer: " + amount + " = " + (int) square + "\n\n");
-        });
-    }
-
-    public void square3InFloating_pointResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // Math.pow() method to get the square value
-            double square = Math.pow(amount, 3);
-            // prints the square value
-            System.out.println("square3 in floating-point: " + amount + " = " + (float) square);
-
-            //Show the output
-            resultField.setText(String.valueOf(square));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Square3 in Floating Point" + "\n"
-                    + "square3 in floating-point: " + amount + " = " + (float) square + "\n\n");
-        });
-    }
-
-    public void degreeToRadianResult(JButton button, JTextField amountField, JTextArea resultField, JTextArea historyField){
-        button.addActionListener(e -> {
-
-            //Get the inputs
-            amount = Integer.parseInt(amountField.getText());
-
-            // convert degrees to radians
-            double radians = Math.toRadians(amount);
-            // prints the radians value
-            System.out.println(amount + " degrees = " + radians + " radians");
-
-            //Show the output
-            resultField.setText(String.valueOf(radians));
-
-            //print history
-            count++;
-            System.out.println(count);
-            historyField.append(count + ". " + "Degree to Radian" + "\n"
-                    + amount + " degrees = " + radians + " radians" + "\n\n");
-        });
-    }
+    //////////////////////////////////////////// inner class ClearListener
+    /**  1. Reset model.
+     *   2. Reset View.
+     */
+    class ClearListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            trigonometryModel.reset();
+            trigonometryView.reset();
+        }
+    }// end inner class ClearListener
 }

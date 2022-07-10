@@ -1,6 +1,5 @@
 package Views.Widgets;
 
-import Controller.TrigonometryController;
 import Views.Widgets.Components.HistoryArea;
 import Views.Widgets.Components.InputFieldDecimal;
 import Views.Widgets.Components.OutputArea;
@@ -13,37 +12,40 @@ import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class TrigonometryView {
-    //create object
-    AppTexts appTexts = new AppTexts();
-    AppButtons appButtons = new AppButtons();
-    InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
-    OutputArea outputArea = new OutputArea();
-    HistoryArea historyArea = new HistoryArea();
-    AppColors appColors = new AppColors();
-    TrigonometryController trigonometryController = new TrigonometryController();
+public class TrigonometryView extends Component {
+    //... Constants
+    private static final String INITIAL_VALUE = "";
 
-    //name of new object
-    JTextField amount = inputFieldDecimal.inputField();
-    JTextArea resultField = outputArea.outputArea();
-    JTextArea historyField = historyArea.historyArea();
-    JButton sinToRadianButton = appButtons.sinToRadianButton();
-    JButton sinToDegreeButton = appButtons.sinToDegreeButton();
-    JButton cosToRadianButton = appButtons.cosToRadianButton();
-    JButton cosToDegreeButton = appButtons.cosToDegreeButton();
-    JButton tanToRadianButton = appButtons.tanToRadianButton();
-    JButton tanToDegreeButton = appButtons.tanToDegreeButton();
-    JButton square2InIntegerButton = appButtons.square2InIntegerButton();
-    JButton square2InFloatingPointButton = appButtons.square2InFloatingPointButton();
-    JButton square3InIntegerButton = appButtons.square3InIntegerButton();
-    JButton square3InFloatingPointButton = appButtons.square3InFloatingPointButton();
-    JButton degreeToRadianButton = appButtons.degreeToRadianButton();
+    //... create object
+    private final AppTexts appTexts = new AppTexts();
+    private final AppButtons appButtons = new AppButtons();
+    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final OutputArea outputArea = new OutputArea();
+    private final HistoryArea historyArea = new HistoryArea();
+    private final AppColors appColors = new AppColors();
 
-    JButton resetButton = appButtons.clearButton();
+    //... name of new object
+    private JTextField amount = inputFieldDecimal.inputField();
+    private final JTextArea resultField = outputArea.outputArea();
+    private JTextArea historyField = historyArea.historyArea();
+    private final JButton sinToRadianButton = appButtons.sinToRadianButton();
+    private final JButton sinToDegreeButton = appButtons.sinToDegreeButton();
+    private final JButton cosToRadianButton = appButtons.cosToRadianButton();
+    private final JButton cosToDegreeButton = appButtons.cosToDegreeButton();
+    private final JButton tanToRadianButton = appButtons.tanToRadianButton();
+    private final JButton tanToDegreeButton = appButtons.tanToDegreeButton();
+    private final JButton square2InIntegerButton = appButtons.square2InIntegerButton();
+    private final JButton square2InFloatingPointButton = appButtons.square2InFloatingPointButton();
+    private final JButton square3InIntegerButton = appButtons.square3InIntegerButton();
+    private final JButton square3InFloatingPointButton = appButtons.square3InFloatingPointButton();
+    private final JButton degreeToRadianButton = appButtons.degreeToRadianButton();
 
+    private JButton resetButton = appButtons.clearButton();
 
-    public JPanel trigonometryInput() {
+    //======================================================= components
+    public JPanel input() {
         //main panel
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
@@ -76,8 +78,7 @@ public class TrigonometryView {
 
         return generatorPanel;
     }
-
-    public JPanel trigonometryOperator() {
+    public JPanel operator() {
         //Create JPanel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
         operatorPanel.setBackground(Color.WHITE);
@@ -173,8 +174,7 @@ public class TrigonometryView {
 
         return mainPanel;
     }
-
-    public JPanel trigonometryOutput() {
+    public JPanel output() {
         //main panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
@@ -190,6 +190,10 @@ public class TrigonometryView {
 
         //view
 
+        JScrollPane areaScrollPane = new JScrollPane(resultField);
+
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -199,12 +203,13 @@ public class TrigonometryView {
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        outputPanel.add(resultField, c);
+        c.ipadx = 160;
+        c.ipady = 60;
+        outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
     }
-
-    public JPanel trigonometryHistory() {
+    public JPanel history() {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
@@ -235,25 +240,111 @@ public class TrigonometryView {
         c.ipady = 340;
         historyPanel.add(areaScrollPane, c);
 
-        //perform calculate
-        trigonometryController.sinToRadianResult(sinToRadianButton, amount, resultField, historyField);
-        trigonometryController.sinToDegreeResult(sinToDegreeButton, amount, resultField, historyField);
-        trigonometryController.cosToDegreeResult(cosToDegreeButton, amount, resultField, historyField);
-        trigonometryController.cosToRadianResult(cosToRadianButton, amount, resultField, historyField);
-        trigonometryController.tanToDegreeResult(tanToDegreeButton, amount, resultField, historyField);
-        trigonometryController.tanToRadianResult(tanToRadianButton, amount, resultField, historyField);
-        trigonometryController.degreeToRadianResult(degreeToRadianButton, amount, resultField, historyField);
-        trigonometryController.square2InIntResult(square2InIntegerButton, amount, resultField, historyField);
-        trigonometryController.square2InFloating_pointResult(square2InFloatingPointButton, amount, resultField, historyField);
-        trigonometryController.square3InIntResult(square3InIntegerButton, amount, resultField, historyField);
-        trigonometryController.square3InFloating_pointResult(square3InFloatingPointButton, amount, resultField, historyField);
-
         return historyPanel;
     }
 
-    public JButton trigonometryReset(){
-        trigonometryController.performReset(resetButton, amount, resultField, historyField);
+    //======================================================= add button to controller
+    public void addTrigonometryListener(ActionListener button) {
+        sinToRadianButton.addActionListener(button);
+        sinToDegreeButton.addActionListener(button);
+        cosToDegreeButton.addActionListener(button);
+        cosToRadianButton.addActionListener(button);
+        tanToDegreeButton.addActionListener(button);
+        tanToRadianButton.addActionListener(button);
+        square2InFloatingPointButton.addActionListener(button);
+        square2InIntegerButton.addActionListener(button);
+        square3InFloatingPointButton.addActionListener(button);
+        square3InIntegerButton.addActionListener(button);
+        degreeToRadianButton.addActionListener(button);
+    }
+    public void addClearListener(ActionListener button) {
+        resetButton.addActionListener(button);
+    }
+
+    //======================================================= additional method
+    public void reset(){
+        resultField.setText(INITIAL_VALUE);
+        amount.setText("");
+        historyField.setText("");
+    }
+    public void showError(String errMessage) {
+        JOptionPane.showMessageDialog(this, errMessage);
+    }
+
+    //======================================================= getter and setter methods
+    public String getAmount() {
+        return amount.getText();
+    }
+
+    public void setAmount(JTextField amount) {
+        this.amount = amount;
+    }
+
+    public String getResultField() {
+        return resultField.toString();
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
+    }
+
+    public void setHistoryField(JTextArea historyField) {
+        this.historyField = historyField;
+    }
+
+    public JButton getSinToRadianButton() {
+        return sinToRadianButton;
+    }
+
+    public JButton getSinToDegreeButton() {
+        return sinToDegreeButton;
+    }
+
+    public JButton getCosToRadianButton() {
+        return cosToRadianButton;
+    }
+
+    public JButton getCosToDegreeButton() {
+        return cosToDegreeButton;
+    }
+
+    public JButton getTanToRadianButton() {
+        return tanToRadianButton;
+    }
+
+    public JButton getTanToDegreeButton() {
+        return tanToDegreeButton;
+    }
+
+    public JButton getSquare2InIntegerButton() {
+        return square2InIntegerButton;
+    }
+
+    public JButton getSquare2InFloatingPointButton() {
+        return square2InFloatingPointButton;
+    }
+
+    public JButton getSquare3InIntegerButton() {
+        return square3InIntegerButton;
+    }
+
+    public JButton getSquare3InFloatingPointButton() {
+        return square3InFloatingPointButton;
+    }
+
+    public JButton getDegreeToRadianButton() {
+        return degreeToRadianButton;
+    }
+
+    public JButton getResetButton() {
         return resetButton;
     }
 
+    public void setResetButton(JButton resetButton) {
+        this.resetButton = resetButton;
+    }
 }

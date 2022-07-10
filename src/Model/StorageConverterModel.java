@@ -316,8 +316,112 @@ public class StorageConverterModel {
         result = String.valueOf(amount * Math.pow(1024, 3));
 
         count++;
-        history.append(count + ". " + "Terabyte to Byte" + "\n"
-                + amount + " Terabyte\n=\n" + result + " Byte" + "\n\n");
+        history.append(count + ". " + "Terabyte to Kilobyte" + "\n"
+                + amount + " Terabyte\n=\n" + result + " Kilobyte" + "\n\n");
+    }
+
+    public void tb2MB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 2));
+
+        count++;
+        history.append(count + ". " + "Terabyte to Megabyte" + "\n"
+                + amount + " Terabyte\n=\n" + result + " Megabyte" + "\n\n");
+    }
+
+    public void tb2GB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 1));
+
+        count++;
+        history.append(count + ". " + "Terabyte to Gigabyte" + "\n"
+                + amount + " Terabyte\n=\n" + result + " Gigabyte" + "\n\n");
+    }
+
+    public void tb2PB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount / Math.pow(1024, 1));
+
+        count++;
+        history.append(count + ". " + "Terabyte to Petabyte" + "\n"
+                + amount + " Terabyte\n=\n" + result + " Petabyte" + "\n\n");
+    }
+
+    public void pb2Byte(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 5));
+
+        count++;
+        history.append(count + ". " + "Petabyte to Byte" + "\n"
+                + amount + " Petabyte\n=\n" + result + " Byte" + "\n\n");
+    }
+
+    public void pb2KB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 4));
+
+        count++;
+        history.append(count + ". " + "Petabyte to Kilobyte" + "\n"
+                + amount + " Petabyte\n=\n" + result + " Kilobyte" + "\n\n");
+    }
+
+    public void pb2MB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 3));
+
+        count++;
+        history.append(count + ". " + "Petabyte to Megabyte" + "\n"
+                + amount + " Petabyte\n=\n" + result + " Megabyte" + "\n\n");
+    }
+
+    public void pb2GB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 2));
+
+        count++;
+        history.append(count + ". " + "Petabyte to Gigabyte" + "\n"
+                + amount + " Petabyte\n=\n" + result + " Gigabyte" + "\n\n");
+    }
+
+    public void pb2TB(String amountField, JTextArea history) {
+
+        //Get the inputs
+        amount = Double.parseDouble(amountField);
+
+        //Calculate the output
+        result = String.valueOf(amount * Math.pow(1024, 1));
+
+        count++;
+        history.append(count + ". " + "Petabyte to Terabyte" + "\n"
+                + amount + " Petabyte\n=\n" + result + " Terabyte" + "\n\n");
     }
 
     //================================================================= getValue

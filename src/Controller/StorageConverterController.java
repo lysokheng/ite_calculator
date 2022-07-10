@@ -42,99 +42,99 @@ public class StorageConverterController {
                 history = storageConverterView.getHistoryField();
 
                 if (e.getSource() == storageConverterView.getByteToKilobyteButton()){
-                    storageConverterModel.binary2Decimal(amount, history);
+                    storageConverterModel.byte2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getByteToMegabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.byte2MB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getByteToGigabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.byte2GB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getByteToPetabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.byte2PB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getByteToTerabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.byte2TB(amount, history);
 
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToByteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.kb2byte(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToMegabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.kb2MB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToGigabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.kb2GB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToPetabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.kb2PB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToTerabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.kb2TB(amount, history);
 
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToByteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.mb2byte(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToKilobyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.mb2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToGigabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.mb2GB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToPetabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.mb2PB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToTerabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.mb2TB(amount, history);
 
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToByteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.gb2byte(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToKilobyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.gb2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToMegabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.gb2MB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToPetabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.gb2PB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToTerabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.gb2TB(amount, history);
 
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToByteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.pb2Byte(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToKilobyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.pb2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToMegabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.pb2MB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToGigabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.pb2GB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToTerabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.pb2TB(amount, history);
 
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToByteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.tb2byte(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToKilobyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.tb2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToMegabyteButton()) {
-                    storageConverterModel.binary2Hex(amount, history);
+                    storageConverterModel.tb2MB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToGigabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.tb2GB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToPetabyteButton()) {
-                    storageConverterModel.binary2Octal(amount, history);
+                    storageConverterModel.tb2PB(amount, history);
 
                 }
 

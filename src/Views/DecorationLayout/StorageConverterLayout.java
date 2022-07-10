@@ -1,5 +1,7 @@
 package Views.DecorationLayout;
 
+import Controller.StorageConverterController;
+import Model.StorageConverterModel;
 import Views.Routes;
 import Views.Widgets.StorageConverterView;
 import Views.Widgets.Utils.AppButtons;
@@ -18,9 +20,10 @@ public class StorageConverterLayout {
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
     StorageConverterView storageConverterView = new StorageConverterView();
-    AppButtons appButtons = new AppButtons();
-
-    JButton resetButton = appButtons.clearButton();
+    StorageConverterModel storageConverterModel = new StorageConverterModel();
+    StorageConverterController storageConverterController = new StorageConverterController(
+            storageConverterModel, storageConverterView
+    );
 
     public JPanel storageConverterPanel(JFrame frame) {
         //create main panel object
@@ -131,7 +134,7 @@ public class StorageConverterLayout {
         c.insets = new Insets(30, 0, 30, 0);
         c.gridx = 1;
         c.gridy = 5;
-        mainPanel.add(storageConverterView.storageConverterReset(), c);
+        mainPanel.add(storageConverterView.getResetButton(), c);
 
         return mainPanel;
     }
