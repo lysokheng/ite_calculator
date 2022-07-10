@@ -14,7 +14,7 @@ import java.awt.Insets;
 import java.awt.GridBagLayout;
 
 public class ArithmeticLayout {
-
+    //... create object
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
     Routes routs = new Routes();
@@ -22,6 +22,7 @@ public class ArithmeticLayout {
     ArithmeticModel arithmeticModel = new ArithmeticModel();
     ArithmeticController arithmeticController = new ArithmeticController(arithmeticModel, arithmeticView);
 
+    //======================================================= Panel
     public JPanel arithmeticPanel(JFrame frame) {
         //create main panel object
         JPanel mainPanel = new JPanel(new GridBagLayout());

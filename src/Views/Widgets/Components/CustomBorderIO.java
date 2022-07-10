@@ -3,7 +3,7 @@ package Views.Widgets.Components;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 
-public class CustomBorder extends AbstractBorder {
+public class CustomBorderIO extends AbstractBorder {
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y,
                             int width, int height) {

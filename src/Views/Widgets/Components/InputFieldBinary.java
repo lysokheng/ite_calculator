@@ -1,9 +1,6 @@
 package Views.Widgets.Components;
 
-import Views.Widgets.Utils.AppColors;
-
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -31,7 +28,7 @@ public class InputFieldBinary extends JPanel {
         textField.setForeground(Color.DARK_GRAY);
         textField.setColumns(10);
         textField.setBorder(BorderFactory.createCompoundBorder(
-                new CustomBorder(),
+                new CustomBorderIO(),
                 new EmptyBorder(new Insets(25, 25, 25, 25))));
 
         add(textField, BorderLayout.CENTER);

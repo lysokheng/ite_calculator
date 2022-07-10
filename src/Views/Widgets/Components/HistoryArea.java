@@ -3,9 +3,10 @@ package Views.Widgets.Components;
 import Views.Widgets.Utils.AppColors;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -25,7 +26,7 @@ public class HistoryArea extends JPanel {
         textArea.setForeground(Color.DARK_GRAY);
         textArea.setColumns(40);
         textArea.setBorder(BorderFactory.createCompoundBorder(
-                new CustomBorder(),
+                new CustomBorderIO(),
                 new EmptyBorder(new Insets(25, 25, 25, 25))));
 
         add(textArea, BorderLayout.CENTER);
@@ -35,19 +36,6 @@ public class HistoryArea extends JPanel {
         textArea.addMouseListener(new MouseHover());
 
         return textArea;
-    }
-
-    static class CustomBorder extends AbstractBorder {
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            // TODO Auto-generated method stubs
-            super.paintBorder(c, g, x, y, width, height);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setStroke(new BasicStroke(12));
-            g2d.setColor(Color.WHITE);
-            g2d.drawRoundRect(x, y, width - 1, height - 1, 25, 25);
-        }
     }
 
     class MouseHover implements MouseListener {
