@@ -1,4 +1,4 @@
-package Views;
+package Controller;
 
 import Views.DecorationLayout.*;
 import Views.DecorationLayout.BitwiseBinaryLayout;

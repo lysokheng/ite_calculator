@@ -2,7 +2,7 @@ package Views.DecorationLayout;
 
 import Controller.NSCBinaryController;
 import Model.NSCBinaryModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.NSCBinaryView;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;

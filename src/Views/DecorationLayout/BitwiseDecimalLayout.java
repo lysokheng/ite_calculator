@@ -1,9 +1,8 @@
 package Views.DecorationLayout;
 
-import Controller.BitwiseBinaryController;
 import Controller.BitwiseDecimalController;
 import Model.BitwiseDecimalModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.BitwiseDecimalView;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;

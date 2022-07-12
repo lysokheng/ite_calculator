@@ -2,7 +2,7 @@ package Views.DecorationLayout;
 
 import Controller.NSCOctalController;
 import Model.NSCOctalModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
 import Views.Widgets.NSCOctalView;

@@ -2,7 +2,7 @@ package Views.DecorationLayout;
 
 import Controller.NSCHexadecimalController;
 import Model.NSCHexadecimalModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;

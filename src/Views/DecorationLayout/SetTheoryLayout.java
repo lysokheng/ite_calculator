@@ -2,9 +2,8 @@ package Views.DecorationLayout;
 
 import Controller.SetTheoryController;
 import Model.SetTheoryModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.SetTheoryView;
-import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
 

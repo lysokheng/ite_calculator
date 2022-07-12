@@ -2,7 +2,7 @@ package Views.DecorationLayout;
 
 import Controller.BitwiseBinaryController;
 import Model.BitwiseBinaryModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
 import Views.Widgets.BitwiseBinaryView;

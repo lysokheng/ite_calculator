@@ -2,9 +2,8 @@ package Views.DecorationLayout;
 
 import Controller.TrigonometryController;
 import Model.TrigonometryModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.TrigonometryView;
-import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
 

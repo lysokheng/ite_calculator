@@ -246,12 +246,12 @@ public class ArithmeticView extends Component {
         return resultField.toString();
     }
 
-    public JTextArea getHistoryField() {
-        return historyField;
-    }
-
     public void setResultField(String newText) {
         resultField.setText(newText);
+    }
+
+    public JTextArea getHistoryField() {
+        return historyField;
     }
 
     public void setHistoryField(JTextArea historyField) {

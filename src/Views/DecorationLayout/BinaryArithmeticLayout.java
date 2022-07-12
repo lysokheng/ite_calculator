@@ -2,7 +2,7 @@ package Views.DecorationLayout;
 
 import Controller.BinaryArithmeticController;
 import Model.BinaryArithmeticModel;
-import Views.Routes;
+import Controller.Routes;
 import Views.Widgets.BinaryArithmeticView;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
