@@ -12,7 +12,7 @@ public class AppButtons {
     public JButton exitButton() {
         ImageIcon exitIcon = new ImageIcon("Assets/Images/Exit.png");
         Image exitImage = exitIcon.getImage(); // transform it
-        Image newExitImg = exitImage.getScaledInstance(210, 97, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newExitImg = exitImage.getScaledInstance(180, 80, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         exitIcon = new ImageIcon(newExitImg);  // transform it back
         JButton exitButton = new JButton(exitIcon);
         customImages.customImageButton(exitButton);

@@ -16,8 +16,9 @@ public class MainGUI {
 
         menuLayout.menuPanel(frame);
 //        frame.setResizable(false);
-        frame.setSize(1300, 800);
+        frame.setSize(1200, 700);
         frame.setLocationRelativeTo(null);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         appIcons.appIcon(frame);
     }
