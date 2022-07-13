@@ -16,7 +16,7 @@ public class CustomImages {
 
     public ImageIcon resizeImageMenu(ImageIcon imageIcon) {
         Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(320, 200, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newImg = image.getScaledInstance(280, 180, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newImg);  // transform it back
 
         return imageIcon;

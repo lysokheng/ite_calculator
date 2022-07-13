@@ -15,8 +15,8 @@ public class MainGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         menuLayout.menuPanel(frame);
-        frame.setResizable(false);
-        frame.setSize(1440, 900);
+//        frame.setResizable(false);
+        frame.setSize(1300, 800);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         appIcons.appIcon(frame);
