@@ -28,7 +28,7 @@ public class InputFieldHexadecimal extends JPanel {
                 }
             }
         });
-        Font fieldFont = new Font("Helvetica", Font.BOLD, 20);
+        Font fieldFont = new Font("Helvetica", Font.BOLD, 17);
         textField.setFont(fieldFont);
         textField.setBackground(Color.lightGray);
         textField.setForeground(Color.DARK_GRAY);

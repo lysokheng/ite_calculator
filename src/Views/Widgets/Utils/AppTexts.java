@@ -19,7 +19,7 @@ public class AppTexts {
     public JLabel bigTextTitle(String text) {
         JLabel newText = new JLabel(text);
         newText.setForeground(appColors.getGREEN_COLOR());
-        newText.setFont(new Font("Helvetica", Font.BOLD, 28));
+        newText.setFont(new Font("Helvetica", Font.BOLD, 24));
         return newText;
     }
 
@@ -40,14 +40,14 @@ public class AppTexts {
     public JLabel mediumText(String text) {
         JLabel newText = new JLabel(text);
         newText.setForeground(appColors.getPRIMARY_COLOR());
-        newText.setFont(new Font("Helvetica", Font.BOLD, 24));
+        newText.setFont(new Font("Helvetica", Font.BOLD, 22));
         return newText;
     }
 
     public JLabel guidedText(String text) {
         JLabel newText = new JLabel(text);
         newText.setForeground(appColors.getSECONDARY_COLOR());
-        newText.setFont(new Font("Helvetica", Font.BOLD, 24));
+        newText.setFont(new Font("Helvetica", Font.BOLD, 20));
         return newText;
     }
 

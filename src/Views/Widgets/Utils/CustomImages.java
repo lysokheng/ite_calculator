@@ -24,7 +24,7 @@ public class CustomImages {
 
     public ImageIcon resizeImageCalculate(ImageIcon imageIcon) {
         Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(180, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newImg = image.getScaledInstance(160, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newImg);  // transform it back
 
         return imageIcon;
@@ -32,7 +32,7 @@ public class CustomImages {
 
     public ImageIcon resizeImageOperator(ImageIcon imageIcon) {
         Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(200, 75, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newImg = image.getScaledInstance(160, 65, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newImg);  // transform it back
 
         return imageIcon;
@@ -56,7 +56,7 @@ public class CustomImages {
 
     public ImageIcon resizeImageButtonNumberSystemButtons(ImageIcon imageIcon) {
         Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(160, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        Image newImg = image.getScaledInstance(140, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newImg);  // transform it back
 
         return imageIcon;

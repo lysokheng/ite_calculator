@@ -42,7 +42,7 @@ public class ArithmeticView extends Component {
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         //custom rectangle
         generatorPanel.setBackground(Color.WHITE);
@@ -55,31 +55,27 @@ public class ArithmeticView extends Component {
 
         //A part
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+        c.weighty = 1;
         c.gridx = 0;
         c.gridy = 0;
-        c.ipadx = 0;
         generatorPanel.add(appTexts.mediumText("A:"), c);
 
         //TextField part
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;
-        c.ipadx = 100;
         generatorPanel.add(a, c);
 
         //B part
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        c.ipadx = 0;
         generatorPanel.add(appTexts.mediumText("B:"), c);
 
         //TextField part
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        c.ipadx = 100;
+        c.ipadx = 90;
         generatorPanel.add(b, c);
 
         return generatorPanel;
@@ -89,7 +85,7 @@ public class ArithmeticView extends Component {
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         //custom rectangle
         operatorPanel.setBackground(Color.WHITE);
@@ -103,30 +99,28 @@ public class ArithmeticView extends Component {
         //Addition
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 0, 0, 0);
+        c.weightx = 1;
+        c.weighty = 1 ;
         c.gridx = 0;
         c.gridy = 0;
         operatorPanel.add(additionButton, c);
 
         //Subtraction
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;
         operatorPanel.add(subtractionButton, c);
 
         //Multiplication
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 1;
         operatorPanel.add(multiplicationButton, c);
 
         //Division
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
         operatorPanel.add(divisionButton, c);
 
         //Modulo
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 2;
         operatorPanel.add(moduloButton, c);
@@ -138,7 +132,7 @@ public class ArithmeticView extends Component {
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         //custom rectangle
         outputPanel.setBackground(Color.WHITE);
@@ -156,13 +150,15 @@ public class ArithmeticView extends Component {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
+        c.weighty = 1;
+        c.weightx = 1;
+        c.ipady = 10;
         outputPanel.add(appTexts.mediumText("Result"), c);
 
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        c.ipadx = 160;
+        c.ipadx = 120;
         c.ipady = 60;
         outputPanel.add(areaScrollPane, c);
 
@@ -195,8 +191,8 @@ public class ArithmeticView extends Component {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        c.ipadx = 400;
-        c.ipady = 340;
+        c.ipadx = 360;
+        c.ipady = 260;
         historyPanel.add(areaScrollPane, c);
 
         return historyPanel;

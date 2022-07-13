@@ -18,7 +18,7 @@ public class OutputArea extends JPanel {
 
         textArea = new JTextArea();
         textArea.setEditable(false);
-        Font fieldFont = new Font("Helvetica", Font.BOLD, 20);
+        Font fieldFont = new Font("Helvetica", Font.BOLD, 17);
         textArea.setFont(fieldFont);
         textArea.setBackground(Color.LIGHT_GRAY);
         textArea.setForeground(Color.DARK_GRAY);

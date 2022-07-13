@@ -68,7 +68,7 @@ public class StorageConverterView extends Component {
         JPanel generatorPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         //custom rectangle
         generatorPanel.setBackground(Color.WHITE);
@@ -79,19 +79,17 @@ public class StorageConverterView extends Component {
 
         //view
 
-        //Amount part
+        //A part
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+        c.weighty = 1;
         c.gridx = 0;
         c.gridy = 0;
-        c.ipadx = 0;
         generatorPanel.add(appTexts.mediumText("Amount:"), c);
 
         //TextField part
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        c.ipadx = 100;
         generatorPanel.add(amount, c);
 
         return generatorPanel;
@@ -264,10 +262,10 @@ public class StorageConverterView extends Component {
         JScrollPane areaScrollPane = new JScrollPane(operatorPanel);
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 15, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(520, 440));
+        areaScrollPane.setPreferredSize(new Dimension(400, 300));
         areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
         areaScrollPane.getVerticalScrollBar().setUnitIncrement(6);
         areaScrollPane.setBorder(border);
@@ -281,7 +279,7 @@ public class StorageConverterView extends Component {
         JPanel outputPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         //custom rectangle
         outputPanel.setBackground(Color.WHITE);
@@ -299,13 +297,15 @@ public class StorageConverterView extends Component {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
+        c.weighty = 1;
+        c.weightx = 1;
+        c.ipady = 10;
         outputPanel.add(appTexts.mediumText("Result"), c);
 
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
-        c.ipadx = 160;
+        c.ipadx = 120;
         c.ipady = 60;
         outputPanel.add(areaScrollPane, c);
 
@@ -338,12 +338,13 @@ public class StorageConverterView extends Component {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        c.ipadx = 400;
-        c.ipady = 340;
+        c.ipadx = 360;
+        c.ipady = 260;
         historyPanel.add(areaScrollPane, c);
 
         return historyPanel;
     }
+
     //======================================================= add button to controller
     public void addStorageConverterListener(ActionListener button) {
         byteToKilobyteButton.addActionListener(button);
