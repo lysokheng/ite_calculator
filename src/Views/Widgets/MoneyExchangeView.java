@@ -59,6 +59,9 @@ public class MoneyExchangeView extends Component {
 
         //view
 
+        JScrollPane areaScrollPaneAmount = new JScrollPane(amount);
+        areaScrollPaneAmount.setBorder(BorderFactory.createEmptyBorder());
+
         //A part
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
@@ -70,7 +73,9 @@ public class MoneyExchangeView extends Component {
         //TextField part
         c.gridx = 0;
         c.gridy = 1;
-        generatorPanel.add(amount, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneAmount, c);
 
         return generatorPanel;
     }
@@ -175,7 +180,7 @@ public class MoneyExchangeView extends Component {
         c.gridx = 0;
         c.gridy = 1;
         c.ipadx = 120;
-        c.ipady = 60;
+        c.ipady = 70;
         outputPanel.add(areaScrollPane, c);
 
         return outputPanel;

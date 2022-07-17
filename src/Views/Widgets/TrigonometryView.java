@@ -1,9 +1,6 @@
 package Views.Widgets;
 
-import Views.Widgets.Components.HistoryArea;
-import Views.Widgets.Components.InputFieldDecimal;
-import Views.Widgets.Components.OutputArea;
-import Views.Widgets.Components.TextBubbleBorder;
+import Views.Widgets.Components.*;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppColors;
 import Views.Widgets.Utils.AppTexts;
@@ -21,13 +18,13 @@ public class TrigonometryView extends Component {
     //... create object
     private final AppTexts appTexts = new AppTexts();
     private final AppButtons appButtons = new AppButtons();
-    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final InputFieldDecimalWithDot inputFieldDecimalWithDot = new InputFieldDecimalWithDot();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
     private final AppColors appColors = new AppColors();
 
     //... name of new object
-    private JTextField amount = inputFieldDecimal.inputField();
+    private JTextField amount = inputFieldDecimalWithDot.inputField();
     private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
     private final JButton sinToRadianButton = appButtons.sinToRadianButton();
@@ -61,6 +58,9 @@ public class TrigonometryView extends Component {
 
         //view
 
+        JScrollPane areaScrollPaneAmount = new JScrollPane(amount);
+        areaScrollPaneAmount.setBorder(BorderFactory.createEmptyBorder());
+
         //A part
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
@@ -72,7 +72,9 @@ public class TrigonometryView extends Component {
         //TextField part
         c.gridx = 0;
         c.gridy = 1;
-        generatorPanel.add(amount, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneAmount, c);
 
         return generatorPanel;
     }
@@ -204,7 +206,7 @@ public class TrigonometryView extends Component {
         c.gridx = 0;
         c.gridy = 1;
         c.ipadx = 120;
-        c.ipady = 60;
+        c.ipady = 70;
         outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
@@ -268,7 +270,7 @@ public class TrigonometryView extends Component {
         historyField.setText("");
     }
     public void showError(String errMessage) {
-        JOptionPane.showMessageDialog(this, errMessage);
+        JOptionPane.showMessageDialog(amount, errMessage);
     }
 
     //======================================================= getter and setter methods

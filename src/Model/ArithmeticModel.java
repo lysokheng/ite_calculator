@@ -32,8 +32,8 @@ public class ArithmeticModel {
     public void addition(String a, String b, JTextArea history) {
 
         // convert int to BigInteger
-         first = BigDecimal.valueOf(Long.parseLong(a));
-         second = BigDecimal.valueOf(Long.parseLong(b));
+        first = BigDecimal.valueOf(Long.parseLong(a));
+        second = BigDecimal.valueOf(Long.parseLong(b));
 
         //Calculate the output
         result = String.valueOf(first.add(second));

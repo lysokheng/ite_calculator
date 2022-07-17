@@ -1,9 +1,6 @@
 package Views.Widgets;
 
-import Views.Widgets.Components.HistoryArea;
-import Views.Widgets.Components.InputFieldDecimal;
-import Views.Widgets.Components.OutputArea;
-import Views.Widgets.Components.TextBubbleBorder;
+import Views.Widgets.Components.*;
 import Views.Widgets.Utils.AppButtons;
 import Views.Widgets.Utils.AppTexts;
 
@@ -20,13 +17,13 @@ public class ArithmeticView extends Component {
     //... create object
     private final AppTexts appTexts = new AppTexts();
     private final AppButtons appButtons = new AppButtons();
-    private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
+    private final InputFieldDecimalWithDot inputFieldDecimalWithDot = new InputFieldDecimalWithDot();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
 
     //... name of new object
-    private JTextField a = inputFieldDecimal.inputField();
-    private JTextField b = inputFieldDecimal.inputField();
+    private JTextField a = inputFieldDecimalWithDot.inputField();
+    private JTextField b = inputFieldDecimalWithDot.inputField();
     private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
     private final JButton additionButton = appButtons.additionButton();
@@ -61,22 +58,33 @@ public class ArithmeticView extends Component {
         c.gridy = 0;
         generatorPanel.add(appTexts.mediumText("A:"), c);
 
+        JScrollPane areaScrollPaneA = new JScrollPane(a);
+        areaScrollPaneA.setBorder(BorderFactory.createEmptyBorder());
+
         //TextField part
         c.gridx = 1;
         c.gridy = 0;
-        generatorPanel.add(a, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneA, c);
 
         //B part
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
+        c.ipadx = 0;
+        c.ipady = 0;
         generatorPanel.add(appTexts.mediumText("B:"), c);
+
+        JScrollPane areaScrollPaneB = new JScrollPane(b);
+        areaScrollPaneB.setBorder(BorderFactory.createEmptyBorder());
 
         //TextField part
         c.gridx = 1;
         c.gridy = 1;
-        c.ipadx = 90;
-        generatorPanel.add(b, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneB, c);
 
         return generatorPanel;
     }
@@ -159,7 +167,7 @@ public class ArithmeticView extends Component {
         c.gridx = 0;
         c.gridy = 1;
         c.ipadx = 120;
-        c.ipady = 60;
+        c.ipady = 70;
         outputPanel.add(areaScrollPane, c);
 
         return outputPanel;
@@ -218,7 +226,7 @@ public class ArithmeticView extends Component {
         historyField.setText("");
     }
     public void showError(String errMessage) {
-        JOptionPane.showMessageDialog(this, errMessage);
+        JOptionPane.showMessageDialog(a, errMessage);
     }
 
     //======================================================= getter and setter methods

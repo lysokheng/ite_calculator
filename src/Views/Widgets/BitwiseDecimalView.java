@@ -63,22 +63,33 @@ public class BitwiseDecimalView extends Component {
         c.gridy = 0;
         generatorPanel.add(appTexts.mediumText("A:"), c);
 
+        JScrollPane areaScrollPaneA = new JScrollPane(a);
+        areaScrollPaneA.setBorder(BorderFactory.createEmptyBorder());
+
         //TextField part
         c.gridx = 1;
         c.gridy = 0;
-        generatorPanel.add(a, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneA, c);
 
         //B part
         c.insets = new Insets(15,0,0,0);
         c.gridx = 0;
         c.gridy = 1;
+        c.ipadx = 0;
+        c.ipady = 0;
         generatorPanel.add(appTexts.mediumText("B:"), c);
+
+        JScrollPane areaScrollPaneB = new JScrollPane(b);
+        areaScrollPaneB.setBorder(BorderFactory.createEmptyBorder());
 
         //TextField part
         c.gridx = 1;
         c.gridy = 1;
-        c.ipadx = 90;
-        generatorPanel.add(b, c);
+        c.ipadx = 120;
+        c.ipady = 60;
+        generatorPanel.add(areaScrollPaneB, c);
 
         return generatorPanel;
     }
@@ -165,7 +176,7 @@ public class BitwiseDecimalView extends Component {
         c.gridx = 0;
         c.gridy = 1;
         c.ipadx = 120;
-        c.ipady = 60;
+        c.ipady = 70;
         outputPanel.add(areaScrollPane, c);
 
         return outputPanel;

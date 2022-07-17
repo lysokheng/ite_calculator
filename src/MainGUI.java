@@ -1,5 +1,3 @@
-package Views;
-
 import Views.DecorationLayout.MenuLayout;
 import Views.Widgets.Utils.AppIcons;
 
