@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.BitwiseBinaryModel;
 import Model.BitwiseDecimalModel;
-import Views.Widgets.BitwiseBinaryView;
-import Views.Widgets.BitwiseDecimalView;
+import Views.Detail.BitwiseDecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

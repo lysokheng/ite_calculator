@@ -1,15 +1,11 @@
 package Controller;
 
-import Model.ArithmeticModel;
 import Model.BinaryArithmeticModel;
-import Views.Widgets.ArithmeticView;
-import Views.Widgets.BinaryArithmeticView;
+import Views.Detail.BinaryArithmeticView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class BinaryArithmeticController {
     //... The Controller needs to interact with both the Model and View.

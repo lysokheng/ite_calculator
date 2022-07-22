@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.ArithmeticModel;
-import Views.Widgets.ArithmeticView;
+import Views.Detail.ArithmeticView;
 
 import javax.swing.*;
 import java.awt.event.*;

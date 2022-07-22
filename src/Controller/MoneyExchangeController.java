@@ -1,14 +1,11 @@
 package Controller;
 
-import Model.ArithmeticModel;
 import Model.MoneyExchangeModel;
-import Views.Widgets.ArithmeticView;
-import Views.Widgets.MoneyExchangeView;
+import Views.Detail.MoneyExchangeView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 
 public class MoneyExchangeController {
     //... The Controller needs to interact with both the Model and View.

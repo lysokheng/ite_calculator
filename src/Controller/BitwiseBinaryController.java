@@ -1,14 +1,11 @@
 package Controller;
 
-import Model.ArithmeticModel;
 import Model.BitwiseBinaryModel;
-import Views.Widgets.ArithmeticView;
-import Views.Widgets.BitwiseBinaryView;
+import Views.Detail.BitwiseBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigInteger;
 
 public class BitwiseBinaryController {
     //... The Controller needs to interact with both the Model and View.

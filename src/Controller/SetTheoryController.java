@@ -1,14 +1,11 @@
 package Controller;
 
-import Model.ArithmeticModel;
 import Model.SetTheoryModel;
-import Views.Widgets.ArithmeticView;
-import Views.Widgets.SetTheoryView;
+import Views.Detail.SetTheoryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
 
 public class SetTheoryController {
     //... The Controller needs to interact with both the Model and View.

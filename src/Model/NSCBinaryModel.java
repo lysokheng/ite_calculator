@@ -1,9 +1,6 @@
 package Model;
 
-import Controller.ConvertNumber;
-
 import javax.swing.*;
-import java.text.DecimalFormat;
 
 public class NSCBinaryModel {
     //... Constants

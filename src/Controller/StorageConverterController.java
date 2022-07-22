@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.NSCBinaryModel;
 import Model.StorageConverterModel;
-import Views.Widgets.NSCBinaryView;
-import Views.Widgets.StorageConverterView;
+import Views.Detail.StorageConverterView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

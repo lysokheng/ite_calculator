@@ -1,7 +1,5 @@
 package Model;
 
-import Controller.ConvertNumber;
-
 import javax.swing.*;
 
 public class NSCHexadecimalModel {

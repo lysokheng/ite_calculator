@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.NSCBinaryModel;
 import Model.TrigonometryModel;
-import Views.Widgets.NSCBinaryView;
-import Views.Widgets.TrigonometryView;
+import Views.Detail.TrigonometryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

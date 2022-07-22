@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.NSCBinaryModel;
 import Model.NSCOctalModel;
-import Views.Widgets.NSCBinaryView;
-import Views.Widgets.NSCOctalView;
+import Views.Detail.NSCOctalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

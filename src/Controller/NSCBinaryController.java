@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.MoneyExchangeModel;
 import Model.NSCBinaryModel;
-import Views.Widgets.MoneyExchangeView;
-import Views.Widgets.NSCBinaryView;
+import Views.Detail.NSCBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

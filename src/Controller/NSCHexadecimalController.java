@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.NSCBinaryModel;
 import Model.NSCHexadecimalModel;
-import Views.Widgets.NSCBinaryView;
-import Views.Widgets.NSCHexadecimalView;
+import Views.Detail.NSCHexadecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

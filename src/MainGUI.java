@@ -1,5 +1,5 @@
-import Views.DecorationLayout.MenuLayout;
-import Views.Widgets.Utils.AppIcons;
+import Views.Screen.MenuLayout;
+import Views.Detail.Utils.AppIcons;
 
 import javax.swing.*;
 
@@ -13,7 +13,7 @@ public class MainGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         menuLayout.menuPanel(frame);
-//        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setSize(1200, 700);
         frame.setLocationRelativeTo(null);
 //        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
