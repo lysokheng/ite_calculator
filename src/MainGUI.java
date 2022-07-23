@@ -1,18 +1,18 @@
-import Views.Screen.MenuLayout;
 import Views.Detail.Utils.AppIcons;
+import Views.Screen.ScreenPanel;
 
 import javax.swing.*;
 
-public class MainGUI {
+public class MainGUI extends ScreenPanel {
 
     AppIcons appIcons = new AppIcons();
-    MenuLayout menuLayout = new MenuLayout();
+    ScreenPanel.MenuPanel menuPanel = new ScreenPanel.MenuPanel();
 
     public void createWindow() {
         JFrame frame = new JFrame("Ledge Solver");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        menuLayout.menuPanel(frame);
+        menuPanel.menuPanel(frame);
         frame.setResizable(true);
         frame.setSize(1200, 700);
         frame.setLocationRelativeTo(null);

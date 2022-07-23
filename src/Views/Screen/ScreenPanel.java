@@ -9,6 +9,20 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ScreenPanel {
+    public class MenuPanel extends ScreenLayout{
+
+        public JPanel menuPanel(JFrame frame){
+            //create object
+            JPanel mainPanel = new JPanel(new GridBagLayout());
+            MenuPanel menuPanel = new MenuPanel();
+
+            menuPanel.headerMenu(mainPanel);
+            menuPanel.bodyMenu(frame, mainPanel);
+            menuPanel.footerMenu(mainPanel);
+
+            return mainPanel;
+        }
+    }
     public static class ArithmeticPanel extends ScreenLayout {
         //... create object
         ArithmeticView arithmeticView = new ArithmeticView();

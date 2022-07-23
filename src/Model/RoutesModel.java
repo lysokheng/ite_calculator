@@ -190,13 +190,13 @@ public class RoutesModel extends ScreenPanel implements ActionListener {
     }
 
     public JButton menuWindowsListener(JFrame frame, JPanel mainPanel) {
-        MenuLayout menuLayout = new MenuLayout();
+        MenuPanel menuPanel = new MenuPanel();
         //route to menuWindowsListener
         JButton mainWindowsListener;
         mainWindowsListener = appButtons.backButton();
         mainWindowsListener.addActionListener(e -> {
             frame.remove(mainPanel);
-            frame.setContentPane(menuLayout.menuPanel(frame));
+            frame.setContentPane(menuPanel.menuPanel(frame));
             frame.validate();
             frame.repaint();
         });
