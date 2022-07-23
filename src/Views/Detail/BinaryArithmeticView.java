@@ -3,7 +3,7 @@ package Views.Detail;
 import Views.Detail.Components.*;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -214,7 +214,7 @@ public class BinaryArithmeticView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addArithmeticListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         additionButton.addActionListener(button);
         subtractionButton.addActionListener(button);
         additionWith2NdComplementButton.addActionListener(button);

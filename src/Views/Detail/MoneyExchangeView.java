@@ -7,7 +7,7 @@ import Views.Detail.Components.TextBubbleBorder;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppColors;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -221,7 +221,7 @@ public class MoneyExchangeView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addMoneyExchangeListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         rielToDollarButton.addActionListener(button);
         rielToEuroButton.addActionListener(button);
         rielToFranceButton.addActionListener(button);

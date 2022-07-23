@@ -138,8 +138,6 @@ public class ScreenLayout {
         c.gridheight = 1;
         c.weightx = 1;
         c.weighty = 1;
-        c.ipadx = 40;
-        c.ipady = 20;
         mainPanel.add(input, c);
 
         //Output
@@ -217,8 +215,6 @@ public class ScreenLayout {
         c.gridheight = 1;
         c.weightx = 1;
         c.weighty = 1;
-        c.ipadx = 40;
-        c.ipady = 20;
         mainPanel.add(input, c);
 
         //Output
@@ -281,8 +277,6 @@ public class ScreenLayout {
 
         //input panel
         c.insets = new Insets(0, 0, 0, 15);
-        c.ipadx = 40;
-        c.ipady = 20;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.gridx = 3;
@@ -333,23 +327,8 @@ public class ScreenLayout {
     }
 
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset, String note){
-        mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
-        //Back Button
-        c.insets = new Insets(15, 0, 30, -240);
-        c.gridx = 2;
-        c.gridy = 5;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 1;
-        c.weighty = 1;
-        mainPanel.add(routs.menuWindowsListener(frame, mainPanel), c);
-
-        //reset Button
-        c.insets = new Insets(15, 0, 30, 0);
-        c.gridx = 1;
-        c.gridy = 5;
-        mainPanel.add(reset, c);
+        footer(frame, mainPanel, reset);
 
         //Note
         c.insets = new Insets(0, 30, 30, 0);
@@ -361,23 +340,8 @@ public class ScreenLayout {
     }
 
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset, JButton button1){
-        mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
-        //Back Button
-        c.insets = new Insets(15, 0, 30, -240);
-        c.gridx = 2;
-        c.gridy = 5;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 1;
-        c.weighty = 1;
-        mainPanel.add(routs.menuWindowsListener(frame, mainPanel), c);
-
-        //reset Button
-        c.insets = new Insets(15, 0, 30, 0);
-        c.gridx = 1;
-        c.gridy = 5;
-        mainPanel.add(reset, c);
+        footer(frame, mainPanel, reset);
 
         c.insets = new Insets(0, 30, 30, 0);
         c.fill = GridBagConstraints.HORIZONTAL;

@@ -19,7 +19,7 @@ public class BinaryArithmeticController {
         binaryArithmeticView = view;
 
         //... Add listeners to the view.
-        view.addArithmeticListener(new BinaryArithmeticListener());
+        view.addButtonListener(new BinaryArithmeticListener());
         view.addClearListener(new ClearListener());
     }
 

@@ -3,7 +3,7 @@ package Views.Detail;
 import Views.Detail.Components.*;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -208,7 +208,7 @@ public class ArithmeticView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addArithmeticListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         additionButton.addActionListener(button);
         subtractionButton.addActionListener(button);
         multiplicationButton.addActionListener(button);
@@ -226,7 +226,6 @@ public class ArithmeticView extends Component implements UserInteract {
         b.setText("");
         historyField.setText("");
     }
-
     public void showError(String errMessage) {
         JOptionPane.showMessageDialog(a, errMessage);
     }

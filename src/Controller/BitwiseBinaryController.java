@@ -19,7 +19,7 @@ public class BitwiseBinaryController {
         bitwiseBinaryView = view;
 
         //... Add listeners to the view.
-        view.addBitwiseBinaryListener(new BitwiseBinaryListener());
+        view.addButtonListener(new BitwiseBinaryListener());
         view.addClearListener(new ClearListener());
     }
 

@@ -3,7 +3,7 @@ package Views.Detail;
 import Views.Detail.Components.*;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -173,7 +173,7 @@ public class NSCBinaryView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addNSCBinaryListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         binaryToDecimalButton.addActionListener(button);
         binaryToHexadecimalButton.addActionListener(button);
         binaryToOctalButton.addActionListener(button);

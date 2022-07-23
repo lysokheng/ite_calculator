@@ -19,7 +19,7 @@ public class MoneyExchangeController {
         moneyExchangeView = view;
 
         //... Add listeners to the view.
-        view.addMoneyExchangeListener(new MoneyExchangeListener());
+        view.addButtonListener(new MoneyExchangeListener());
         view.addClearListener(new ClearListener());
     }
 

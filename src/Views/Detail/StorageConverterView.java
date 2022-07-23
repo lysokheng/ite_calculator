@@ -7,7 +7,7 @@ import Views.Detail.Components.TextBubbleBorder;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppColors;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -352,7 +352,7 @@ public class StorageConverterView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addStorageConverterListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         byteToKilobyteButton.addActionListener(button);
         byteToMegabyteButton.addActionListener(button);
         byteToGigabyteButton.addActionListener(button);

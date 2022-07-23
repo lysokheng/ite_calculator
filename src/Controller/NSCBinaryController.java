@@ -19,7 +19,7 @@ public class NSCBinaryController {
         nscBinaryView = view;
 
         //... Add listeners to the view.
-        view.addNSCBinaryListener(new NSCBinaryListener());
+        view.addButtonListener(new NSCBinaryListener());
         view.addClearListener(new ClearListener());
     }
 

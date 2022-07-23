@@ -6,7 +6,7 @@ import Views.Detail.Components.OutputArea;
 import Views.Detail.Components.TextBubbleBorder;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -216,7 +216,7 @@ public class BitwiseDecimalView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addBitwiseDecimalListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         bitwiseANDButton.addActionListener(button);
         bitwiseORButton.addActionListener(button);
         bitwiseXORButton.addActionListener(button);

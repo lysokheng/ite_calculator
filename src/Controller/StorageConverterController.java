@@ -19,7 +19,7 @@ public class StorageConverterController {
         storageConverterView = view;
 
         //... Add listeners to the view.
-        view.addStorageConverterListener(new NSCStorageConverterListener());
+        view.addButtonListener(new NSCStorageConverterListener());
         view.addClearListener(new ClearListener());
     }
 

@@ -4,7 +4,7 @@ import Views.Detail.Components.*;
 import Views.Detail.Utils.AppButtons;
 import Views.Detail.Utils.AppColors;
 import Views.Detail.Utils.AppTexts;
-import Views.UserInteract;
+import Views.Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -247,7 +247,7 @@ public class TrigonometryView extends Component implements UserInteract {
     }
 
     //======================================================= add button to controller
-    public void addTrigonometryListener(ActionListener button) {
+    public void addButtonListener(ActionListener button) {
         sinToRadianButton.addActionListener(button);
         sinToDegreeButton.addActionListener(button);
         cosToDegreeButton.addActionListener(button);

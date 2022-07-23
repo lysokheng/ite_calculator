@@ -19,7 +19,7 @@ public class NSCDecimalController {
         nscDecimalView = view;
 
         //... Add listeners to the view.
-        view.addNSCDecimalListener(new NSCDecimalListener());
+        view.addButtonListener(new NSCDecimalListener());
         view.addClearListener(new ClearListener());
     }
 

@@ -19,7 +19,7 @@ public class NSCHexadecimalController {
         nscHexadecimalView = view;
 
         //... Add listeners to the view.
-        view.addNSCBinaryListener(new NSCHexadecimalListener());
+        view.addButtonListener(new NSCHexadecimalListener());
         view.addClearListener(new ClearListener());
     }
 

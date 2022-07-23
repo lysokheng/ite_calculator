@@ -19,7 +19,7 @@ public class SetTheoryController {
         setTheoryView = view;
 
         //... Add listeners to the view.
-        view.addSetTheoryListener(new SetTheoryListener());
+        view.addButtonListener(new SetTheoryListener());
         view.addClearListener(new ClearListener());
     }
 

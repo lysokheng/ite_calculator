@@ -19,7 +19,7 @@ public class NSCOctalController {
         nscOctalView = view;
 
         //... Add listeners to the view.
-        view.addNSCOctalListener(new NSCOctalListener());
+        view.addButtonListener(new NSCOctalListener());
         view.addClearListener(new ClearListener());
     }
 

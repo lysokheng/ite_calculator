@@ -19,7 +19,7 @@ public class BitwiseDecimalController {
         bitwiseDecimalView = view;
 
         //... Add listeners to the view.
-        view.addBitwiseDecimalListener(new BitwiseDecimalListener());
+        view.addButtonListener(new BitwiseDecimalListener());
         view.addClearListener(new ClearListener());
     }
 

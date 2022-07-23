@@ -19,7 +19,7 @@ public class TrigonometryController {
         trigonometryView = view;
 
         //... Add listeners to the view.
-        view.addTrigonometryListener(new TrigonometryListener());
+        view.addButtonListener(new TrigonometryListener());
         view.addClearListener(new ClearListener());
     }
 

@@ -18,7 +18,7 @@ public class ArithmeticController {
         arithmeticView = view;
 
         //... Add listeners to the view.
-        view.addArithmeticListener(new ArithmeticListener());
+        view.addButtonListener(new ArithmeticListener());
         view.addClearListener(new ClearListener());
     }
 
