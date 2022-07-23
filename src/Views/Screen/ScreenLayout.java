@@ -1,6 +1,6 @@
-package Views;
+package Views.Screen;
 
-import Views.Detail.Utils.Routes;
+import Model.RoutesModel;
 import Views.Detail.Utils.AppColors;
 import Views.Detail.Utils.AppTexts;
 
@@ -11,12 +11,13 @@ public class ScreenLayout {
     //... create object
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
-    Routes routs = new Routes();
+    RoutesModel routs = new RoutesModel();
+
+    //create grid custom object
+    GridBagConstraints c = new GridBagConstraints();
 
     public JPanel header(JPanel mainPanel){
 
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Big Text
@@ -56,8 +57,6 @@ public class ScreenLayout {
 
     public JPanel headerWith3NumberSystem(JPanel mainPanel){
 
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Big Text
@@ -95,8 +94,6 @@ public class ScreenLayout {
                        JPanel output,
                        JPanel history
     ){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //title Text
@@ -141,14 +138,14 @@ public class ScreenLayout {
         c.gridheight = 1;
         c.weightx = 1;
         c.weighty = 1;
-        c.ipadx = 0;
-        c.ipady = 0;
+        c.ipadx = 40;
+        c.ipady = 20;
         mainPanel.add(input, c);
 
-        //arithmeticOutput
+        //Output
         c.insets = new Insets(15, 0, 0, 30);
-        c.ipadx = 0;
-        c.ipady = 0;
+        c.ipadx = 40;
+        c.ipady = 20;
         c.gridx = 1;
         c.gridy = 4;
         mainPanel.add(output, c);
@@ -161,6 +158,8 @@ public class ScreenLayout {
         c.gridheight = 2;
         c.weightx = 1;
         c.weighty = 2;
+        c.ipadx = 0;
+        c.ipady = 0;
         mainPanel.add(history, c);
 
         return mainPanel;
@@ -172,8 +171,6 @@ public class ScreenLayout {
                        JPanel output,
                        JPanel history
                        ){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //title Text
@@ -220,14 +217,12 @@ public class ScreenLayout {
         c.gridheight = 1;
         c.weightx = 1;
         c.weighty = 1;
-        c.ipadx = 0;
-        c.ipady = 0;
+        c.ipadx = 40;
+        c.ipady = 20;
         mainPanel.add(input, c);
 
-        //arithmeticOutput
+        //Output
         c.insets = new Insets(15, 0, 0, 30);
-        c.ipadx = 0;
-        c.ipady = 0;
         c.gridx = 1;
         c.gridy = 4;
         mainPanel.add(output, c);
@@ -240,6 +235,8 @@ public class ScreenLayout {
         c.gridheight = 2;
         c.weightx = 1;
         c.weighty = 2;
+        c.ipadx = 0;
+        c.ipady = 0;
         mainPanel.add(history, c);
 
         return mainPanel;
@@ -251,8 +248,6 @@ public class ScreenLayout {
                        JPanel output,
                        JPanel history
     ){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //title Text
@@ -286,8 +281,8 @@ public class ScreenLayout {
 
         //input panel
         c.insets = new Insets(0, 0, 0, 15);
-        c.ipadx = 0;
-        c.ipady = 0;
+        c.ipadx = 40;
+        c.ipady = 20;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.gridx = 3;
@@ -296,8 +291,6 @@ public class ScreenLayout {
 
         //Output
         c.insets = new Insets(15, 0, 0, 30);
-        c.ipadx = 0;
-        c.ipady = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.gridx = 3;
@@ -310,14 +303,14 @@ public class ScreenLayout {
         c.gridheight = 2;
         c.gridx = 4;
         c.gridy = 3;
+        c.ipadx = 0;
+        c.ipady = 0;
         mainPanel.add(history, c);
 
         return mainPanel;
     }
 
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Back Button
@@ -340,8 +333,6 @@ public class ScreenLayout {
     }
 
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset, String note){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Back Button
@@ -370,8 +361,6 @@ public class ScreenLayout {
     }
 
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset, JButton button1){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Back Button
@@ -402,8 +391,6 @@ public class ScreenLayout {
     public JPanel footer(JFrame frame, JPanel mainPanel, JButton reset, JButton button1,
                          JButton button2,
                          JButton button3){
-        //create grid custom object
-        GridBagConstraints c = new GridBagConstraints();
         mainPanel.setBackground(appColors.getBACKGROUND_COLOR());
 
         //Back Button

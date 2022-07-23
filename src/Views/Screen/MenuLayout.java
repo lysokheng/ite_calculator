@@ -1,6 +1,6 @@
 package Views.Screen;
 
-import Views.Detail.Utils.Routes;
+import Model.RoutesModel;
 import Views.Detail.Utils.AppColors;
 import Views.Detail.Utils.AppTexts;
 
@@ -16,7 +16,7 @@ import java.awt.GridBagLayout;
 public class MenuLayout {
     //create object in Views.Widgets.Utils file
     AppColors appColors = new AppColors();
-    Routes routs = new Routes();
+    RoutesModel routs = new RoutesModel();
 
     public JPanel menuPanel(JFrame frame) {
 
@@ -129,7 +129,5 @@ public class MenuLayout {
 
         return mainPanel;
     }
-
-
 }
 

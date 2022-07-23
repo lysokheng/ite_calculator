@@ -1,28 +1,28 @@
-package Views.Detail.Utils;
+package Model;
 
-import Views.Screen.*;
-import Views.Screen.BitwiseBinaryPanel;
-import Views.Screen.BitwiseDecimalPanel;
-import Views.Screen.NSCBinaryPanel;
-import Views.Screen.NSCDecimalPanel;
-import Views.Screen.NSCHexadecimalPanel;
-import Views.Screen.NSCOctalPanel;
 import Views.Detail.Utils.AppButtons;
+import Views.Screen.*;
 
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Routes implements ActionListener {
+public class RoutesModel extends ScreenPanel implements ActionListener {
 
     AppButtons appButtons = new AppButtons();
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 
     public JButton exitListener() {
         //exit program
         JButton exitListener;
         exitListener = appButtons.exitButton();
-        exitListener.addActionListener(e -> System.exit(1));
+        exitListener.addActionListener(eExit -> System.exit(1));
 
         return exitListener;
     }
@@ -262,10 +262,5 @@ public class Routes implements ActionListener {
         });
 
         return numberSystemConversionOctalListener;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 }
