@@ -7,7 +7,6 @@ import Views.Utils.AppTexts;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 

@@ -1,8 +1,8 @@
 package Views.Screen;
 
-import Views.Utils.Routes;
 import Views.Utils.AppColors;
 import Views.Utils.AppTexts;
+import Views.Utils.Routes;
 
 import javax.swing.*;
 import java.awt.*;

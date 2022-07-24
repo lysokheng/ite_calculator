@@ -2,7 +2,6 @@ package Model;
 
 import javax.swing.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 public class ArithmeticModel {
     //... Constants

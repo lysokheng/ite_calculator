@@ -6,7 +6,6 @@ import Views.Utils.AppColors;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 

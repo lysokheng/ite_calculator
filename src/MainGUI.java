@@ -1,5 +1,5 @@
-import Views.Utils.AppIcons;
 import Views.Screen.ScreenPanel;
+import Views.Utils.AppIcons;
 
 import javax.swing.*;
 
@@ -16,7 +16,6 @@ public class MainGUI extends ScreenPanel {
         frame.setResizable(true);
         frame.setSize(1200, 700);
         frame.setLocationRelativeTo(null);
-//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         appIcons.appIcon(frame);
     }

@@ -1,9 +1,7 @@
 package Views.Utils;
 
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 
 public class CustomImages {
     public void customImageButton(JButton button) {

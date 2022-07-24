@@ -1,7 +1,6 @@
 package Views.Utils;
 
-import Views.Utils.AppButtons;
-import Views.Screen.*;
+import Views.Screen.ScreenPanel;
 
 import javax.swing.*;
 

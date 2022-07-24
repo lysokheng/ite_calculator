@@ -1,7 +1,6 @@
 package Views.Utils;
 
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class CalculatorButtons {
     CustomImages customImages = new CustomImages();

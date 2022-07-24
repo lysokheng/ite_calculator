@@ -1,6 +1,6 @@
 package Views.Utils;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class AppColors {
     //all colors here

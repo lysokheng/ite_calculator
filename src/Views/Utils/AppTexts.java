@@ -1,7 +1,6 @@
 package Views.Utils;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 

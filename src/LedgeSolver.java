@@ -1,4 +1,3 @@
-import java.awt.*;
 
 /**
  * AUTHOR: HUOT LYSOKHENG
@@ -15,13 +14,7 @@ import java.awt.*;
 public class LedgeSolver {
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                MainGUI mainGUI = new MainGUI();
-                mainGUI.createWindow();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        MainGUI mainGUI = new MainGUI();
+        mainGUI.createWindow();
     }
 }

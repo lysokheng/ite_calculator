@@ -4,7 +4,8 @@ import Model.ArithmeticModel;
 import Views.ArithmeticViews;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ArithmeticController {
     //... The Controller needs to interact with both the Model and View.
