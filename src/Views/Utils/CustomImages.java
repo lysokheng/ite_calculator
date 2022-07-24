@@ -36,22 +36,6 @@ public class CustomImages {
         return imageIcon;
     }
 
-    public ImageIcon resizeImageButtonCalculator(ImageIcon imageIcon) {
-        Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(90, 75, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        imageIcon = new ImageIcon(newImg);  // transform it back
-
-        return imageIcon;
-    }
-
-    public ImageIcon resizeImageButtonCalculator2Buttons(ImageIcon imageIcon) {
-        Image image = imageIcon.getImage(); // transform it
-        Image newImg = image.getScaledInstance(180, 75, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        imageIcon = new ImageIcon(newImg);  // transform it back
-
-        return imageIcon;
-    }
-
     public ImageIcon resizeImageButtonNumberSystemButtons(ImageIcon imageIcon) {
         Image image = imageIcon.getImage(); // transform it
         Image newImg = image.getScaledInstance(140, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
