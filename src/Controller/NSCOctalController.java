@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCOctalModel;
-import Views.Detail.NSCOctalView;
+import Views.NSCOctalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

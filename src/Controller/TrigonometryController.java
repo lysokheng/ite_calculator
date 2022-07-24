@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.TrigonometryModel;
-import Views.Detail.TrigonometryView;
+import Views.TrigonometryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

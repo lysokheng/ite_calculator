@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCBinaryModel;
-import Views.Detail.NSCBinaryView;
+import Views.NSCBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

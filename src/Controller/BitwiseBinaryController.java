@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BitwiseBinaryModel;
-import Views.Detail.BitwiseBinaryView;
+import Views.BitwiseBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -15,14 +15,12 @@ import java.awt.*;
 public class LedgeSolver {
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MainGUI mainGUI = new MainGUI();
-                    mainGUI.createWindow();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                MainGUI mainGUI = new MainGUI();
+                mainGUI.createWindow();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }

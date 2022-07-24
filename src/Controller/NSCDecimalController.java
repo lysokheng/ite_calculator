@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCDecimalModel;
-import Views.Detail.NSCDecimalView;
+import Views.NSCDecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

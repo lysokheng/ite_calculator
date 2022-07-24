@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.SetTheoryModel;
-import Views.Detail.SetTheoryView;
+import Views.SetTheoryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

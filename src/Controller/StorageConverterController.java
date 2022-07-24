@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.StorageConverterModel;
-import Views.Detail.StorageConverterView;
+import Views.StorageConverterView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

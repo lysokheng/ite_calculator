@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BinaryArithmeticModel;
-import Views.Detail.BinaryArithmeticView;
+import Views.BinaryArithmeticView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

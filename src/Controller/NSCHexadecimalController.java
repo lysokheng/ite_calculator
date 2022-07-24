@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCHexadecimalModel;
-import Views.Detail.NSCHexadecimalView;
+import Views.NSCHexadecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

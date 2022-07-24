@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.MoneyExchangeModel;
-import Views.Detail.MoneyExchangeView;
+import Views.MoneyExchangeView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

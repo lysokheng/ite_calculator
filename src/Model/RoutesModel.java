@@ -1,7 +1,7 @@
 package Model;
 
-import Views.Detail.Utils.AppButtons;
-import Views.Screen.*;
+import Views.Utils.AppButtons;
+import Screen.*;
 
 import javax.swing.*;
 
