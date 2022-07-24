@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCHexadecimalModel;
-import Views.NSCHexadecimalView;
+import Views.NSCHexadecimalViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCHexadecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCHexadecimalModel nscHexadecimalModel;
-    private final NSCHexadecimalView nscHexadecimalView;
+    private final NSCHexadecimalViews nscHexadecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCHexadecimalController(NSCHexadecimalModel model, NSCHexadecimalView view) {
+    public NSCHexadecimalController(NSCHexadecimalModel model, NSCHexadecimalViews view) {
         nscHexadecimalModel = model;
         nscHexadecimalView = view;
 

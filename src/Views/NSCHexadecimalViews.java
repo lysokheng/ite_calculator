@@ -3,39 +3,39 @@ package Views;
 import Views.Components.*;
 import Views.Utils.AppButtons;
 import Views.Utils.AppTexts;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class NSCOctalView extends DetailLayout implements UserInteract {
+public class NSCHexadecimalViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
     //... create object
     private final AppTexts appTexts = new AppTexts();
     private final AppButtons appButtons = new AppButtons();
-    private final InputFieldOctal inputFieldOctal = new InputFieldOctal();
+    private final InputFieldHexadecimal inputFieldHexadecimal = new InputFieldHexadecimal();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
 
     //... name of new object
-    private JTextField amount = inputFieldOctal.inputField();
+    private JTextField amount = inputFieldHexadecimal.inputField();
     private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
-    private final JButton octalToDecimalButton = appButtons.octalToDecimalButton();
-    private final JButton octalToBinaryButton = appButtons.octalToBinaryButton();
-    private final JButton octalToHexadecimalButton = appButtons.octalToHexadecimalButton();
+    private final JButton hexadecimalToDecimalButton = appButtons.hexadecimalToDecimalButton();
+    private final JButton hexadecimalToBinaryButton = appButtons.hexadecimalToBinaryButton();
+    private final JButton hexadecimalToOctalButton = appButtons.hexadecimalToOctalButton();
     private JButton resetButton = appButtons.clearButton();
 
     //======================================================= components
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        NSCOctalView nscOctalView = new NSCOctalView();
-        nscOctalView.inputAmount(inputPanel, amount);
+        NSCHexadecimalViews nscHexadecimalView = new NSCHexadecimalViews();
+        nscHexadecimalView.inputAmount(inputPanel, amount);
+
 
         return inputPanel;
     }
@@ -61,23 +61,23 @@ public class NSCOctalView extends DetailLayout implements UserInteract {
         c.weighty = 1 ;
         c.gridx = 0;
         c.gridy = 0;
-        operatorPanel.add(octalToDecimalButton, c);
+        operatorPanel.add(hexadecimalToDecimalButton, c);
 
         c.gridx = 1;
         c.gridy = 0;
-        operatorPanel.add(octalToBinaryButton, c);
+        operatorPanel.add(hexadecimalToBinaryButton, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        operatorPanel.add(octalToHexadecimalButton, c);
+        operatorPanel.add(hexadecimalToOctalButton, c);
 
         return operatorPanel;
     }
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        NSCOctalView nscOctalView = new NSCOctalView();
-        nscOctalView.output(outputPanel, resultField);
+        NSCHexadecimalViews nscHexadecimalView = new NSCHexadecimalViews();
+        nscHexadecimalView.output(outputPanel, resultField);
 
         return outputPanel;
     }
@@ -85,17 +85,16 @@ public class NSCOctalView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        NSCOctalView nscOctalView = new NSCOctalView();
-        nscOctalView.history(historyPanel, historyField);
+        NSCHexadecimalViews nscHexadecimalView = new NSCHexadecimalViews();
+        nscHexadecimalView.history(historyPanel, historyField);
 
         return historyPanel;
     }
-
     //======================================================= add button to controller
     public void addButtonListener(ActionListener button) {
-        octalToBinaryButton.addActionListener(button);
-        octalToDecimalButton.addActionListener(button);
-        octalToHexadecimalButton.addActionListener(button);
+        hexadecimalToDecimalButton.addActionListener(button);
+        hexadecimalToBinaryButton.addActionListener(button);
+        hexadecimalToOctalButton.addActionListener(button);
     }
     public void addClearListener(ActionListener button) {
         resetButton.addActionListener(button);
@@ -136,16 +135,16 @@ public class NSCOctalView extends DetailLayout implements UserInteract {
         this.historyField = historyField;
     }
 
-    public JButton getOctalToDecimalButton() {
-        return octalToDecimalButton;
+    public JButton getHexadecimalToDecimalButton() {
+        return hexadecimalToDecimalButton;
     }
 
-    public JButton getOctalToBinaryButton() {
-        return octalToBinaryButton;
+    public JButton getHexadecimalToBinaryButton() {
+        return hexadecimalToBinaryButton;
     }
 
-    public JButton getOctalToHexadecimalButton() {
-        return octalToHexadecimalButton;
+    public JButton getHexadecimalToOctalButton() {
+        return hexadecimalToOctalButton;
     }
 
     public JButton getResetButton() {

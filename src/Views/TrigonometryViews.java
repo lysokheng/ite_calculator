@@ -4,7 +4,6 @@ import Views.Components.*;
 import Views.Utils.AppButtons;
 import Views.Utils.AppColors;
 import Views.Utils.AppTexts;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -12,7 +11,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class TrigonometryView extends DetailLayout implements UserInteract {
+public class TrigonometryViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -46,7 +45,7 @@ public class TrigonometryView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        TrigonometryView trigonometryView = new TrigonometryView();
+        TrigonometryViews trigonometryView = new TrigonometryViews();
         trigonometryView.inputAmount(inputPanel, amount);
 
         return inputPanel;
@@ -150,7 +149,7 @@ public class TrigonometryView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        TrigonometryView trigonometryView = new TrigonometryView();
+        TrigonometryViews trigonometryView = new TrigonometryViews();
         trigonometryView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -159,7 +158,7 @@ public class TrigonometryView extends DetailLayout implements UserInteract {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        TrigonometryView trigonometryView = new TrigonometryView();
+        TrigonometryViews trigonometryView = new TrigonometryViews();
         trigonometryView.history(historyPanel, historyField);
 
         return historyPanel;

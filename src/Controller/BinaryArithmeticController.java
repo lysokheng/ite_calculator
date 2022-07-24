@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BinaryArithmeticModel;
-import Views.BinaryArithmeticView;
+import Views.BinaryArithmeticViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class BinaryArithmeticController {
     //... The Controller needs to interact with both the Model and View.
     private final BinaryArithmeticModel binaryArithmeticModel;
-    private final BinaryArithmeticView binaryArithmeticView;
+    private final BinaryArithmeticViews binaryArithmeticView;
 
     //========================================================== constructor
     /** Constructor */
-    public BinaryArithmeticController(BinaryArithmeticModel model, BinaryArithmeticView view) {
+    public BinaryArithmeticController(BinaryArithmeticModel model, BinaryArithmeticViews view) {
         binaryArithmeticModel = model;
         binaryArithmeticView = view;
 

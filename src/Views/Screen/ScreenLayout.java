@@ -1,6 +1,6 @@
-package Screen;
+package Views.Screen;
 
-import Model.RoutesModel;
+import Views.Utils.Routes;
 import Views.Utils.AppColors;
 import Views.Utils.AppTexts;
 
@@ -11,7 +11,7 @@ public class ScreenLayout {
     //... create object
     AppColors appColors = new AppColors();
     AppTexts appTexts = new AppTexts();
-    RoutesModel routs = new RoutesModel();
+    Routes routs = new Routes();
 
     //create grid custom object
     GridBagConstraints c = new GridBagConstraints();

@@ -1,9 +1,9 @@
-package Screen;
+package Views.Screen;
 
 import Controller.*;
 import Model.*;
 import Views.*;
-import Model.RoutesModel;
+import Views.Utils.Routes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class ScreenPanel {
     }
     public static class ArithmeticPanel extends ScreenLayout {
         //... create object
-        ArithmeticView arithmeticView = new ArithmeticView();
+        ArithmeticViews arithmeticView = new ArithmeticViews();
         ArithmeticModel arithmeticModel = new ArithmeticModel();
         ArithmeticController arithmeticController = new ArithmeticController(arithmeticModel, arithmeticView);
 
@@ -48,7 +48,7 @@ public class ScreenPanel {
         }
     }
     public static class BinaryArithmeticPanel extends ScreenLayout {
-        BinaryArithmeticView binaryArithmeticView = new BinaryArithmeticView();
+        BinaryArithmeticViews binaryArithmeticView = new BinaryArithmeticViews();
         BinaryArithmeticModel binaryArithmeticModel = new BinaryArithmeticModel();
         BinaryArithmeticController binaryArithmeticController = new BinaryArithmeticController(
                 binaryArithmeticModel, binaryArithmeticView
@@ -80,8 +80,8 @@ public class ScreenPanel {
         }
     }
     public static class BitwiseBinaryPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
-        BitwiseBinaryView bitwiseBinaryView = new BitwiseBinaryView();
+        Routes routs = new Routes();
+        BitwiseBinaryViews bitwiseBinaryView = new BitwiseBinaryViews();
         BitwiseBinaryModel bitwiseBinaryModel = new BitwiseBinaryModel();
         BitwiseBinaryController bitwiseBinaryController = new BitwiseBinaryController(
                 bitwiseBinaryModel, bitwiseBinaryView
@@ -112,8 +112,8 @@ public class ScreenPanel {
         }
     }
     public static class BitwiseDecimalPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
-        BitwiseDecimalView bitwiseDecimalView = new BitwiseDecimalView();
+        Routes routs = new Routes();
+        BitwiseDecimalViews bitwiseDecimalView = new BitwiseDecimalViews();
         BitwiseDecimalModel bitwiseDecimalModel = new BitwiseDecimalModel();
         BitwiseDecimalController bitwiseDecimalController = new BitwiseDecimalController(
                 bitwiseDecimalModel, bitwiseDecimalView
@@ -144,7 +144,7 @@ public class ScreenPanel {
         }
     }
     public static class MoneyExchangePanel extends ScreenLayout {
-        MoneyExchangeView moneyExchangeView = new MoneyExchangeView();
+        MoneyExchangeViews moneyExchangeView = new MoneyExchangeViews();
         MoneyExchangeModel moneyExchangeModel = new MoneyExchangeModel();
         MoneyExchangeController moneyExchangeController = new MoneyExchangeController(
                 moneyExchangeModel, moneyExchangeView
@@ -174,8 +174,8 @@ public class ScreenPanel {
         }
     }
     public static class NSCBinaryPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
-        NSCBinaryView nscBinaryView = new NSCBinaryView();
+        Routes routs = new Routes();
+        NSCBinaryViews nscBinaryView = new NSCBinaryViews();
         NSCBinaryModel nscBinaryModel = new NSCBinaryModel();
         NSCBinaryController nscBinaryController = new NSCBinaryController(nscBinaryModel, nscBinaryView);
 
@@ -206,8 +206,8 @@ public class ScreenPanel {
         }
     }
     public static class NSCDecimalPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
-        NSCDecimalView nscDecimalView = new NSCDecimalView();
+        Routes routs = new Routes();
+        NSCDecimalViews nscDecimalView = new NSCDecimalViews();
         NSCDecimalModel nscDecimalModel = new NSCDecimalModel();
         NSCDecimalController nscDecimalController = new NSCDecimalController(nscDecimalModel, nscDecimalView);
 
@@ -238,9 +238,9 @@ public class ScreenPanel {
         }
     }
     public static class NSCHexadecimalPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
+        Routes routs = new Routes();
 
-        NSCHexadecimalView nscHexadecimalView = new NSCHexadecimalView();
+        NSCHexadecimalViews nscHexadecimalView = new NSCHexadecimalViews();
         NSCHexadecimalModel nscHexadecimalModel = new NSCHexadecimalModel();
         NSCHexadecimalController nscHexadecimalController = new NSCHexadecimalController(nscHexadecimalModel, nscHexadecimalView);
         public JPanel numberSystemConversionHexadecimalPanel(JFrame frame) {
@@ -270,8 +270,8 @@ public class ScreenPanel {
         }
     }
     public static class NSCOctalPanel extends ScreenLayout {
-        RoutesModel routs = new RoutesModel();
-        NSCOctalView nscOctalView = new NSCOctalView();
+        Routes routs = new Routes();
+        NSCOctalViews nscOctalView = new NSCOctalViews();
         NSCOctalModel nscOctalModel = new NSCOctalModel();
         NSCOctalController nscOctalController = new NSCOctalController(nscOctalModel, nscOctalView);
 
@@ -304,7 +304,7 @@ public class ScreenPanel {
     }
     public static class SetTheoryPanel extends ScreenLayout {
 
-        SetTheoryView setTheoryView = new SetTheoryView();
+        SetTheoryViews setTheoryView = new SetTheoryViews();
         SetTheoryModel setTheoryModel = new SetTheoryModel();
         SetTheoryController setTheoryController = new SetTheoryController(setTheoryModel, setTheoryView);
 
@@ -337,7 +337,7 @@ public class ScreenPanel {
         }
     }
     public static class StorageConverterPanel extends ScreenLayout {
-        StorageConverterView storageConverterView = new StorageConverterView();
+        StorageConverterViews storageConverterView = new StorageConverterViews();
         StorageConverterModel storageConverterModel = new StorageConverterModel();
         StorageConverterController storageConverterController = new StorageConverterController(
                 storageConverterModel, storageConverterView
@@ -367,7 +367,7 @@ public class ScreenPanel {
         }
     }
     public static class TrigonometryPanel extends ScreenLayout {
-        TrigonometryView trigonometryView = new TrigonometryView();
+        TrigonometryViews trigonometryView = new TrigonometryViews();
         TrigonometryModel trigonometryModel = new TrigonometryModel();
         TrigonometryController trigonometryController = new TrigonometryController(trigonometryModel, trigonometryView);
 

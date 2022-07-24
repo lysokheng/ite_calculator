@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCOctalModel;
-import Views.NSCOctalView;
+import Views.NSCOctalViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCOctalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCOctalModel nscOctalModel;
-    private final NSCOctalView nscOctalView;
+    private final NSCOctalViews nscOctalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCOctalController(NSCOctalModel model, NSCOctalView view) {
+    public NSCOctalController(NSCOctalModel model, NSCOctalViews view) {
         nscOctalModel = model;
         nscOctalView = view;
 

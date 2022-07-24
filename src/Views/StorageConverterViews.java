@@ -3,7 +3,6 @@ package Views;
 import Views.Components.*;
 import Views.Utils.AppButtons;
 import Views.Utils.AppColors;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -11,7 +10,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class StorageConverterView extends DetailLayout implements UserInteract {
+public class StorageConverterViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -62,7 +61,7 @@ public class StorageConverterView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        StorageConverterView storageConverterView = new StorageConverterView();
+        StorageConverterViews storageConverterView = new StorageConverterViews();
         storageConverterView.inputAmount(inputPanel, amount);
 
         return inputPanel;
@@ -250,7 +249,7 @@ public class StorageConverterView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        StorageConverterView storageConverterView = new StorageConverterView();
+        StorageConverterViews storageConverterView = new StorageConverterViews();
         storageConverterView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -259,7 +258,7 @@ public class StorageConverterView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        StorageConverterView storageConverterView = new StorageConverterView();
+        StorageConverterViews storageConverterView = new StorageConverterViews();
         storageConverterView.history(historyPanel, historyField);
 
         return historyPanel;

@@ -1,22 +1,13 @@
-package Model;
+package Views.Utils;
 
 import Views.Utils.AppButtons;
-import Screen.*;
+import Views.Screen.*;
 
 import javax.swing.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class RoutesModel extends ScreenPanel implements ActionListener {
+public class Routes extends ScreenPanel {
 
     AppButtons appButtons = new AppButtons();
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 
     public JButton exitListener() {
         //exit program

@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.ArithmeticModel;
-import Views.ArithmeticView;
+import Views.ArithmeticViews;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -9,11 +9,11 @@ import java.awt.event.*;
 public class ArithmeticController {
     //... The Controller needs to interact with both the Model and View.
     private final ArithmeticModel arithmeticModel;
-    private final ArithmeticView arithmeticView;
+    private final ArithmeticViews arithmeticView;
 
     //========================================================== constructor
     /** Constructor */
-    public ArithmeticController(ArithmeticModel model, ArithmeticView view) {
+    public ArithmeticController(ArithmeticModel model, ArithmeticViews view) {
         arithmeticModel = model;
         arithmeticView = view;
 

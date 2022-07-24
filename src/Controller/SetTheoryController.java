@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.SetTheoryModel;
-import Views.SetTheoryView;
+import Views.SetTheoryViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class SetTheoryController {
     //... The Controller needs to interact with both the Model and View.
     private final SetTheoryModel setTheoryModel;
-    private final SetTheoryView setTheoryView;
+    private final SetTheoryViews setTheoryView;
 
     //========================================================== constructor
     /** Constructor */
-    public SetTheoryController(SetTheoryModel model, SetTheoryView view) {
+    public SetTheoryController(SetTheoryModel model, SetTheoryViews view) {
         setTheoryModel = model;
         setTheoryView = view;
 

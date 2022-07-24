@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.StorageConverterModel;
-import Views.StorageConverterView;
+import Views.StorageConverterViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class StorageConverterController {
     //... The Controller needs to interact with both the Model and View.
     private final StorageConverterModel storageConverterModel;
-    private final StorageConverterView storageConverterView;
+    private final StorageConverterViews storageConverterView;
 
     //========================================================== constructor
     /** Constructor */
-    public StorageConverterController(StorageConverterModel model, StorageConverterView view) {
+    public StorageConverterController(StorageConverterModel model, StorageConverterViews view) {
         storageConverterModel = model;
         storageConverterView = view;
 

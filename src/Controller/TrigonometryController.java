@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.TrigonometryModel;
-import Views.TrigonometryView;
+import Views.TrigonometryViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class TrigonometryController {
     //... The Controller needs to interact with both the Model and View.
     private final TrigonometryModel trigonometryModel;
-    private final TrigonometryView trigonometryView;
+    private final TrigonometryViews trigonometryView;
 
     //========================================================== constructor
     /** Constructor */
-    public TrigonometryController(TrigonometryModel model, TrigonometryView view) {
+    public TrigonometryController(TrigonometryModel model, TrigonometryViews view) {
         trigonometryModel = model;
         trigonometryView = view;
 

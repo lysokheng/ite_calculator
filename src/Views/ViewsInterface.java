@@ -1,9 +1,9 @@
-package Screen;
+package Views;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public interface UserInteract {
+public interface ViewsInterface {
     JPanel input();
     JPanel operator();
     JPanel output();

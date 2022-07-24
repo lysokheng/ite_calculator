@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BitwiseBinaryModel;
-import Views.BitwiseBinaryView;
+import Views.BitwiseBinaryViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class BitwiseBinaryController {
     //... The Controller needs to interact with both the Model and View.
     private final BitwiseBinaryModel bitwiseBinaryModel;
-    private final BitwiseBinaryView bitwiseBinaryView;
+    private final BitwiseBinaryViews bitwiseBinaryView;
 
     //========================================================== constructor
     /** Constructor */
-    public BitwiseBinaryController(BitwiseBinaryModel model, BitwiseBinaryView view) {
+    public BitwiseBinaryController(BitwiseBinaryModel model, BitwiseBinaryViews view) {
         bitwiseBinaryModel = model;
         bitwiseBinaryView = view;
 

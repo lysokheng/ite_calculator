@@ -2,14 +2,13 @@ package Views;
 
 import Views.Components.*;
 import Views.Utils.AppButtons;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class BitwiseBinaryView extends DetailLayout implements UserInteract {
+public class BitwiseBinaryViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -36,7 +35,7 @@ public class BitwiseBinaryView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        BitwiseBinaryView bitwiseBinaryView = new BitwiseBinaryView();
+        BitwiseBinaryViews bitwiseBinaryView = new BitwiseBinaryViews();
         bitwiseBinaryView.inputAB(inputPanel, a, b);
 
         return inputPanel;
@@ -95,7 +94,7 @@ public class BitwiseBinaryView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        BitwiseBinaryView bitwiseBinaryView = new BitwiseBinaryView();
+        BitwiseBinaryViews bitwiseBinaryView = new BitwiseBinaryViews();
         bitwiseBinaryView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -104,7 +103,7 @@ public class BitwiseBinaryView extends DetailLayout implements UserInteract {
 
         //main panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        BitwiseBinaryView bitwiseBinaryView = new BitwiseBinaryView();
+        BitwiseBinaryViews bitwiseBinaryView = new BitwiseBinaryViews();
         bitwiseBinaryView.history(historyPanel, historyField);
 
         return historyPanel;

@@ -2,7 +2,6 @@ package Views;
 
 import Views.Components.*;
 import Views.Utils.AppButtons;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -10,7 +9,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class BinaryArithmeticView extends DetailLayout implements UserInteract {
+public class BinaryArithmeticViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -37,7 +36,7 @@ public class BinaryArithmeticView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        BinaryArithmeticView binaryArithmeticView = new BinaryArithmeticView();
+        BinaryArithmeticViews binaryArithmeticView = new BinaryArithmeticViews();
         binaryArithmeticView.inputAB(inputPanel, a, b);
 
         return inputPanel;
@@ -97,7 +96,7 @@ public class BinaryArithmeticView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        BinaryArithmeticView binaryArithmeticView = new BinaryArithmeticView();
+        BinaryArithmeticViews binaryArithmeticView = new BinaryArithmeticViews();
         binaryArithmeticView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -106,7 +105,7 @@ public class BinaryArithmeticView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        BinaryArithmeticView binaryArithmeticView = new BinaryArithmeticView();
+        BinaryArithmeticViews binaryArithmeticView = new BinaryArithmeticViews();
         binaryArithmeticView.history(historyPanel, historyField);
 
         return historyPanel;

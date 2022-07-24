@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCDecimalModel;
-import Views.NSCDecimalView;
+import Views.NSCDecimalViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCDecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCDecimalModel nscDecimalModel;
-    private final NSCDecimalView nscDecimalView;
+    private final NSCDecimalViews nscDecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCDecimalController(NSCDecimalModel model, NSCDecimalView view) {
+    public NSCDecimalController(NSCDecimalModel model, NSCDecimalViews view) {
         nscDecimalModel = model;
         nscDecimalView = view;
 

@@ -1,6 +1,5 @@
 package Views;
 
-import Screen.UserInteract;
 import Views.Components.*;
 import Views.Utils.AppButtons;
 
@@ -9,7 +8,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class BitwiseDecimalView extends DetailLayout implements UserInteract {
+public class BitwiseDecimalViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -36,7 +35,7 @@ public class BitwiseDecimalView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        BitwiseDecimalView bitwiseDecimalView = new BitwiseDecimalView();
+        BitwiseDecimalViews bitwiseDecimalView = new BitwiseDecimalViews();
         bitwiseDecimalView.inputAB(inputPanel, a, b);
 
         return inputPanel;
@@ -95,7 +94,7 @@ public class BitwiseDecimalView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        BitwiseDecimalView bitwiseDecimalView = new BitwiseDecimalView();
+        BitwiseDecimalViews bitwiseDecimalView = new BitwiseDecimalViews();
         bitwiseDecimalView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -104,7 +103,7 @@ public class BitwiseDecimalView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        BitwiseDecimalView bitwiseDecimalView = new BitwiseDecimalView();
+        BitwiseDecimalViews bitwiseDecimalView = new BitwiseDecimalViews();
         bitwiseDecimalView.history(historyPanel, historyField);
 
         return historyPanel;

@@ -1,5 +1,5 @@
 import Views.Utils.AppIcons;
-import Screen.ScreenPanel;
+import Views.Screen.ScreenPanel;
 
 import javax.swing.*;
 

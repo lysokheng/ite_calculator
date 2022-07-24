@@ -2,52 +2,48 @@ package Views;
 
 import Views.Components.*;
 import Views.Utils.AppButtons;
-import Screen.UserInteract;
+import Views.Utils.AppTexts;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ArithmeticView extends DetailLayout implements UserInteract {
+public class NSCBinaryViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
     //... create object
+    private final AppTexts appTexts = new AppTexts();
     private final AppButtons appButtons = new AppButtons();
-    private final InputFieldDecimalWithDot inputFieldDecimalWithDot = new InputFieldDecimalWithDot();
+    private final InputFieldBinary inputFieldBinary = new InputFieldBinary();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
 
     //... name of new object
-    private JTextField a = inputFieldDecimalWithDot.inputField();
-    private JTextField b = inputFieldDecimalWithDot.inputField();
+    private JTextField amount = inputFieldBinary.inputField();
     private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
-    private final JButton additionButton = appButtons.additionButton();
-    private final JButton subtractionButton = appButtons.subtractionButton();
-    private final JButton multiplicationButton = appButtons.multiplicationButton();
-    private final JButton divisionButton = appButtons.divisionButton();
-    private final JButton moduloButton = appButtons.moduloButton();
+    private final JButton binaryToDecimalButton = appButtons.binaryToDecimalButton();
+    private final JButton binaryToHexadecimalButton = appButtons.binaryToHexadecimalButton();
+    private final JButton binaryToOctalButton = appButtons.binaryToOctalButton();
     private JButton resetButton = appButtons.clearButton();
 
     //======================================================= components
     public JPanel input() {
-        //main panel
+        //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        ArithmeticView arithmeticView = new ArithmeticView();
-        arithmeticView.inputAB(inputPanel, a, b);
-
+        NSCBinaryViews nscBinaryView = new NSCBinaryViews();
+        nscBinaryView.inputAmount(inputPanel, amount);
 
         return inputPanel;
     }
     public JPanel operator() {
-        //panel
+        //main panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
         //set border to radius
-        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
+        AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 30, 0);
 
         //custom rectangle
         operatorPanel.setBackground(Color.WHITE);
@@ -56,37 +52,31 @@ public class ArithmeticView extends DetailLayout implements UserInteract {
         //create grid custom object
         GridBagConstraints c = new GridBagConstraints();
 
+        //view
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 0, 0, 0);
         c.weightx = 1;
         c.weighty = 1 ;
         c.gridx = 0;
         c.gridy = 0;
-        operatorPanel.add(additionButton, c);
+        operatorPanel.add(binaryToDecimalButton, c);
 
         c.gridx = 1;
         c.gridy = 0;
-        operatorPanel.add(subtractionButton, c);
+        operatorPanel.add(binaryToHexadecimalButton, c);
 
         c.gridx = 0;
         c.gridy = 1;
-        operatorPanel.add(multiplicationButton, c);
-
-        c.gridx = 1;
-        c.gridy = 1;
-        operatorPanel.add(divisionButton, c);
-
-        c.gridx = 0;
-        c.gridy = 2;
-        operatorPanel.add(moduloButton, c);
+        operatorPanel.add(binaryToOctalButton, c);
 
         return operatorPanel;
     }
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        ArithmeticView arithmeticView = new ArithmeticView();
-        arithmeticView.output(outputPanel, resultField);
+        NSCBinaryViews nscBinaryView = new NSCBinaryViews();
+        nscBinaryView.output(outputPanel, resultField);
 
         return outputPanel;
     }
@@ -94,19 +84,17 @@ public class ArithmeticView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        ArithmeticView arithmeticView = new ArithmeticView();
-        arithmeticView.history(historyPanel, historyField);
+        NSCBinaryViews nscBinaryView = new NSCBinaryViews();
+        nscBinaryView.history(historyPanel, historyField);
 
         return historyPanel;
     }
 
     //======================================================= add button to controller
     public void addButtonListener(ActionListener button) {
-        additionButton.addActionListener(button);
-        subtractionButton.addActionListener(button);
-        multiplicationButton.addActionListener(button);
-        divisionButton.addActionListener(button);
-        moduloButton.addActionListener(button);
+        binaryToDecimalButton.addActionListener(button);
+        binaryToHexadecimalButton.addActionListener(button);
+        binaryToOctalButton.addActionListener(button);
     }
     public void addClearListener(ActionListener button) {
         resetButton.addActionListener(button);
@@ -115,65 +103,48 @@ public class ArithmeticView extends DetailLayout implements UserInteract {
     //======================================================= additional method
     public void reset(){
         resultField.setText(INITIAL_VALUE);
-        a.setText("");
-        b.setText("");
+        amount.setText("");
         historyField.setText("");
     }
     public void showError(String errMessage) {
-        JOptionPane.showMessageDialog(a, errMessage);
+        JOptionPane.showMessageDialog(amount, errMessage);
     }
 
     //======================================================= getter and setter methods
-    public String getA() {
-        return a.getText();
+    public String getAmount() {
+        return amount.getText();
     }
 
-    public void setA(JTextField a) {
-        this.a = a;
-    }
-
-    public String getB() {
-        return b.getText();
-    }
-
-    public void setB(JTextField b) {
-        this.b = b;
+    public void setAmount(JTextField amount) {
+        this.amount = amount;
     }
 
     public String getResultField() {
         return resultField.toString();
     }
 
-    public void setResultField(String newText) {
-        resultField.setText(newText);
-    }
-
     public JTextArea getHistoryField() {
         return historyField;
+    }
+
+    public void setResultField(String newText) {
+        resultField.setText(newText);
     }
 
     public void setHistoryField(JTextArea historyField) {
         this.historyField = historyField;
     }
 
-    public JButton getAdditionButton() {
-        return additionButton;
+    public JButton getBinaryToDecimalButton() {
+        return binaryToDecimalButton;
     }
 
-    public JButton getSubtractionButton() {
-        return subtractionButton;
+    public JButton getBinaryToHexadecimalButton() {
+        return binaryToHexadecimalButton;
     }
 
-    public JButton getMultiplicationButton() {
-        return multiplicationButton;
-    }
-
-    public JButton getDivisionButton() {
-        return divisionButton;
-    }
-
-    public JButton getModuloButton() {
-        return moduloButton;
+    public JButton getBinaryToOctalButton() {
+        return binaryToOctalButton;
     }
 
     public JButton getResetButton() {
@@ -183,5 +154,4 @@ public class ArithmeticView extends DetailLayout implements UserInteract {
     public void setResetButton(JButton resetButton) {
         this.resetButton = resetButton;
     }
-
 }

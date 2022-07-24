@@ -4,7 +4,6 @@ import Views.Components.*;
 import Views.Utils.AppButtons;
 import Views.Utils.AppColors;
 import Views.Utils.AppTexts;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -12,7 +11,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MoneyExchangeView extends DetailLayout implements UserInteract {
+public class MoneyExchangeViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -44,7 +43,7 @@ public class MoneyExchangeView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        MoneyExchangeView moneyExchangeView = new MoneyExchangeView();
+        MoneyExchangeViews moneyExchangeView = new MoneyExchangeViews();
         moneyExchangeView.inputAmount(inputPanel, amount);
 
         return inputPanel;
@@ -121,7 +120,7 @@ public class MoneyExchangeView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        MoneyExchangeView moneyExchangeView = new MoneyExchangeView();
+        MoneyExchangeViews moneyExchangeView = new MoneyExchangeViews();
         moneyExchangeView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -130,7 +129,7 @@ public class MoneyExchangeView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        MoneyExchangeView moneyExchangeView = new MoneyExchangeView();
+        MoneyExchangeViews moneyExchangeView = new MoneyExchangeViews();
         moneyExchangeView.history(historyPanel, historyField);
 
         return historyPanel;

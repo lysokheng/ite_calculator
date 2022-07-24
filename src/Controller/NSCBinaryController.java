@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCBinaryModel;
-import Views.NSCBinaryView;
+import Views.NSCBinaryViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCBinaryController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCBinaryModel nscBinaryModel;
-    private final NSCBinaryView nscBinaryView;
+    private final NSCBinaryViews nscBinaryView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCBinaryController(NSCBinaryModel model, NSCBinaryView view) {
+    public NSCBinaryController(NSCBinaryModel model, NSCBinaryViews view) {
         nscBinaryModel = model;
         nscBinaryView = view;
 

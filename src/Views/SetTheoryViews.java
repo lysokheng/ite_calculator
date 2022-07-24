@@ -3,7 +3,6 @@ package Views;
 import Views.Components.*;
 import Views.Utils.AppButtons;
 import Views.Utils.AppTexts;
-import Screen.UserInteract;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -11,7 +10,7 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class SetTheoryView extends DetailLayout implements UserInteract {
+public class SetTheoryViews extends DetailLayout implements ViewsInterface {
     //... Constants
     private static final String INITIAL_VALUE = "";
 
@@ -36,7 +35,7 @@ public class SetTheoryView extends DetailLayout implements UserInteract {
     public JPanel input() {
         //panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
-        SetTheoryView setTheoryView = new SetTheoryView();
+        SetTheoryViews setTheoryView = new SetTheoryViews();
         setTheoryView.inputAB(inputPanel, a, b);
 
         return inputPanel;
@@ -78,7 +77,7 @@ public class SetTheoryView extends DetailLayout implements UserInteract {
     public JPanel output() {
         //panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
-        SetTheoryView setTheoryView = new SetTheoryView();
+        SetTheoryViews setTheoryView = new SetTheoryViews();
         setTheoryView.output(outputPanel, resultField);
 
         return outputPanel;
@@ -87,7 +86,7 @@ public class SetTheoryView extends DetailLayout implements UserInteract {
 
         //panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
-        SetTheoryView setTheoryView = new SetTheoryView();
+        SetTheoryViews setTheoryView = new SetTheoryViews();
         setTheoryView.history(historyPanel, historyField);
 
         return historyPanel;

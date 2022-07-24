@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.MoneyExchangeModel;
-import Views.MoneyExchangeView;
+import Views.MoneyExchangeViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class MoneyExchangeController {
     //... The Controller needs to interact with both the Model and View.
     private final MoneyExchangeModel moneyExchangeModel;
-    private final MoneyExchangeView moneyExchangeView;
+    private final MoneyExchangeViews moneyExchangeView;
 
     //========================================================== constructor
     /** Constructor */
-    public MoneyExchangeController(MoneyExchangeModel model, MoneyExchangeView view) {
+    public MoneyExchangeController(MoneyExchangeModel model, MoneyExchangeViews view) {
         moneyExchangeModel = model;
         moneyExchangeView = view;
 

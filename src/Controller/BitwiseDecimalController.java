@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BitwiseDecimalModel;
-import Views.BitwiseDecimalView;
+import Views.BitwiseDecimalViews;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class BitwiseDecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final BitwiseDecimalModel bitwiseDecimalModel;
-    private final BitwiseDecimalView bitwiseDecimalView;
+    private final BitwiseDecimalViews bitwiseDecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalView view) {
+    public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalViews view) {
         bitwiseDecimalModel = model;
         bitwiseDecimalView = view;
 
