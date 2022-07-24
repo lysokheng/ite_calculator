@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCBinaryModel;
-import Views.NSCBinaryViews;
+import View.NSCBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCBinaryController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCBinaryModel nscBinaryModel;
-    private final NSCBinaryViews nscBinaryView;
+    private final NSCBinaryView nscBinaryView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCBinaryController(NSCBinaryModel model, NSCBinaryViews view) {
+    public NSCBinaryController(NSCBinaryModel model, NSCBinaryView view) {
         nscBinaryModel = model;
         nscBinaryView = view;
 
@@ -23,7 +23,7 @@ public class NSCBinaryController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class NSCBinaryListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -56,7 +56,7 @@ public class NSCBinaryController {
                 nscBinaryView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class NSCBinaryListener
 
 
     //////////////////////////////////////////// inner class ClearListener

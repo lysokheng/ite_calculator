@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.MoneyExchangeModel;
-import Views.MoneyExchangeViews;
+import View.MoneyExchangeView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class MoneyExchangeController {
     //... The Controller needs to interact with both the Model and View.
     private final MoneyExchangeModel moneyExchangeModel;
-    private final MoneyExchangeViews moneyExchangeView;
+    private final MoneyExchangeView moneyExchangeView;
 
     //========================================================== constructor
     /** Constructor */
-    public MoneyExchangeController(MoneyExchangeModel model, MoneyExchangeViews view) {
+    public MoneyExchangeController(MoneyExchangeModel model, MoneyExchangeView view) {
         moneyExchangeModel = model;
         moneyExchangeView = view;
 
@@ -23,7 +23,7 @@ public class MoneyExchangeController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class MoneyExchangeListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -77,7 +77,7 @@ public class MoneyExchangeController {
                 moneyExchangeView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class MoneyExchangeListener
 
 
     //////////////////////////////////////////// inner class ClearListener

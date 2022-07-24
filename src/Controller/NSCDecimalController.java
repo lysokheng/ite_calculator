@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCDecimalModel;
-import Views.NSCDecimalViews;
+import View.NSCDecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCDecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCDecimalModel nscDecimalModel;
-    private final NSCDecimalViews nscDecimalView;
+    private final NSCDecimalView nscDecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCDecimalController(NSCDecimalModel model, NSCDecimalViews view) {
+    public NSCDecimalController(NSCDecimalModel model, NSCDecimalView view) {
         nscDecimalModel = model;
         nscDecimalView = view;
 
@@ -23,7 +23,7 @@ public class NSCDecimalController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class NSCDecimalListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -56,7 +56,7 @@ public class NSCDecimalController {
                 nscDecimalView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class NSCDecimalListener
 
 
     //////////////////////////////////////////// inner class ClearListener

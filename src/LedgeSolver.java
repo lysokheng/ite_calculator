@@ -14,7 +14,7 @@
 public class LedgeSolver {
 
     public static void main(String[] args) {
-        MainGUI mainGUI = new MainGUI();
-        mainGUI.createWindow();
+        MainWindows mainWindows = new MainWindows();
+        mainWindows.createWindow();
     }
 }

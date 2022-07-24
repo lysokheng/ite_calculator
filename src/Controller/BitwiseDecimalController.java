@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BitwiseDecimalModel;
-import Views.BitwiseDecimalViews;
+import View.BitwiseDecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class BitwiseDecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final BitwiseDecimalModel bitwiseDecimalModel;
-    private final BitwiseDecimalViews bitwiseDecimalView;
+    private final BitwiseDecimalView bitwiseDecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalViews view) {
+    public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalView view) {
         bitwiseDecimalModel = model;
         bitwiseDecimalView = view;
 
@@ -23,7 +23,7 @@ public class BitwiseDecimalController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class BitwiseDecimalListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -66,7 +66,7 @@ public class BitwiseDecimalController {
                 bitwiseDecimalView.showError("Bad input: '" + a + ", " + b +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class BitwiseDecimalListener
 
 
     //////////////////////////////////////////// inner class ClearListener

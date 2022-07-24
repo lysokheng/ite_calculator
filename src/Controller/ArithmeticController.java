@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.ArithmeticModel;
-import Views.ArithmeticViews;
+import View.ArithmeticView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class ArithmeticController {
     //... The Controller needs to interact with both the Model and View.
     private final ArithmeticModel arithmeticModel;
-    private final ArithmeticViews arithmeticView;
+    private final ArithmeticView arithmeticView;
 
     //========================================================== constructor
     /** Constructor */
-    public ArithmeticController(ArithmeticModel model, ArithmeticViews view) {
+    public ArithmeticController(ArithmeticModel model, ArithmeticView view) {
         arithmeticModel = model;
         arithmeticView = view;
 
@@ -23,7 +23,7 @@ public class ArithmeticController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class ArithmeticListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -63,7 +63,7 @@ public class ArithmeticController {
                 arithmeticView.showError("Bad input: '" + a + ", " + b +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class ArithmeticListener
 
 
     //////////////////////////////////////////// inner class ClearListener

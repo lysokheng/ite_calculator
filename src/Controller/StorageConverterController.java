@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.StorageConverterModel;
-import Views.StorageConverterViews;
+import View.StorageConverterView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,20 +10,20 @@ import java.awt.event.ActionListener;
 public class StorageConverterController {
     //... The Controller needs to interact with both the Model and View.
     private final StorageConverterModel storageConverterModel;
-    private final StorageConverterViews storageConverterView;
+    private final StorageConverterView storageConverterView;
 
     //========================================================== constructor
     /** Constructor */
-    public StorageConverterController(StorageConverterModel model, StorageConverterViews view) {
+    public StorageConverterController(StorageConverterModel model, StorageConverterView view) {
         storageConverterModel = model;
         storageConverterView = view;
 
         //... Add listeners to the view.
-        view.addButtonListener(new NSCStorageConverterListener());
+        view.addButtonListener(new StorageConverterListener());
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class StorageConverterListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -31,7 +31,7 @@ public class StorageConverterController {
      *  4. Tell the View to display the result.
      * If there was an error, tell the View to display it.
      */
-    class NSCStorageConverterListener implements ActionListener {
+    class StorageConverterListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String amount = "";
             JTextArea history;
@@ -142,7 +142,7 @@ public class StorageConverterController {
                 storageConverterView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class StorageConverterListener
 
 
     //////////////////////////////////////////// inner class ClearListener

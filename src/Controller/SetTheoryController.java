@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.SetTheoryModel;
-import Views.SetTheoryViews;
+import View.SetTheoryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class SetTheoryController {
     //... The Controller needs to interact with both the Model and View.
     private final SetTheoryModel setTheoryModel;
-    private final SetTheoryViews setTheoryView;
+    private final SetTheoryView setTheoryView;
 
     //========================================================== constructor
     /** Constructor */
-    public SetTheoryController(SetTheoryModel model, SetTheoryViews view) {
+    public SetTheoryController(SetTheoryModel model, SetTheoryView view) {
         setTheoryModel = model;
         setTheoryView = view;
 
@@ -23,7 +23,7 @@ public class SetTheoryController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class SetTheoryListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -57,7 +57,7 @@ public class SetTheoryController {
                 setTheoryView.showError("Bad input: '" + a + ", " + b +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class SetTheoryListener
 
 
     //////////////////////////////////////////// inner class ClearListener

@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCOctalModel;
-import Views.NSCOctalViews;
+import View.NSCOctalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCOctalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCOctalModel nscOctalModel;
-    private final NSCOctalViews nscOctalView;
+    private final NSCOctalView nscOctalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCOctalController(NSCOctalModel model, NSCOctalViews view) {
+    public NSCOctalController(NSCOctalModel model, NSCOctalView view) {
         nscOctalModel = model;
         nscOctalView = view;
 
@@ -23,7 +23,7 @@ public class NSCOctalController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class NSCOctalListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -56,7 +56,7 @@ public class NSCOctalController {
                 nscOctalView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class NSCOctalListener
 
 
     //////////////////////////////////////////// inner class ClearListener

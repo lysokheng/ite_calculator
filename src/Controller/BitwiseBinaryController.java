@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.BitwiseBinaryModel;
-import Views.BitwiseBinaryViews;
+import View.BitwiseBinaryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class BitwiseBinaryController {
     //... The Controller needs to interact with both the Model and View.
     private final BitwiseBinaryModel bitwiseBinaryModel;
-    private final BitwiseBinaryViews bitwiseBinaryView;
+    private final BitwiseBinaryView bitwiseBinaryView;
 
     //========================================================== constructor
     /** Constructor */
-    public BitwiseBinaryController(BitwiseBinaryModel model, BitwiseBinaryViews view) {
+    public BitwiseBinaryController(BitwiseBinaryModel model, BitwiseBinaryView view) {
         bitwiseBinaryModel = model;
         bitwiseBinaryView = view;
 
@@ -23,7 +23,7 @@ public class BitwiseBinaryController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class BitwiseBinaryListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -66,7 +66,7 @@ public class BitwiseBinaryController {
                 bitwiseBinaryView.showError("Bad input: '" + a + ", " + b +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class BitwiseBinaryListener
 
 
     //////////////////////////////////////////// inner class ClearListener

@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.NSCHexadecimalModel;
-import Views.NSCHexadecimalViews;
+import View.NSCHexadecimalView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class NSCHexadecimalController {
     //... The Controller needs to interact with both the Model and View.
     private final NSCHexadecimalModel nscHexadecimalModel;
-    private final NSCHexadecimalViews nscHexadecimalView;
+    private final NSCHexadecimalView nscHexadecimalView;
 
     //========================================================== constructor
     /** Constructor */
-    public NSCHexadecimalController(NSCHexadecimalModel model, NSCHexadecimalViews view) {
+    public NSCHexadecimalController(NSCHexadecimalModel model, NSCHexadecimalView view) {
         nscHexadecimalModel = model;
         nscHexadecimalView = view;
 
@@ -23,7 +23,7 @@ public class NSCHexadecimalController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class NSCHexadecimalListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -56,7 +56,7 @@ public class NSCHexadecimalController {
                 nscHexadecimalView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class NSCHexadecimalListener
 
 
     //////////////////////////////////////////// inner class ClearListener

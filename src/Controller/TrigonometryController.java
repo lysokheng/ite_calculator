@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.TrigonometryModel;
-import Views.TrigonometryViews;
+import View.TrigonometryView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class TrigonometryController {
     //... The Controller needs to interact with both the Model and View.
     private final TrigonometryModel trigonometryModel;
-    private final TrigonometryViews trigonometryView;
+    private final TrigonometryView trigonometryView;
 
     //========================================================== constructor
     /** Constructor */
-    public TrigonometryController(TrigonometryModel model, TrigonometryViews view) {
+    public TrigonometryController(TrigonometryModel model, TrigonometryView view) {
         trigonometryModel = model;
         trigonometryView = view;
 
@@ -23,7 +23,7 @@ public class TrigonometryController {
         view.addClearListener(new ClearListener());
     }
 
-    ////////////////////////////////////////// inner class MultiplyListener
+    ////////////////////////////////////////// inner class TrigonometryListener
     /** When a calculation is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to calculate by this number.
@@ -80,7 +80,7 @@ public class TrigonometryController {
                 trigonometryView.showError("Bad input: '" + amount +  "'");
             }
         }
-    }//end inner class MultiplyListener
+    }//end inner class TrigonometryListener
 
 
     //////////////////////////////////////////// inner class ClearListener
