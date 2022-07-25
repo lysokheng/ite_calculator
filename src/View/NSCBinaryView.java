@@ -2,7 +2,6 @@ package View;
 
 import View.Components.*;
 import View.Utils.AppButtons;
-import View.Utils.AppTexts;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -14,7 +13,6 @@ public class NSCBinaryView extends DetailLayout implements ViewsInterface {
     private static final String INITIAL_VALUE = "";
 
     //... create object
-    private final AppTexts appTexts = new AppTexts();
     private final AppButtons appButtons = new AppButtons();
     private final InputFieldBinary inputFieldBinary = new InputFieldBinary();
     private final OutputArea outputArea = new OutputArea();
