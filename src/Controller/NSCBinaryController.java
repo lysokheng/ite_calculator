@@ -8,27 +8,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NSCBinaryController {
-    //... The Controller needs to interact with both the Model and View.
+    // ... The Controller needs to interact with both the Model and View.
     private final NSCBinaryModel nscBinaryModel;
     private final NSCBinaryView nscBinaryView;
 
-    //========================================================== constructor
+    // ========================================================== constructor
     /** Constructor */
     public NSCBinaryController(NSCBinaryModel model, NSCBinaryView view) {
         nscBinaryModel = model;
         nscBinaryView = view;
 
-        //... Add listeners to the view.
+        // ... Add listeners to the view.
         view.addButtonListener(new NSCBinaryListener());
         view.addClearListener(new ClearListener());
     }
 
     ////////////////////////////////////////// inner class NSCBinaryListener
-    /** When a calculation is requested.
-     *  1. Get the user input number from the View.
-     *  2. Call the model to calculate by this number.
-     *  3. Get the result from the Model.
-     *  4. Tell the View to display the result.
+    /**
+     * When a calculation is requested.
+     * 1. Get the user input number from the View.
+     * 2. Call the model to calculate by this number.
+     * 3. Get the result from the Model.
+     * 4. Tell the View to display the result.
      * If there was an error, tell the View to display it.
      */
     class NSCBinaryListener implements ActionListener {
@@ -39,7 +40,7 @@ public class NSCBinaryController {
                 amount = nscBinaryView.getAmount();
                 history = nscBinaryView.getHistoryField();
 
-                if (e.getSource() == nscBinaryView.getBinaryToDecimalButton()){
+                if (e.getSource() == nscBinaryView.getBinaryToDecimalButton()) {
                     nscBinaryModel.binary2Decimal(amount, history);
 
                 } else if (e.getSource() == nscBinaryView.getBinaryToHexadecimalButton()) {
@@ -53,15 +54,16 @@ public class NSCBinaryController {
                 nscBinaryView.setResultField(nscBinaryModel.getValue());
 
             } catch (NumberFormatException next) {
-                nscBinaryView.showError("Bad input: '" + amount +  "'");
+                nscBinaryView.showError("Amount must be entered." +
+                        "\nAmount: " + amount, "Error");
             }
         }
-    }//end inner class NSCBinaryListener
-
+    }// end inner class NSCBinaryListener
 
     //////////////////////////////////////////// inner class ClearListener
-    /**  1. Reset model.
-     *   2. Reset View.
+    /**
+     * 1. Reset model.
+     * 2. Reset View.
      */
     class ClearListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {

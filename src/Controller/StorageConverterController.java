@@ -8,27 +8,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StorageConverterController {
-    //... The Controller needs to interact with both the Model and View.
+    // ... The Controller needs to interact with both the Model and View.
     private final StorageConverterModel storageConverterModel;
     private final StorageConverterView storageConverterView;
 
-    //========================================================== constructor
+    // ========================================================== constructor
     /** Constructor */
     public StorageConverterController(StorageConverterModel model, StorageConverterView view) {
         storageConverterModel = model;
         storageConverterView = view;
 
-        //... Add listeners to the view.
+        // ... Add listeners to the view.
         view.addButtonListener(new StorageConverterListener());
         view.addClearListener(new ClearListener());
     }
 
     ////////////////////////////////////////// inner class StorageConverterListener
-    /** When a calculation is requested.
-     *  1. Get the user input number from the View.
-     *  2. Call the model to calculate by this number.
-     *  3. Get the result from the Model.
-     *  4. Tell the View to display the result.
+    /**
+     * When a calculation is requested.
+     * 1. Get the user input number from the View.
+     * 2. Call the model to calculate by this number.
+     * 3. Get the result from the Model.
+     * 4. Tell the View to display the result.
      * If there was an error, tell the View to display it.
      */
     class StorageConverterListener implements ActionListener {
@@ -39,7 +40,7 @@ public class StorageConverterController {
                 amount = storageConverterView.getAmount();
                 history = storageConverterView.getHistoryField();
 
-                if (e.getSource() == storageConverterView.getByteToKilobyteButton()){
+                if (e.getSource() == storageConverterView.getByteToKilobyteButton()) {
                     storageConverterModel.byte2KB(amount, history);
 
                 } else if (e.getSource() == storageConverterView.getByteToMegabyteButton()) {
@@ -53,7 +54,6 @@ public class StorageConverterController {
 
                 } else if (e.getSource() == storageConverterView.getByteToTerabyteButton()) {
                     storageConverterModel.byte2TB(amount, history);
-
 
                 } else if (e.getSource() == storageConverterView.getKilobyteToByteButton()) {
                     storageConverterModel.kb2byte(amount, history);
@@ -70,7 +70,6 @@ public class StorageConverterController {
                 } else if (e.getSource() == storageConverterView.getKilobyteToTerabyteButton()) {
                     storageConverterModel.kb2TB(amount, history);
 
-
                 } else if (e.getSource() == storageConverterView.getMegabyteToByteButton()) {
                     storageConverterModel.mb2byte(amount, history);
 
@@ -85,7 +84,6 @@ public class StorageConverterController {
 
                 } else if (e.getSource() == storageConverterView.getMegabyteToTerabyteButton()) {
                     storageConverterModel.mb2TB(amount, history);
-
 
                 } else if (e.getSource() == storageConverterView.getGigabyteToByteButton()) {
                     storageConverterModel.gb2byte(amount, history);
@@ -102,7 +100,6 @@ public class StorageConverterController {
                 } else if (e.getSource() == storageConverterView.getGigabyteToTerabyteButton()) {
                     storageConverterModel.gb2TB(amount, history);
 
-
                 } else if (e.getSource() == storageConverterView.getPetabyteToByteButton()) {
                     storageConverterModel.pb2Byte(amount, history);
 
@@ -117,7 +114,6 @@ public class StorageConverterController {
 
                 } else if (e.getSource() == storageConverterView.getPetabyteToTerabyteButton()) {
                     storageConverterModel.pb2TB(amount, history);
-
 
                 } else if (e.getSource() == storageConverterView.getTerabyteToByteButton()) {
                     storageConverterModel.tb2byte(amount, history);
@@ -139,15 +135,16 @@ public class StorageConverterController {
                 storageConverterView.setResultField(storageConverterModel.getValue());
 
             } catch (NumberFormatException next) {
-                storageConverterView.showError("Bad input: '" + amount +  "'");
+                storageConverterView.showError("Amount must be entered." +
+                        "\nAmount: " + amount, "Error");
             }
         }
-    }//end inner class StorageConverterListener
-
+    }// end inner class StorageConverterListener
 
     //////////////////////////////////////////// inner class ClearListener
-    /**  1. Reset model.
-     *   2. Reset View.
+    /**
+     * 1. Reset model.
+     * 2. Reset View.
      */
     class ClearListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {

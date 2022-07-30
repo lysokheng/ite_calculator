@@ -9,17 +9,17 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class StorageConverterView extends DetailLayout implements ViewsInterface {
-    //... Constants
+public class StorageConverterView extends DetailLayout {
+    // ... Constants
     private static final String INITIAL_VALUE = "";
 
-    //... create object
+    // ... create object
     private final AppButtons appButtons = new AppButtons();
     private final InputFieldDecimal inputFieldDecimal = new InputFieldDecimal();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
 
-    //... name of new object
+    // ... name of new object
     private JTextField amount = inputFieldDecimal.inputField();
     private final JTextArea resultField = outputArea.outputArea();
     private JTextArea historyField = historyArea.historyArea();
@@ -55,28 +55,29 @@ public class StorageConverterView extends DetailLayout implements ViewsInterface
     private final JButton terabyteToPetabyteButton = appButtons.terabyteToPetabyteButton();
     private JButton resetButton = appButtons.clearButton();
 
-    //======================================================= components
+    // ======================================================= components
     public JPanel input() {
-        //panel
+        // panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
         StorageConverterView storageConverterView = new StorageConverterView();
         storageConverterView.inputAmount(inputPanel, amount);
 
         return inputPanel;
     }
+
     public JPanel operator() {
-        //Create JPanel
+        // Create JPanel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
         operatorPanel.setBackground(Color.WHITE);
 
-        //main panel
+        // main panel
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(AppColors.BACKGROUND_COLOR.getColor());
 
-        //create grid custom object
+        // create grid custom object
         GridBagConstraints c = new GridBagConstraints();
 
-        //view
+        // view
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 0, 0, 0);
@@ -231,7 +232,7 @@ public class StorageConverterView extends DetailLayout implements ViewsInterface
 
         JScrollPane areaScrollPane = new JScrollPane(operatorPanel);
 
-        //set border to radius
+        // set border to radius
         AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -244,17 +245,19 @@ public class StorageConverterView extends DetailLayout implements ViewsInterface
 
         return mainPanel;
     }
+
     public JPanel output() {
-        //panel
+        // panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
         StorageConverterView storageConverterView = new StorageConverterView();
         storageConverterView.output(outputPanel, resultField);
 
         return outputPanel;
     }
+
     public JPanel history() {
 
-        //panel
+        // panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
         StorageConverterView storageConverterView = new StorageConverterView();
         storageConverterView.history(historyPanel, historyField);
@@ -262,7 +265,8 @@ public class StorageConverterView extends DetailLayout implements ViewsInterface
         return historyPanel;
     }
 
-    //======================================================= add button to controller
+    // ======================================================= add button to
+    // controller
     public void addButtonListener(ActionListener button) {
         byteToKilobyteButton.addActionListener(button);
         byteToMegabyteButton.addActionListener(button);
@@ -300,21 +304,24 @@ public class StorageConverterView extends DetailLayout implements ViewsInterface
         terabyteToMegabyteButton.addActionListener(button);
         terabyteToPetabyteButton.addActionListener(button);
     }
+
     public void addClearListener(ActionListener button) {
         resetButton.addActionListener(button);
     }
 
-    //======================================================= additional method
-    public void reset(){
+    // ======================================================= additional method
+    public void reset() {
         resultField.setText(INITIAL_VALUE);
         amount.setText("");
         historyField.setText("");
     }
-    public void showError(String errMessage) {
-        JOptionPane.showMessageDialog(amount, errMessage);
+
+    public void showError(String errMessage, String title) {
+        JOptionPane.showMessageDialog(null, errMessage, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    //======================================================= getter and setter methods
+    // ======================================================= getter and setter
+    // methods
     public String getAmount() {
         return amount.getText();
     }

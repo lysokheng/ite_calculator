@@ -8,17 +8,17 @@ import javax.swing.border.AbstractBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ArithmeticView extends DetailLayout implements ViewsInterface {
-    //... Constants
+public class ArithmeticView extends DetailLayout {
+    // ... Constants
     private static final String INITIAL_VALUE = "";
 
-    //... create object
+    // ... create object
     private final AppButtons appButtons = new AppButtons();
     private final InputFieldDecimalWithDot inputFieldDecimalWithDot = new InputFieldDecimalWithDot();
     private final OutputArea outputArea = new OutputArea();
     private final HistoryArea historyArea = new HistoryArea();
 
-    //... name of new object
+    // ... name of new object
     private JTextField a = inputFieldDecimalWithDot.inputField();
     private JTextField b = inputFieldDecimalWithDot.inputField();
     private final JTextArea resultField = outputArea.outputArea();
@@ -30,34 +30,34 @@ public class ArithmeticView extends DetailLayout implements ViewsInterface {
     private final JButton moduloButton = appButtons.moduloButton();
     private JButton resetButton = appButtons.clearButton();
 
-    //======================================================= components
+    // ======================================================= components
     public JPanel input() {
-        //main panel
+        // main panel
         JPanel inputPanel = new JPanel(new GridBagLayout());
         ArithmeticView arithmeticView = new ArithmeticView();
         arithmeticView.inputAB(inputPanel, a, b);
 
-
         return inputPanel;
     }
+
     public JPanel operator() {
-        //panel
+        // panel
         JPanel operatorPanel = new JPanel(new GridBagLayout());
 
-        //set border to radius
+        // set border to radius
         AbstractBorder border = new TextBubbleBorder(Color.WHITE, 0, 15, 0);
 
-        //custom rectangle
+        // custom rectangle
         operatorPanel.setBackground(Color.WHITE);
         operatorPanel.setBorder(border);
 
-        //create grid custom object
+        // create grid custom object
         GridBagConstraints c = new GridBagConstraints();
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 0, 0, 0);
         c.weightx = 1;
-        c.weighty = 1 ;
+        c.weighty = 1;
         c.gridx = 0;
         c.gridy = 0;
         operatorPanel.add(additionButton, c);
@@ -80,17 +80,19 @@ public class ArithmeticView extends DetailLayout implements ViewsInterface {
 
         return operatorPanel;
     }
+
     public JPanel output() {
-        //panel
+        // panel
         JPanel outputPanel = new JPanel(new GridBagLayout());
         ArithmeticView arithmeticView = new ArithmeticView();
         arithmeticView.output(outputPanel, resultField);
 
         return outputPanel;
     }
+
     public JPanel history() {
 
-        //panel
+        // panel
         JPanel historyPanel = new JPanel(new GridBagLayout());
         ArithmeticView arithmeticView = new ArithmeticView();
         arithmeticView.history(historyPanel, historyField);
@@ -98,7 +100,8 @@ public class ArithmeticView extends DetailLayout implements ViewsInterface {
         return historyPanel;
     }
 
-    //======================================================= add button to controller
+    // ======================================================= add button to
+    // controller
     public void addButtonListener(ActionListener button) {
         additionButton.addActionListener(button);
         subtractionButton.addActionListener(button);
@@ -106,22 +109,25 @@ public class ArithmeticView extends DetailLayout implements ViewsInterface {
         divisionButton.addActionListener(button);
         moduloButton.addActionListener(button);
     }
+
     public void addClearListener(ActionListener button) {
         resetButton.addActionListener(button);
     }
 
-    //======================================================= additional method
-    public void reset(){
+    // ======================================================= additional method
+    public void reset() {
         resultField.setText(INITIAL_VALUE);
         a.setText("");
         b.setText("");
         historyField.setText("");
     }
-    public void showError(String errMessage) {
-        JOptionPane.showMessageDialog(a, errMessage);
+
+    public void showError(String errMessage, String title) {
+        JOptionPane.showMessageDialog(null, errMessage, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    //======================================================= getter and setter methods
+    // ======================================================= getter and setter
+    // methods
     public String getA() {
         return a.getText();
     }

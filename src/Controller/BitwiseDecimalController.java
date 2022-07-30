@@ -8,27 +8,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BitwiseDecimalController {
-    //... The Controller needs to interact with both the Model and View.
+    // ... The Controller needs to interact with both the Model and View.
     private final BitwiseDecimalModel bitwiseDecimalModel;
     private final BitwiseDecimalView bitwiseDecimalView;
 
-    //========================================================== constructor
+    // ========================================================== constructor
     /** Constructor */
     public BitwiseDecimalController(BitwiseDecimalModel model, BitwiseDecimalView view) {
         bitwiseDecimalModel = model;
         bitwiseDecimalView = view;
 
-        //... Add listeners to the view.
+        // ... Add listeners to the view.
         view.addButtonListener(new BitwiseDecimalListener());
         view.addClearListener(new ClearListener());
     }
 
     ////////////////////////////////////////// inner class BitwiseDecimalListener
-    /** When a calculation is requested.
-     *  1. Get the user input number from the View.
-     *  2. Call the model to calculate by this number.
-     *  3. Get the result from the Model.
-     *  4. Tell the View to display the result.
+    /**
+     * When a calculation is requested.
+     * 1. Get the user input number from the View.
+     * 2. Call the model to calculate by this number.
+     * 3. Get the result from the Model.
+     * 4. Tell the View to display the result.
      * If there was an error, tell the View to display it.
      */
     class BitwiseDecimalListener implements ActionListener {
@@ -40,7 +41,7 @@ public class BitwiseDecimalController {
                 b = bitwiseDecimalView.getB();
                 history = bitwiseDecimalView.getHistoryField();
 
-                if (e.getSource() == bitwiseDecimalView.getBitwiseANDButton()){
+                if (e.getSource() == bitwiseDecimalView.getBitwiseANDButton()) {
                     bitwiseDecimalModel.bitwiseAND(a, b, history);
 
                 } else if (e.getSource() == bitwiseDecimalView.getBitwiseORButton()) {
@@ -63,15 +64,16 @@ public class BitwiseDecimalController {
                 bitwiseDecimalView.setResultField(bitwiseDecimalModel.getValue());
 
             } catch (NumberFormatException next) {
-                bitwiseDecimalView.showError("Bad input: '" + a + ", " + b +  "'");
+                bitwiseDecimalView.showError("A and B must be entered." +
+                        "\nA: " + a + "\nB: " + b + "\n", "Error");
             }
         }
-    }//end inner class BitwiseDecimalListener
-
+    }// end inner class BitwiseDecimalListener
 
     //////////////////////////////////////////// inner class ClearListener
-    /**  1. Reset model.
-     *   2. Reset View.
+    /**
+     * 1. Reset model.
+     * 2. Reset View.
      */
     class ClearListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
