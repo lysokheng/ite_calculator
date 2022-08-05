@@ -9,5 +9,5 @@
 * Year: 2  Semester: 2
 * Generation: 7th
 * Course: Advanced Programming Language II
-* Lecturer: Kor Sokchea 
+* Lecturer: Kor Sokchea
 * Project: ITECalculatorGUI

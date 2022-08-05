@@ -1,9 +1,13 @@
 package Model;
 
 import javax.swing.*;
+
+import Controller.SetTheoryController;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.ErrorManager;
 
 public class SetTheoryModel {
     //... Constants
@@ -36,21 +40,21 @@ public class SetTheoryModel {
         listA = a.split(" ");
         listB = b.split(" ");
 
-        // Create set A
-        Set<String> setA = new HashSet<>(List.of(listA));
+            // Create set A
+            Set<String> setA = new HashSet<>(List.of(listA));
 
-        // Create set B
-        Set<String> setB = new HashSet<>(List.of(listB));
+            // Create set B
+            Set<String> setB = new HashSet<>(List.of(listB));
 
-        //perform set A and set B
-        Set<String> union = new HashSet<>(setA);
-        union.addAll(setB);
+            // perform set A and set B
+            Set<String> union = new HashSet<>(setA);
+            union.addAll(setB);
 
-        result = String.valueOf(union);
+            result = String.valueOf(union);
 
-        count++;
-        history.append(count + ". " + "Union" + "\n"
-                + "A: " + a + "\nB: " + b + "\nResult: " + result + "\n\n");
+            count++;
+            history.append(count + ". " + "Union" + "\n"
+                    + "A: " + a + "\nB: " + b + "\nResult: " + result + "\n\n");
     }
 
     public void intersection(String a, String b, JTextArea history) {

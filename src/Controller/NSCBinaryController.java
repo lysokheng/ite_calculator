@@ -40,6 +40,8 @@ public class NSCBinaryController {
                 amount = nscBinaryView.getAmount();
                 history = nscBinaryView.getHistoryField();
 
+                nscBinaryView.resetAmount();
+                
                 if (e.getSource() == nscBinaryView.getBinaryToDecimalButton()) {
                     nscBinaryModel.binary2Decimal(amount, history);
 

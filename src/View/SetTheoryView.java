@@ -116,6 +116,10 @@ public class SetTheoryView extends DetailLayout {
         JOptionPane.showMessageDialog(null, errMessage, title, JOptionPane.ERROR_MESSAGE);
     }
 
+    public void resetAB() {
+        a.setText("");
+        b.setText("");
+    }
     // ======================================================= getter and setter
     // methods
     public String getA() {

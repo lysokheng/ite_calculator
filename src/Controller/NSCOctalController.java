@@ -40,6 +40,8 @@ public class NSCOctalController {
                 amount = nscOctalView.getAmount();
                 history = nscOctalView.getHistoryField();
 
+                nscOctalView.resetAmount();
+                
                 if (e.getSource() == nscOctalView.getOctalToBinaryButton()) {
                     nscOctalModel.octal2Binary(amount, history);
 

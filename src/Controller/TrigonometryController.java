@@ -40,6 +40,8 @@ public class TrigonometryController {
                 amount = trigonometryView.getAmount();
                 history = trigonometryView.getHistoryField();
 
+                trigonometryView.resetAmount();
+                
                 if (e.getSource() == trigonometryView.getSinToDegreeButton()) {
                     trigonometryModel.sinToDegree(amount, history);
 

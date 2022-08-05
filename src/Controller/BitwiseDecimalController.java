@@ -41,6 +41,8 @@ public class BitwiseDecimalController {
                 b = bitwiseDecimalView.getB();
                 history = bitwiseDecimalView.getHistoryField();
 
+                bitwiseDecimalView.resetAB();
+                
                 if (e.getSource() == bitwiseDecimalView.getBitwiseANDButton()) {
                     bitwiseDecimalModel.bitwiseAND(a, b, history);
 

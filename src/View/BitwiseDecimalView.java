@@ -122,6 +122,11 @@ public class BitwiseDecimalView extends DetailLayout {
         bitwiseRightShiftButton.addActionListener(button);
         bitwiseInversionButton.addActionListener(button);
     }
+    
+    public void resetAB() {
+        a.setText("");
+        b.setText("");
+    }
 
     public void addClearListener(ActionListener button) {
         resetButton.addActionListener(button);

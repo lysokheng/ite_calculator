@@ -135,6 +135,11 @@ public class BitwiseBinaryView extends DetailLayout {
         historyField.setText("");
     }
 
+    public void resetAB() {
+        a.setText("");
+        b.setText("");
+    }
+
     public void showError(String errMessage, String title) {
         JOptionPane.showMessageDialog(null, errMessage, title, JOptionPane.ERROR_MESSAGE);
     }

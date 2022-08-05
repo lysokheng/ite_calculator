@@ -6,6 +6,7 @@ import View.SetTheoryView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
 
 public class SetTheoryController {
     // ... The Controller needs to interact with both the Model and View.
@@ -41,6 +42,8 @@ public class SetTheoryController {
                 b = setTheoryView.getB();
                 history = setTheoryView.getHistoryField();
 
+                setTheoryView.resetAB();
+                
                 if (e.getSource() == setTheoryView.getUnionButton()) {
                     setTheoryModel.union(a, b, history);
 
@@ -54,7 +57,7 @@ public class SetTheoryController {
 
                 setTheoryView.setResultField(setTheoryModel.getValue());
 
-            } catch (NumberFormatException next) {
+            } catch (InputMismatchException next) {
                 setTheoryView.showError("A and B must be entered." +
                         "\nA: " + a + "\nB: " + b, "Error");
             }

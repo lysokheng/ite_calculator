@@ -160,6 +160,10 @@ public class MoneyExchangeView extends DetailLayout {
         historyField.setText("");
     }
 
+    public void resetAmount() {
+        amount.setText("");
+    }
+
     public void showError(String errMessage, String title) {
         JOptionPane.showMessageDialog(null, errMessage, title, JOptionPane.ERROR_MESSAGE);
     }

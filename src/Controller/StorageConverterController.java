@@ -40,6 +40,8 @@ public class StorageConverterController {
                 amount = storageConverterView.getAmount();
                 history = storageConverterView.getHistoryField();
 
+                storageConverterView.resetAmount();
+                
                 if (e.getSource() == storageConverterView.getByteToKilobyteButton()) {
                     storageConverterModel.byte2KB(amount, history);
 

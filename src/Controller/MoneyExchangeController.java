@@ -40,6 +40,8 @@ public class MoneyExchangeController {
                 amount = moneyExchangeView.getAmount();
                 history = moneyExchangeView.getHistoryField();
 
+                moneyExchangeView.resetAmount();
+                
                 if (e.getSource() == moneyExchangeView.getRielToDollarButton()) {
                     moneyExchangeModel.rielToDollar(amount, history);
 

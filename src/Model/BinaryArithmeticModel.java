@@ -252,7 +252,7 @@ public class BinaryArithmeticModel {
         result = multiplyBinary(a, b);
 
         count++;
-        history.append(count + ". " + "Subtraction With 2nd Complement" + "\n"
+        history.append(count + ". " + "Multiply" + "\n"
                 + "A: " + a + "\nB: " + b + "\nResult: " + result + "\n\n");
     }
 

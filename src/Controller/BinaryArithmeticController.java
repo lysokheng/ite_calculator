@@ -6,6 +6,7 @@ import View.BinaryArithmeticView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
 
 public class BinaryArithmeticController {
     // ... The Controller needs to interact with both the Model and View.
@@ -41,6 +42,8 @@ public class BinaryArithmeticController {
                 b = binaryArithmeticView.getB();
                 history = binaryArithmeticView.getHistoryField();
 
+                binaryArithmeticView.resetAB();
+                
                 if (e.getSource() == binaryArithmeticView.getAdditionButton()) {
                     binaryArithmeticModel.addition(a, b, history);
 
@@ -63,7 +66,7 @@ public class BinaryArithmeticController {
 
                 binaryArithmeticView.setResultField(binaryArithmeticModel.getValue());
 
-            } catch (NumberFormatException next) {
+            } catch (Exception next) {
                 binaryArithmeticView.showError("A and B must be entered." +
                         "\nA: " + a + "\nB: " + b + "\n", "Error");
             }

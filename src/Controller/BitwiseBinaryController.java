@@ -41,6 +41,8 @@ public class BitwiseBinaryController {
                 b = bitwiseBinaryView.getB();
                 history = bitwiseBinaryView.getHistoryField();
 
+                bitwiseBinaryView.resetAB();
+                
                 if (e.getSource() == bitwiseBinaryView.getBitwiseANDButton()) {
                     bitwiseBinaryModel.bitwiseAND(a, b, history);
 

@@ -40,6 +40,8 @@ public class NSCHexadecimalController {
                 amount = nscHexadecimalView.getAmount();
                 history = nscHexadecimalView.getHistoryField();
 
+                nscHexadecimalView.resetAmount();
+                
                 if (e.getSource() == nscHexadecimalView.getHexadecimalToDecimalButton()) {
                     nscHexadecimalModel.hex2Decimal(amount, history);
 

@@ -41,6 +41,8 @@ public class ArithmeticController {
                 b = arithmeticView.getB();
                 history = arithmeticView.getHistoryField();
 
+                arithmeticView.resetAB();
+
                 if (e.getSource() == arithmeticView.getAdditionButton()) {
                     arithmeticModel.addition(a, b, history);
 
