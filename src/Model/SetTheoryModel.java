@@ -2,12 +2,9 @@ package Model;
 
 import javax.swing.*;
 
-import Controller.SetTheoryController;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.ErrorManager;
 
 public class SetTheoryModel {
     //... Constants

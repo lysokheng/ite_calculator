@@ -6,7 +6,6 @@ import View.BinaryArithmeticView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
 
 public class BinaryArithmeticController {
     // ... The Controller needs to interact with both the Model and View.
