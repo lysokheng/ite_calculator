@@ -1,13 +1,14 @@
-# ITECalculator
+# LedgeSolver 
 
-## Introduction
+## Royal University of Phnom Penh
 
-* AUTHOR: HUOT LYSOKHENG
-* DATE: 17/06/2022
-* University: Royal University of Phnom Penh
-* Department: Information Technology Engineering
-* Year: 2  Semester: 2
-* Generation: 7th
-* Course: Advanced Programming Language II
-* Lecturer: Kor Sokchea
-* Project: ITECalculatorGUI
+## Faculty of Engineering
+
+* Department	: Information Technology Engineering 
+* Class 		: A2
+* Course		: Advanced Programming Language II
+* Instructure	         : Kor Sokchea
+* Year			: 2  (Generation 	: 7th )
+* Semester 	         : 2
+* Date			: 05/08/2022
+* Name 		: Huot Lysokheng
